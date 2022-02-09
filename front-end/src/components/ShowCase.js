@@ -1,10 +1,16 @@
 import React from 'react'
 
-const NavBar = () => {
+const ShowCase = () => {
+
+
+
+  
 
   return (
 
     <>
+
+    
 
 
     </>
@@ -12,4 +18,4 @@ const NavBar = () => {
 }
 
 
-export default NavBar
+export default ShowCase

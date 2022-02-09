@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NavBar = () => {
+const Register = () => {
 
   return (
 
@@ -12,4 +12,4 @@ const NavBar = () => {
 }
 
 
-export default NavBar
+export default Register
