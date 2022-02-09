@@ -6,8 +6,8 @@ export default [
     imageUrl: 'https://www.farawaylucy.com/wp-content/uploads/2017/05/DSC_2063.jpg',
     status: true,
     tags: ['hotel'],
-    latitude: -4.7772600797718106, 
-    longitude: 51.705811496716116,
+    latitude: 51.705811496716116, 
+    longitude: -4.7772600797718106,
   },
   {
     title: 'Test', //String
