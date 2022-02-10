@@ -1,17 +1,18 @@
 {
-  "name": "react-country-flags",
+  "name": "front-end",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.25.0",
-    "bootstrap": "^5.1.3",
-    "eslint-plugin-react": "^7.18.3",
+    "bootstrap": "5.1.3",
+    "eslint-plugin-react": "^7.28.0",
+    "mapbox-gl": "^2.7.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-dom": "^17.0.2",
     "react-map-gl": "^7.0.5",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "3.4.1",
+    "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "sass": "^1.49.7"
   },
@@ -22,7 +23,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
