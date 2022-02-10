@@ -22,7 +22,7 @@ const startSever = async () => {
     })
  
     //Routes
-    app.use(router)
+    app.use('/api', router)
 
     //Catch all
     app.use((_req, res) => {
