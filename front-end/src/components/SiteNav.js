@@ -11,7 +11,7 @@ const SiteNav = () => {
   return (
 
     <>
-      <Navbar expand='sm'>
+      <Navbar className='w-100'>
         <Container>
           <Navbar.Brand href='/'>Hidden Gems</Navbar.Brand>
           <Nav.Item>
