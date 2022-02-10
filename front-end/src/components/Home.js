@@ -9,6 +9,9 @@ const Home = () => {
     <section className='hero-container'>
       <HeroCarousel/>
     </section>
+    <footer>
+      
+    </footer>
     </>
   )
 }
