@@ -3,7 +3,7 @@ import express from 'express'
 import { secureRoute } from './securingRoute.js'
 
 //Controllers
-import { getAllPins, addPin, findSinglePin, updatePin, deletePin, addReview, deleteReview } from '../controllers/pins.js'
+import { getAllPins, addPin, findSinglePin, updatePin, deletePin, addReview, deleteReview, addUserRating, updateUserRating, updateComment, likeReview, deleteReviewLike } from '../controllers/pins.js'
 import { registerUser, loginUser } from '../controllers/auth.js'
 import { getProfile } from '../controllers/users.js'
 
@@ -22,12 +22,28 @@ router.route('/pins/:id')
   .put(secureRoute, updatePin)
   .delete(secureRoute, deletePin)
 
+//UserRating
+router.route('/pins/:id/rating')
+  .post(secureRoute, addUserRating)
+
+router.route('/pins/:id/rating/:ratingId')
+  .put(secureRoute, updateUserRating)
+
 //Reviews
 router.route('/pins/:id/reviews')
   .post(secureRoute, addReview)
 
 router.route('/pins/:id/reviews/:reviewId')
   .delete(secureRoute, deleteReview)
+  .put(secureRoute, updateComment)
+
+//Likes
+router.route('/pins/:id/reviews/:reviewId/like')
+  .post(secureRoute, likeReview)
+
+router.route('/pins/:id/reviews/:reviewId/like/:likeId')
+  .delete(secureRoute, deleteReviewLike)
+
 
 // Profile
 router.route('/profile')
