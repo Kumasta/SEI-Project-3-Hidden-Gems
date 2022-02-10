@@ -5,7 +5,7 @@ import { secureRoute } from './securingRoute.js'
 //Controllers
 import { getAllPins, addPin, findSinglePin, updatePin, deletePin, addReview, deleteReview, addUserRating, updateUserRating, updateComment, likeReview, deleteReviewLike } from '../controllers/pins.js'
 import { registerUser, loginUser } from '../controllers/auth.js'
-import { getProfile } from '../controllers/users.js'
+import { getProfile, updateMyProfile, viewUserProfile } from '../controllers/users.js'
 
 const router = express.Router()
 
@@ -48,6 +48,10 @@ router.route('/pins/:id/reviews/:reviewId/like/:likeId')
 // Profile
 router.route('/profile')
   .get(secureRoute, getProfile)
+  .put(secureRoute, updateMyProfile)
+
+router.route('/profile/:id')
+  .get(viewUserProfile)
 
 //Auth Route
 //Register

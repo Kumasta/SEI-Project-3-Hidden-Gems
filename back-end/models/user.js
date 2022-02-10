@@ -7,8 +7,8 @@ const { Schema } = mongoose
 
 //Embbed schema of profile
 const userProfile = new Schema({
-  name: { type: String, required: true, default: '' },
-  bio: { type: String, required: true, maxlength: 500, default: '' },
+  name: { type: String, default: '' },
+  bio: { type: String, maxlength: 500, default: '' },
   profilePicURL: { type: String, default: '' },
 
 })
@@ -24,20 +24,24 @@ const userSchema = new Schema({
 })
 
 
-userProfile.virtual('ownedPins', {
+userSchema.virtual('ownedPins', {
   ref: 'Pin',
   localField: '_id',
   foreignField: 'owner',
 })
 
-userProfile.virtual('avgPinRating')
-  .get(function () {
-    if (!this.ownedPins.length) return 'Not rated yet'
-    const sum = this.ownedPins.reduce((acc, score) => {
-      return acc + score.rating
-    }, 0)
-    return (sum / this.ratings.length).toFixed(2)
-  })
+// userProfile.virtual('avgPinRating', {
+//   ref: 'Pin',
+//   localField: '_id',
+//   foreignField: 'owner',
+// })
+//   .get(function () {
+//     if (!this.ownedPins.length) return 'Not rated yet'
+//     const sum = this.ownedPins.reduce((acc, score) => {
+//       return acc + score.rating
+//     }, 0)
+//     return (sum / this.ratings.length).toFixed(2)
+//   })
 
 userSchema.set('toJSON', {
   virtuals: true,

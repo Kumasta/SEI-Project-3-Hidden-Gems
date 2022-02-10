@@ -6,9 +6,9 @@ export default [
     passwordConfirmation: 'pass',
     superUser: false,
     profile: {
-      name: 'Mayur',
-      bio: 'Trying to get this to work',
-      profilePicURL: 'na',
+      name: '',
+      bio: '',
+      profilePicURL: '',
     },
   },
   {
@@ -17,6 +17,11 @@ export default [
     password: 'pass',
     passwordConfirmation: 'pass',
     superUser: true,
+    profile: {
+      name: '',
+      bio: '',
+      profilePicURL: '',
+    },
   },
   {
     username: 'tumar',
@@ -24,5 +29,10 @@ export default [
     password: 'pass',
     passwordConfirmation: 'pass',
     superUser: false,
+    profile: {
+      name: '',
+      bio: '',
+      profilePicURL: '',
+    },
   }
 ]

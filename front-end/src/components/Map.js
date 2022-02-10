@@ -1,14 +1,31 @@
 import React, { useState, useEffect } from 'react'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
+import axios from 'axios'
 
 function Map() {
   const [markerLocal, setMarkerLocal] = useState([])
   const [popup, setPopup] = useState(null)
+
+  const [pinList, SetPinList] = useState([])
+
+  useEffect(() => {
+    const getPins = async () => {
+      try {
+        
+      } catch (err) {
+        
+      }
+    }
+  })
+
+
+
+
   const [viewPort, setViewPort] = useState({
     latitude: 51.515,
     longitude: -0.078,
     zoom: 10,
-    pitch: 0,
+    // pitch: 0,
   })
 
   const handleMapOnClick = (e) => {
