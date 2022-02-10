@@ -1,0 +1,16 @@
+.hero-container {
+  margin: 20px;
+  .carousel {
+    .carousel-inner {
+      .carousel-item {
+        .carousel-caption {
+          color:black;
+          display: flex;
+          justify-content: flex-start;
+          flex-direction: column;
+          
+        }
+      }
+    }
+  }
+}
