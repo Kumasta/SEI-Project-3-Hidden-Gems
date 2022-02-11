@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
-import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import axios from 'axios'
+import React, { useState } from 'react'
+import ReactMapGL, { Popup, NavigationControl, FullscreenControl, GeolocateControl } from 'react-map-gl'
+import { Link } from 'react-router-dom/'
+import Button from 'react-bootstrap/Button'
 
-function Map({ pinData }) {
-  // const [markerLocal, setMarkerLocal] = useState([])
-  const [popup, setPopup] = useState(null)
+//Components
+import Markers from './utilities/Markers'
+import Spinner from './utilities/Spinner'
 
-  // const [pinList, SetPinList] = useState([])
-
+function Map({ newPin, setNewPin}) {
   const [viewPort, setViewPort] = useState({
     latitude: 51.515,
     longitude: -0.078,
@@ -16,13 +16,15 @@ function Map({ pinData }) {
     width: '100%',
   })
 
-  // const handleMapOnClick = (e) => {
-  //   const { lng, lat } = e.lngLat
-  //   console.log(lng, lat)
-  //   setMarkerLocal([...markerLocal, { latitude: lat, longitude: lng }])
-  //   console.log(e)
-  // }
+  const handleMapOnClick = (e) => {
+    const { lng, lat } = e.lngLat
+    setNewPin({ latitude: lat, longitude: lng })
+  }
 
+  const handleCloseNewPopup = () => {
+    setNewPin(null)
+    console.log('Done')
+  }
 
   return (
     <div className='map-container'>
@@ -30,33 +32,30 @@ function Map({ pinData }) {
         <ReactMapGL
           mapboxAccessToken='pk.eyJ1IjoibWF5dXJyYWprdW1hciIsImEiOiJja3plNnRmbGswZjA4MnZvY24weGdhNmhhIn0.98MAuzBpjQkKuGouobKz5Q'
           mapStyle='mapbox://styles/mapbox/dark-v10'
-          {...viewPort}
           onMove={evt => setViewPort(evt.viewState)}
-          // onClick={e => handleMapOnClick(e)}
+          onClick={e => handleMapOnClick(e)}
           maxBounds={[{ lng: -11.538372871576541, lat: 48.723398702522076 }, { lng: 2.9694145317975256, lat: 60.126150999344304 }]}
+          {...viewPort}
         >
-          {pinData?.map(pin => {
-            return (
-                <Marker latitude={pin.latitude} longitude={pin.longitude} key={pin.id} anchor={'bottom-left'}>
-                  <button id='map-pin' onClick={e => {
-                    // e.preventDefault()
-                    setPopup(pin)
-                    console.log(pin)
-                  }}/>
-                </Marker>
-            )
-          })}
-          {popup &&
-              <Popup latitude={popup.latitude} longitude={popup.longitude} key={popup.i + 'pop'} onClose={() => setPopup(null)} closeOnClick={true} >
+          <Markers newPin={newPin} handleCloseNewPopup={handleCloseNewPopup} />
+          <NavigationControl visualizePitch={true} />
+          <FullscreenControl />
+          <GeolocateControl trackUserLocation={true} />
+          {newPin &&
+            <Popup latitude={newPin.latitude} longitude={newPin.longitude} closeOnClick={false}>
               <div>
-                {/* <img src={pop.imageUrl} alt={pop.title} /> */}
-                <h3>{popup.title}</h3>
+                <Link to={{
+                  pathname: '/pinform',
+                  state: {newPin: true}
+                }}>
+                  <Button variant='primary'>Create new pin?</Button>
+                </Link>
               </div>
             </Popup>
           }
         </ReactMapGL>
         :
-        <h1>Loading</h1>
+        <Spinner />
       }
     </div >
   )

@@ -20,7 +20,75 @@
   width: 30px;
   background-color: rgba(255, 255, 255, 0);
   border: none;
+
   &:active{
     background-image: url('../../images/red-pin-on.png');
   }
+  &:hover{
+    background-image: url('../../images/red-pin-on.png');
+    border-radius: 50px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    transform: scale(1);
+    animation: pulse 2s infinite;
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 5px 0 0 rgb(255, 0, 0);
+      }
+    
+      70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+      }
+    
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      }
+    }
+  }
 }
+
+.mapboxgl-popup, .mapboxgl-popup-anchor-bottom {
+  max-height: 300px;
+}
+
+.mapboxgl-popup-content{
+  background-color: rgba(128, 128, 128, 0.904) !important;
+  border-radius: 5px !important;
+  .mapboxgl-popup-close-button{
+    background-color: rgba(179, 247, 244, 0.527);
+    border-radius: 25px;
+    width: 20px;
+    padding: 0;
+    margin-top: 3px;
+    margin-right: 3px;
+    &:hover{
+      background-color: rgba(255, 0, 0, 0.685);
+    }
+
+  }
+  div{
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      img{
+        max-height: 150px;
+      }
+      h6{
+        margin-top: 10px;
+      }
+      div{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
