@@ -32,7 +32,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('https://localhost:4000/register', formData)
+      await axios.post('/api/register', formData)
       navigate('/login')
     } catch (error) {
       setFormErrors({ ...formErrors, ...error.response.data.errors })

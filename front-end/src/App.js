@@ -36,10 +36,10 @@ const App = () => {
       <BrowserRouter>
         <SiteNav />
         <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/Map' element={<Map />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/Map' element={<Map pinData={pinData}/>} />
           <Route path='/AboutUs' element={<AboutUs />} />
-          <Route path='/ShowCase/:id' element={<ShowCase />} />
+          <Route path='/pins/:id' element={<ShowCase />} />
           <Route path='/Register' element={<Register />} />
           <Route path='/Login' element={<Login />} />
         </Routes>
