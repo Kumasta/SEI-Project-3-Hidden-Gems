@@ -1,7 +1,5 @@
 // Imports
-import React from 'react'
-// import axios from 'axios'
-// import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 //Components
@@ -12,36 +10,22 @@ import AboutUs from './components/AboutUs'
 import Map from './components/Map'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import PinForm from './components/utilities/PinForm'
 
 const App = () => {
-
-
-  // const [ pinData, setPindata ] = useState([])
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const { data } = await axios.get('/api/pins')
-  //       console.log(data)
-  //       setPindata(data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   getData()
-  // }, [])
-
+  const [newPin, setNewPin] = useState()
   return (
     <>
       <BrowserRouter>
         <SiteNav />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/Map' element={<Map pinData={pinData}/>} />
+          <Route path='/Map' element={<Map newPin={newPin} setNewPin={setNewPin}/>} />
           <Route path='/AboutUs' element={<AboutUs />} />
           <Route path='/pins/:id' element={<ShowCase />} />
           <Route path='/Register' element={<Register />} />
           <Route path='/Login' element={<Login />} />
+          <Route path='/pinForm' element={<PinForm newPin={newPin}/>} />
         </Routes>
       </BrowserRouter>
     </>

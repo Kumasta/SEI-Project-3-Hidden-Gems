@@ -38,12 +38,13 @@ export default [
     tags: ['hotel'],
     latitude: 51.705811496716116, 
     longitude: -4.7772600797718106,
+    averageRating: 5,
   },
   {
-    title: 'Waterlook bridge', //String
-    typeOfPlace: 'vista', //String
-    description: 'Great place to see Big ben, london Eye, the shard and other Iconic buildings in one place.', //String
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/River_Thames_and_Waterloo_Bridge%2C_London-17Aug2009.jpg', //String
+    title: 'Waterloo bridge', //String
+    typeOfPlace: 'Great View', //String
+    description: 'Great place to see Big ben, london Eye, the shard and other iconic landmark of London at one place.', //String
+    imageUrl: 'https://live.staticflickr.com/1204/696567178_c24e7d78ab_b.jpg', //String
     status: true, //Boolean
     tags: ['city walk', 'city skyline'], //Array of strings
     latitude: 51.50852877586289, //Number
@@ -52,7 +53,7 @@ export default [
   {
     title: 'Phone Booth Book Exchange', //String
     typeOfPlace: 'Phone Booth', //String
-    description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham.t is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
+    description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham. It is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
     status: true, //Boolean
     tags: ['random'], //Array of strings
