@@ -35,7 +35,7 @@ const App = () => {
         <SiteNav />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/Map' element={<Map />} />
+          <Route path='/Map' element={<Map pinData={pinData}/>} />
           <Route path='/AboutUs' element={<AboutUs />} />
           <Route path='/ShowCase/:id' element={<ShowCase />} />
           <Route path='/Register' element={<Register />} />
