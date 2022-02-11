@@ -40,10 +40,10 @@ export default [
     longitude: -4.7772600797718106,
   },
   {
-    title: 'Waterlook bridge', //String
-    typeOfPlace: 'vista', //String
-    description: 'Great place to see Big ben, london Eye, the shard and other Iconic buildings in one place.', //String
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e4/River_Thames_and_Waterloo_Bridge%2C_London-17Aug2009.jpg', //String
+    title: 'Waterloo bridge', //String
+    typeOfPlace: 'Great View', //String
+    description: 'Great place to see Big ben, london Eye, the shard and other iconic landmark of London at one place.', //String
+    imageUrl: 'https://live.staticflickr.com/1204/696567178_c24e7d78ab_b.jpg', //String
     status: true, //Boolean
     tags: ['city walk', 'city skyline'], //Array of strings
     latitude: 51.50852877586289, //Number
