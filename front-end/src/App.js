@@ -1,5 +1,10 @@
 // Imports
+<<<<<<< HEAD
 import React, { useState } from 'react'
+=======
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
+>>>>>>> 2ef505fe28f9eb7d486ce05b3eec6a68d2bcf60d
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 //Components
@@ -13,7 +18,27 @@ import Login from './components/auth/Login'
 import PinForm from './components/utilities/PinForm'
 
 const App = () => {
+<<<<<<< HEAD
   const [newPin, setNewPin] = useState()
+=======
+
+
+  const [ pinData, setPindata ] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/pins')
+        console.log(data)
+        setPindata(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
+>>>>>>> 2ef505fe28f9eb7d486ce05b3eec6a68d2bcf60d
   return (
     <>
       <BrowserRouter>
