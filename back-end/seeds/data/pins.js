@@ -38,6 +38,7 @@ export default [
     tags: ['hotel'],
     latitude: 51.705811496716116, 
     longitude: -4.7772600797718106,
+    averageRating: 5,
   },
   {
     title: 'Waterlook bridge', //String
@@ -52,7 +53,7 @@ export default [
   {
     title: 'Phone Booth Book Exchange', //String
     typeOfPlace: 'Phone Booth', //String
-    description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham.t is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
+    description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham. It is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
     status: true, //Boolean
     tags: ['random'], //Array of strings

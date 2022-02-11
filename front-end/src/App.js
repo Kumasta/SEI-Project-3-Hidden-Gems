@@ -16,20 +16,6 @@ import Login from './components/auth/Login'
 const App = () => {
 
 
-  // const [ pinData, setPindata ] = useState([])
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const { data } = await axios.get('/api/pins')
-  //       console.log(data)
-  //       setPindata(data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   getData()
-  // }, [])
 
   return (
     <>
@@ -37,7 +23,7 @@ const App = () => {
         <SiteNav />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/Map' element={<Map pinData={pinData}/>} />
+          <Route path='/Map' element={<Map/>} />
           <Route path='/AboutUs' element={<AboutUs />} />
           <Route path='/pins/:id' element={<ShowCase />} />
           <Route path='/Register' element={<Register />} />
