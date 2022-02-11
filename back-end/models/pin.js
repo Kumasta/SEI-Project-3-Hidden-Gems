@@ -39,7 +39,6 @@ const pinSchema = new Schema({
   reviews: [reviewSchema], //Embedded Schema
   ratings: [pinRatingSchema],
 }, {
-  timestamps: true,
 })
 
 pinSchema.virtual('avgRating')
