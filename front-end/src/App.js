@@ -1,7 +1,6 @@
 // Imports
-import React from 'react'
-// import axios from 'axios'
-// import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 //Components
@@ -16,20 +15,20 @@ import Login from './components/auth/Login'
 const App = () => {
 
 
-  // const [ pinData, setPindata ] = useState([])
+  const [ pinData, setPindata ] = useState([])
 
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const { data } = await axios.get('/api/pins')
-  //       console.log(data)
-  //       setPindata(data)
-  //     } catch (error) {
-  //       console.log(error)
-  //     }
-  //   }
-  //   getData()
-  // }, [])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/pins')
+        console.log(data)
+        setPindata(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
 
   return (
     <>

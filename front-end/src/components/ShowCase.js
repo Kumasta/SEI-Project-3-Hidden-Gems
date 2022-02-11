@@ -4,14 +4,16 @@ import { useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
+// import diamond from '../images/black-diamond.png'
+// import halfDiamond from '../images/half-diamond.png'
+// import hollowDiamond from '../images/hollow-diamond.png'
+import Rating from './utilities/Rating'
 
 const ShowCase = () => {
 
   const [pin, setPin] = useState([])
   const [hasError, setHasError] = useState({ error: false, message: '' })
   const { id } = useParams()
-
   const [ user, setUser] = useState([])
 
   useEffect(() => {
@@ -38,17 +40,20 @@ const ShowCase = () => {
               </Row>
               <Row>
                 <h3 className='title'>{pin.title}</h3>
-                <h4 className='rating'>{pin.avgRating}</h4>
-                <h4 className='type'>{pin.typeOfPlace}</h4>
-                <h4 className='status'>{pin.status}</h4>
-                <h4 className='tags'>{pin.tags}</h4>
-                <h4 className='username'>{user}</h4>
+                <h5 className='type'>{pin.typeOfPlace}</h5>
+                <h5 className='rating'>{pin.avgRating}</h5>
+                {/* <img className='diamond' src={diamond} alt='diamond' />
+                <img className='diamond' src={halfDiamond} alt='diamond' />
+                <img className='diamond' src={hollowDiamond} alt='diamond' /> */}
+                <Rating avgRating={pin.avgRating} id={pin._id} />
+                <h5 className='status'>{pin.status}</h5>
+                <h5 className='tags'>{pin.tags}</h5>
+                <h5 className='username'>Posted by {user}</h5>
                 <hr />
                 <p className='description'>{pin.description}</p>
+                <h5 className='review'>Comments</h5>
+                <hr />
               </Row>
-            </Col>
-            <Col>
-              <h4 className='review'>review</h4>
             </Col>
           </>
           :
@@ -59,6 +64,5 @@ const ShowCase = () => {
       </Container>
   )
 }
-
 
 export default ShowCase
