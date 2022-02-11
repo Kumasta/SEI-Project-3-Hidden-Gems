@@ -1,12 +1,33 @@
 .hero-container {
-  margin: 20px;
+  cursor: pointer;
   .carousel {
     .carousel-inner {
       .carousel-item {
+        .img {
+          height: 100%;
+          width: 100%;
+        }
         .carousel-caption {
-          color:black;
+          color: white;
         }
       }
     }
+  }
+}
+
+.most-rated-container{
+  text-align: left;
+  margin: 15px;
+  .cards-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+  }
+}
+
+.search {
+  .select-container {
+    width: 300px;
   }
 }
