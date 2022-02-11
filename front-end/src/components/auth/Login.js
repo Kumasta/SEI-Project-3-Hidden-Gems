@@ -29,9 +29,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const { data } = await axios.post('https://localhost:4000/login', formData)
+      const { data } = await axios.post('/api/login', formData)
       setLocalToken(data.token)
-      navigate('/home')
+      navigate('/')
     } catch (error) {
       setFormError(error.response.data.message)
     }
