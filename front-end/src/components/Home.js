@@ -3,57 +3,58 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-//react select components
+//Utility Components
+import HeroCarousel from './utilities/HeroCarousel'
+import Spinner from './utilities/Spinner'
+
+//React Select Components
 import Select from 'react-select'
 
-//react bootstrap components
-import Carousel from 'react-bootstrap/Carousel'
+//React Bootstrap Components
 import Card from 'react-bootstrap/Card'
 
 
-const Home = () => {
+const Home = ({ pinData, setPindata }) => {
 
-  const [pinData, setPindata] = useState([])
+  const [hasError, setHasError] = useState({ error: false, message: '' })
   const [filteredPins, setFilteredPins] = useState([])
   const [filterList, setFilterList] = useState([])
 
 
-  const options = [ //Check whether we want to search by the tags
-    { value: 'art', label: 'art' },
-    { value: 'hotel', label: 'hotel' },
-    { value: 'city walk', label: 'city walk' },
-  ]
+  // const options = [ //Check whether we want to search by the tags
+  //   { value: 'art', label: 'art' },
+  //   { value: 'hotel', label: 'hotel' },
+  //   { value: 'city walk', label: 'city walk' },
+  // ]
 
-  const [searchBar, setSearchBar] = useState({
-    pinTags: [],
-  })
+  // const [searchBar, setSearchBar] = useState({
+  //   pinTags: [],
+  // })
 
   useEffect(() => {
-    const getImageData = async () => {
+    const getPinsData = async () => {
       try {
         const { data } = await axios.get('/api/pins')
-        console.log(data)
+        console.log('Get data request', data)
         setPindata(data)
       } catch (error) {
-        console.log(error)
+        setHasError({ error: true, message: error.message })
       }
     }
-    getImageData()
-  }, [])
+    getPinsData()
+  }, [setPindata])
 
-//?? Filtered ratings
-  // const filteredRatings = pinData.filter(pin => {
-  //   const topRatings = pin.averageRating >= 4
-  //   console.log('top ratings', topRatings)
-  //   return topRatings
-  // })
+  //?? Filtered ratings
+  const filteredRatings = pinData.filter(pin => {
+    const topRatings = pin.averageRating >= 3
+    console.log('top ratings', topRatings)
+    return topRatings
+  })
 
   useEffect(() => {
     if (pinData.length) {
       const filteredPins = []
-      pinData.map(pin => {
-        filteredPins.push(pin.tags)
-      })
+      pinData.map(pin => { filteredPins.push(pin.tags) })
       setFilterList(filteredPins)
     }
   }, [pinData])
@@ -65,98 +66,70 @@ const Home = () => {
     setFilteredPins(pinsSearched)
   }
 
-  //?? React select search bar 
-  const handleTagsSelected = (tagSelected, name) => {
-    console.log('tagsSelected', tagSelected)
-    const tagName = tagSelected ? tagSelected.map(item => item.value) : []
-    setSearchBar({ ...searchBar, [name]: [...tagName] })
-    console.log('searchBar', searchBar)
-  }
 
   return (
 
     <>
       <section className='hero-container'>
-        <Carousel className='carousel-container'>
-          {pinData &&
-            pinData.map((img, i) => {
-              return (
-                <Carousel.Item key={i} interval={1000}>
-                  <Link className='pins-link' to={`/pins/${img._id}`}>
-                    <img
-                      className='d-block w-100'
-                      src={img.imageUrl}
-                      alt={img.title}
-                    />
-                    <Carousel.Caption>
-                      <h3>{img.title}</h3>
-                    </Carousel.Caption>
-                  </Link>
-                </Carousel.Item>
-              )
-            })
-          }
-        </Carousel>
+        {pinData ?
+          <HeroCarousel pinData={pinData} />
+          :
+          hasError.error ?
+            <p>{hasError.message}</p>
+            :
+            <Spinner />
+        }
       </section>
-      <section className='most-rated-container'>
-        <div className='most-rated-txt'>
-          <h2>Most Rated</h2>
-        </div>
-        <div className='cards-container'>
-          {/* {filteredRatings &&
-            filteredRatings.map((pin, i) => {
-              return (
-                <Card className='card-container' key={i} style={{ width: '18rem', height:'18rem' }}>
-                  <Card.Img className='card-img' variant="top" src={pin.imageUrl}/>
-                  <Link className='pins-link' to={`/pins/${pin._id}`}>
-                  <Card.Body>
-                    <Card.Title>{pin.title}</Card.Title>
-                    <Card.Text>{pin.averageRating}</Card.Text>
-                    <Card.Text>{pin.avgRating}</Card.Text>
-                  </Card.Body>
-                  </Link>
-                </Card>
-              )
-            })} */}
-        </div>
-      </section>
-      <section className='search'>
-        <div className='searchbar-container'>
-          <form>
-            <select onChange={showFilteredPins}>
-              <option>See all</option>
-              {filterList.map((tag, id) => <option key={id} value={tag}>{tag}</option>
-              )}
-            </select>
-          </form>
-          {filteredPins &&
-            filteredPins.map((pin, i) => {
-              return (
-                <Card key={i} style={{ width: '18rem' }}>
-                  <Link className='pins-link' to={`/pins/${pin._id}`}>
-                    <Card.Img variant='top' src={pin.imageUrl} />
-                    <Card.Body>
-                      <Card.Title>{pin.title}</Card.Title>
-                      <Card.Text>Rating: {pin.avgRating}</Card.Text>
-                      {/* <Card.Text>Rating: {pin.averageRating}</Card.Text> */}
-                    </Card.Body>
-                  </Link>
-                </Card>
-              )
-            })
-          }
-        </div>
-        <label className='search-label'>Not sure what you fancy?</label>
-        <div>
-          <Select className='select-container'
-            options={options}
-            isMulti
-            name='pinTags'
-            onChange={(tagSelected) => handleTagsSelected(tagSelected, 'pinTags')}
-          />
-        </div>
-      </section>
+        <section className='most-rated-container container-sm'>
+            <h2>Most Rated</h2>
+          <div className='cards-container'>
+            {filteredRatings &&
+              filteredRatings.map((pin, i) => {
+                return (
+                  <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
+                    <Link className='pins-link' to={`/pins/${pin._id}`}>
+                      <Card.Img className='card-img' variant="top" src={pin.imageUrl} />
+                      <Card.Body>
+                        <Card.Title>{pin.title}</Card.Title>
+                        <Card.Text>Rating test: {pin.averageRating}</Card.Text>
+                        <Card.Text>{pin.avgRating}</Card.Text>
+                      </Card.Body>
+                    </Link>
+                  </Card>
+                )
+              })}
+          </div>
+        </section>
+        <section className='search-container container-sm'>
+            <form>
+              <label className='search-label'>Not sure what you fancy?</label>
+              <select onChange={showFilteredPins}>
+                <option value='' defaultValue disabled>Select a tag</option>
+                {filterList.map((tag, id) => <option key={id} value={tag}>{tag}</option>
+                )}
+              </select>
+            </form>
+            </section>
+            <section className='search-result-container'>
+            {filteredPins &&
+              filteredPins.map((pin, i) => {
+                return (
+                  <Card key={i} style={{ width: '18rem' }}>
+                    <Link className='pins-link' to={`/pins/${pin._id}`}>
+                      <Card.Img variant='top' src={pin.imageUrl} />
+                      <Card.Body>
+                        <Card.Title>{pin.title}</Card.Title>
+                        <Card.Text>Rating: {pin.avgRating}</Card.Text>
+                        <Card.Text>Rating: {pin.averageRating}</Card.Text>
+                      </Card.Body>
+                    </Link>
+                  </Card>
+                )
+              })
+            }
+          </section>
       <footer>
+      <hr />
         © Made by Mayur, Tom &amp; Marilyn
       </footer>
     </>

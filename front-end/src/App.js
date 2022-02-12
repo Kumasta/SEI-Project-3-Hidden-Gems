@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import SiteNav from './components/SiteNav'
 import Home from './components/Home'
 import ShowCase from './components/ShowCase'
-import AboutUs from './components/AboutUs'
+import About from './components/About'
 import Map from './components/Map'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
@@ -14,15 +14,18 @@ import PinForm from './components/utilities/PinForm'
 import ScrollToTop from './components/utilities/ScrollToTop'
 
 const App = () => {
+
   const [newPin, setNewPin] = useState()
+  const [pinData, setPindata] = useState([])
+  
   return (
     <>
       <BrowserRouter>
         <SiteNav />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home pinData={pinData} setPindata={setPindata}/>} />
           <Route path='/Map' element={<Map newPin={newPin} setNewPin={setNewPin}/>} />
-          <Route path='/AboutUs' element={<AboutUs />} />
+          <Route path='/About' element={<About />} />
           <Route path='/pins/:id' element={<ShowCase />} />
           <Route path='/Register' element={<Register />} />
           <Route path='/Login' element={<Login />} />
