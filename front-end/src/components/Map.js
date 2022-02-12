@@ -42,7 +42,7 @@ function Map({ newPin, setNewPin}) {
           <FullscreenControl />
           <GeolocateControl trackUserLocation={true} />
           {newPin &&
-            <Popup latitude={newPin.latitude} longitude={newPin.longitude} closeOnClick={false}>
+            <Popup latitude={newPin.latitude} longitude={newPin.longitude} closeOnClick={false} onClose={() => setNewPin(null)}>
               <div>
                 <Link to={{
                   pathname: '/pinform',

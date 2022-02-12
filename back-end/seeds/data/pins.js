@@ -59,6 +59,42 @@ export default [
     tags: ['random'], //Array of strings
     latitude: 51.4676965, //Number
     longitude: -0.0234944, //Number
-  }
+  },
+  {
+    title: 'Kingston Market', //String
+    typeOfPlace: 'Market', //String
+    description: `Kingston upon Thames has been home to a bustling market for centuries with the oldest surviving records dating back to the early 1200s, and Kingston's historical market is still thriving today. 
+    The Ancient Market is home to 28 permanent stalls and trades 7 days a week, 10am - 5pm. It boasts a range of traditional market stall holders including a florist, fishmonger and greengrocers, an artisan bakery and a vibrant street food scene serving up authentic cuisines from across the globe.`, //String
+    imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
+    status: true, //Boolean
+    tags: ['Outdoor market', '7 days a week'], //Array of strings
+    latitude: 51.409673274352876, //Number
+    longitude: 0.30628681182861334, //Number
+  },
+  {
+    title: 'Hola Guacamole', //String
+    typeOfPlace: 'Restaurant', //String
+    description: `HOLA GUACAMOLE is, simply put, wonderful fusion of passion and culinary skills.
+
+    They are Mexican food maestros preparing their meals using only the most natural ingredients, the highest quality when it comes to our meat and fresh vegetables, aromatic and fresh spices. They offer Mexican classics based on their very own authentic recipes. Lovely grilled chicken, tender steak or juicy pork pibil, black beans supplemented with fresh salsa with different degrees of sharpness and of course, freshly made guacamole.
+    
+    They describe the taste as a "combination of savoury and earthy flavours"- a depth of flavours and a fresh lightness from generous use of fresh herbs, locally sourced or bought vegetables, citrus, and Mexican origins. They put in huge effort to stand out from the competition, constantly and obsessively improving their recipes and appearance.`, //String
+    imageUrl: 'https://scontent.fdub5-1.fna.fbcdn.net/v/t39.30808-6/272973532_4915626441860840_7150989788518514179_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=a26aad&_nc_ohc=qUEl14FJSlEAX-eOSvh&_nc_ht=scontent.fdub5-1.fna&oh=00_AT95YQRT6aNDDtBaDvlbTZNOZEq1QaA_r7-fjRNb0ljg8g&oe=620C8C6D', //String
+    status: true, //Boolean
+    tags: ['Mexican', 'Street food'], //Array of strings
+    latitude: 51.50800791949694, //Number
+    longitude: -0.11027097702026369, //Number
+  },
+  {
+    title: 'Kingston Market', //String
+    typeOfPlace: 'Market', //String
+    description: `Kingston upon Thames has been home to a bustling market for centuries with the oldest surviving records dating back to the early 1200s, and Kingston's historical market is still thriving today. 
+    The Ancient Market is home to 28 permanent stalls and trades 7 days a week, 10am - 5pm. It boasts a range of traditional market stall holders including a florist, fishmonger and greengrocers, an artisan bakery and a vibrant street food scene serving up authentic cuisines from across the globe.`, //String
+    imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
+    status: true, //Boolean
+    tags: ['Outdoor market', '7 days a week'], //Array of strings
+    latitude: 51.409673274352876, //Number
+    longitude: 0.30628681182861334, //Number
+  },
 ]
 

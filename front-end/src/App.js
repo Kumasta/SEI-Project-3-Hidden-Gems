@@ -11,6 +11,7 @@ import Map from './components/Map'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import PinForm from './components/utilities/PinForm'
+import ScrollToTop from './components/utilities/ScrollToTop'
 
 const App = () => {
   const [newPin, setNewPin] = useState()
@@ -27,6 +28,7 @@ const App = () => {
           <Route path='/Login' element={<Login />} />
           <Route path='/pinForm' element={<PinForm newPin={newPin}/>} />
         </Routes>
+        <ScrollToTop />
       </BrowserRouter>
     </>
   )
