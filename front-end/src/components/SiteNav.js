@@ -4,10 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 // React bootstap components
 import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
+import Nav, { } from 'react-bootstrap/Nav'
 
 // Authorisation file
-import { userIsAuthorised } from '../enviroment/auth'
+// import { userIsAuthorised } from '../enviroment/auth'
 
 
 const SiteNav = () => {
@@ -20,12 +20,11 @@ const SiteNav = () => {
   }
 
   return (
-    <>
       <Navbar expand='sm' className='w-100'>
         <Container>
           <Navbar.Brand href='/'>Hidden Gems</Navbar.Brand>
           <Nav.Item>
-            <Link to='/AboutUs'>About Us</Link>
+            <Link to='/About'>About</Link>
           </Nav.Item>
           <Nav.Item>
             <Link to='/Map'>Map</Link>
@@ -44,14 +43,13 @@ const SiteNav = () => {
                   <Link to='/Login'>Login</Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link className='btn-dark btn' to='/Register'>Register</Link>
+                  <Link className='btn-dark btn' to='/Register'>Register now</Link>
                 </Nav.Item>
               </>
             {/* } */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
   )
 }
 
