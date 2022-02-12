@@ -38,7 +38,10 @@ const Markers = ({ newPin, handleCloseNewPopup }) => {
         )
       })}
       {popup &&
-        <Popup latitude={popup.latitude} longitude={popup.longitude} key={popup.id} closeOnClick={false} onClose={() => setPopup(null)} onOpen={handleCloseNewPopup}>
+        <Popup latitude={popup.latitude} longitude={popup.longitude} key={popup.id} closeOnClick={false} onClose={() => {
+          setPopup(null)
+          handleCloseNewPopup()
+          }} onOpen={handleCloseNewPopup}>
           <div>
             <Link to={`/pins/${popup.id}`}>
             <img src={popup.imageUrl} alt={popup.title} />
@@ -52,18 +55,6 @@ const Markers = ({ newPin, handleCloseNewPopup }) => {
           </div>
         </Popup>
       }
-      {/* {(newPin && popup === null) &&
-      <Popup latitude={newPin.latitude} longitude={newPin.longitude} closeOnClick={false} onClose={handleCloseNewPopup}>
-        <div>
-        <Link to={{
-          pathname: '/pinform',
-          state: newPin
-          }}>
-          <Button variant='primary'>Create new pin?</Button>
-        </Link>
-        </div>
-      </Popup>
-      } */}
     </>
   )
 }

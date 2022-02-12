@@ -11,3 +11,20 @@
 * {
   box-sizing: border-box;
 }
+
+#scroll-to-top{
+  height: 30px;
+  width: 30px;
+  background-color: blue;
+  position: absolute;
+  float: right;
+  right: 40px;
+  bottom: 15px;
+  position: fixed;
+  margin-bottom: 5px;
+  background-image: url('../images/blue-up-arrow.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  // border-radius: 12px;
+}

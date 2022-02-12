@@ -4,19 +4,34 @@ import { useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import CreatableSelect from 'react-select/creatable';
-// import { ActionMeta, OnChangeValue } from 'react-select';
+// import Select from 'react-select'
+import CreatableSelect from 'react-select/creatable'
 
 const PinForm = ({ newPin }) => {
 
-  console.log(newPin)
   useEffect(() => {
+    if (!newPin) return
     setFormData({ ...formData, latitude: newPin.latitude, longitude: newPin.longitude })
-  }, [newPin])
 
-  // const option = [{ option: 1 }]
+  }, [])
+
+  const selectOptions = [
+    { value: 'Chill', label: 'Chill' },
+    { value: 'Outdoors', label: 'Outdoors' },
+    { value: 'Art', label: 'Art' },
+    { value: 'Food', label: 'Food' },
+    { value: 'Drink', label: 'Drink' },
+    { value: 'Food & Drink', label: 'Food & Drink' },
+    { value: 'Nightlife', label: 'Nightlife' },
+    { value: 'Coutryside', label: 'Coutryside' },
+    { value: 'Offbeat', label: 'Offbeat' },
+    { value: 'Date-spot', label: 'Date-Spot' }
+  ]
+
   const uploadAPI = 'https://api.cloudinary.com/v1_1/dv2dfzekf/image/upload'
   const uploadPreset = 'ip80rysk'
+
+  const [tags, setsTags] = useState('')
 
   const [formData, setFormData] = useState({
     title: '',
@@ -57,6 +72,25 @@ const PinForm = ({ newPin }) => {
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
 
+  const handleMultiChange = (selected, name) => {
+    console.log(selected)
+    console.log(name)
+    const values = selected ? selected.map(item => item.value) : []
+    setFormData({ ...formData, [name]: [...values] })
+  }
+
+  const handleMultiCreateChange = (field, value) => {
+    switch (field) {
+      case 'tags':
+        setsTags(value)
+        break;
+      default:
+        break;
+    }
+    const values = tags ? value.map(item => item.value) : []
+    setFormData({ ...formData, [value.label]: [...values] })
+  }
+
   const handleImageUrl = (url) => {
     setFormData({ ...formData, imageUrl: url })
   }
@@ -64,8 +98,8 @@ const PinForm = ({ newPin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('/api/register', formData)
-      navigate('/login')
+      await axios.post('/api/pins', formData)
+      navigate('/pins/')
     } catch (error) {
       setFormErrors({ ...formErrors, ...error.response.data.errors })
     }
@@ -77,15 +111,13 @@ const PinForm = ({ newPin }) => {
         <Form onSubmit={handleSubmit} className='mt-4'>
           <h2>Create a new pin</h2>
           <hr />
-
           <Form.Group className='mb-2'>
-            <Form.Label htmlFor='title'>Name of place</Form.Label>
+            <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
             <Form.Control onChange={handleChange} type='text' placeholder='Name of place' name='title' defaultValue={formData.title} />
             {formErrors.title && <Form.Text>{formErrors.title}</Form.Text>}
           </Form.Group>
-
           <Form.Group className='mb-2'>
-            <Form.Label htmlFor='typeOfPlace'>Type of Place</Form.Label>
+            <Form.Label htmlFor='typeOfPlace'>Type of Place<span className='text-danger'>*</span></Form.Label>
             <Form.Select onChange={handleChange} placeholder='typeOfPlace' name='typeOfPlace' defaultValue={formData.typeOfPlace}>
               <option>Great View</option>
               <option>Place of Interest</option>
@@ -95,25 +127,32 @@ const PinForm = ({ newPin }) => {
             </Form.Select>
             {formErrors.typeOfPlace && <Form.Text>{formErrors.typeOfPlace}</Form.Text>}
           </Form.Group>
-
           <Form.Group className='mb-2'>
-            <Form.Label htmlFor='description'>Name of place</Form.Label>
+            <Form.Label htmlFor='description'>Description<span className='text-danger'>*</span></Form.Label>
             <Form.Control onChange={handleChange} as='textarea' rows={3} placeholder='Name of place' name='description' defaultValue={formData.description} />
             {formErrors.description && <Form.Text>{formErrors.description}</Form.Text>}
           </Form.Group>
-
           <Form.Group className='mb-2'>
-            <Form.Label htmlFor='imageUrl'>Picture</Form.Label>
+            <Form.Label htmlFor='imageUrl'>Picture<span className='text-danger'>*</span></Form.Label>
             <Form.Control onChange={handleUpload} type='file' placeholder='imageUrl' name='imageUrl' defaultValue={formData.imageUrl} />
             {formErrors.imageUrl && <Form.Text>{formErrors.imageUrl}</Form.Text>}
           </Form.Group>
-
+          <Form.Group className='mb-2'>
+            <Form.Label htmlFor='tags'>Add Tags</Form.Label>
+            <CreatableSelect
+              isClearable
+              isMulti
+              onChange={(value) => handleMultiCreateChange('tags', value)}
+              options={selectOptions}
+              defaultValue={formData.tags}
+            />
+            {console.log(tags)}
+          </Form.Group>
           {formData.imageUrl &&
             <div id='form-pin-image'>
               <img src={formData.imageUrl} alt="Uploaded pic of place to add" />
             </div>
           }
-
           <Form.Group className='text-center mt-4'>
             <Button type='submit' className='btn btn-red'>Submit</ Button>
           </Form.Group>
@@ -124,3 +163,15 @@ const PinForm = ({ newPin }) => {
 }
 
 export default PinForm
+
+
+  // < Form.Group className = 'mb-2' >
+  //   <Form.Label htmlFor='tags'>Add Tags</Form.Label>
+  //      <Select
+  //         options={selectOptions}
+  //         isMulti
+  //         name='tags'
+  //         defaultValue={formData.tags}
+  //         onChange={(selected) => handleMultiChange(selected, 'tags')}
+  //       />
+  // </Form.Group >
