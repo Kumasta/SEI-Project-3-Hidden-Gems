@@ -3,64 +3,93 @@
   .carousel {
     .carousel-inner {
       .carousel-item {
-        .img {
-          height: 100%;
-          width: 100%;
+        .carousel-img {
+          max-height: 60vh;
         }
         .carousel-caption {
           color: white;
+          margin: 20px;
         }
       }
     }
   }
 }
 
-
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .most-rated-container {
     margin: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    h2 {
-      margin-top: 50px;
-    }
+      h2 {
+        align-self: flex-start;
+        margin-top: 10px;
+      }
     .cards-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
       .card-container {
-        margin: 8px;
+        margin: 5px;
         min-height: 330px;
         border: 1px solid rgb(243, 237, 237);
         box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
-        .card-img {
-          height: 191px;
-        }
-        .pins-link {
-          text-decoration: none;
-          color: black;
-        }
+          .card-img {
+            height: 191px;
+          }
+          .pins-link {
+            text-decoration: none;
+            color: black;
+          }
       }
     }
   }
-  
-
-  .search-container {
-    margin: 20px;
+  .search-section  {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    select {
-      margin: 10px;
-      padding: 5px;
-    }
+    .searchbar-container {
+      margin: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+        select {
+          margin: 10px;
+          padding: 5px;
+        }
   }
-
+  .search-result-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+        .card-container {
+          margin: 5px;
+          min-height: 330px;
+          border: 1px solid rgb(243, 237, 237);
+          box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
+            .card-img {
+              height: 191px;
+            }
+            .pins-link {
+              text-decoration: none;
+              color: black;
+            }
+        }
+  }
+}
+}
 
 footer {
   padding: 30px;
-  background-color: rgb(220,220,220);
+  background-color: black;
+  color: white;
 }
-

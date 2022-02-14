@@ -38,7 +38,7 @@ const pinSchema = new Schema({
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   reviews: [reviewSchema], //Embedded Schema
   ratings: [pinRatingSchema],
-  averageRating: { type: Number, required: true },
+  averageRating: { type: Number },
 }, {
 })
 
