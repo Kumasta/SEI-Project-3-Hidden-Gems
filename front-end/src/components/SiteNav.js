@@ -7,11 +7,10 @@ import Container from 'react-bootstrap/Container'
 import Nav, { } from 'react-bootstrap/Nav'
 
 // Authorisation file
-// import { userIsAuthorised } from '../enviroment/auth'
+import { userIsAuthenticated } from '../enviroment/auth'
 
 
 const SiteNav = () => {
-
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -20,36 +19,36 @@ const SiteNav = () => {
   }
 
   return (
-      <Navbar expand='sm' className='w-100'>
-        <Container>
-          <Navbar.Brand href='/'>Hidden Gems</Navbar.Brand>
-          <Nav.Item>
-            <Link to='/About'>About</Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Link to='/Map'>Map</Link>
-          </Nav.Item>
-          <Navbar.Toggle aria-controls='basic-navbar-nav' />
-          <Navbar.Collapse className='justify-content-end'>
-            {/* {userIsAuthorised() ? */}
-              <>
-                <Nav.Item onClick={handleLogout}>
-                  <span>Logout</span>
-                </Nav.Item>
-              </>
-              :
-              <>
-                <Nav.Item>
-                  <Link to='/Login'>Login</Link>
-                </Nav.Item>
-                <Nav.Item>
-                  <Link className='btn-dark btn' to='/Register'>Register now</Link>
-                </Nav.Item>
-              </>
-            {/* } */}
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+    <Navbar expand='sm' className='w-100'>
+      <Container>
+        <Navbar.Brand href='/'>Hidden Gems</Navbar.Brand>
+        <Nav.Item>
+          <Link to='/About'>About</Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Link to='/Map'>Map</Link>
+        </Nav.Item>
+        <Navbar.Toggle aria-controls='basic-navbar-nav' />
+        <Navbar.Collapse className='justify-content-end'>
+          {userIsAuthenticated() ?
+            <>
+              <Nav.Item onClick={handleLogout}>
+                <span>Logout</span>
+              </Nav.Item>
+            </>
+            :
+            <>
+              <Nav.Item>
+                <Link to='/Login'>Login</Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link className='btn-dark btn' to='/Register'>Register now</Link>
+              </Nav.Item>
+            </>
+          }
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   )
 }
 

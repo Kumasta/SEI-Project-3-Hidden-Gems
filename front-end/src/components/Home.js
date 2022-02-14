@@ -4,32 +4,22 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 //Utility Components
-import HeroCarousel from './utilities/HeroCarousel'
+import HeroCarousel from './home/HeroCarousel'
 import Spinner from './utilities/Spinner'
-
-//React Select Components
-import Select from 'react-select'
+import MostRated from './home/MostRated'
 
 //React Bootstrap Components
 import Card from 'react-bootstrap/Card'
 
-
 const Home = ({ pinData, setPindata }) => {
 
   const [hasError, setHasError] = useState({ error: false, message: '' })
-  const [filteredPins, setFilteredPins] = useState([])
-  const [filterList, setFilterList] = useState([])
 
+  const [filteredTagPins, setFilteredTagPins] = useState([])
+  const [filterTagList, setFilterTagList] = useState([])
 
-  // const options = [ //Check whether we want to search by the tags
-  //   { value: 'art', label: 'art' },
-  //   { value: 'hotel', label: 'hotel' },
-  //   { value: 'city walk', label: 'city walk' },
-  // ]
-
-  // const [searchBar, setSearchBar] = useState({
-  //   pinTags: [],
-  // })
+  const [filterTypeList, setFilterTypeList] = useState([])
+  const [filteredTypePins, setFilteredTypePins] = useState([])
 
   useEffect(() => {
     const getPinsData = async () => {
@@ -42,35 +32,56 @@ const Home = ({ pinData, setPindata }) => {
       }
     }
     getPinsData()
-  }, [setPindata])
+  }, [])
 
-  //?? Filtered ratings
-  const filteredRatings = pinData.filter(pin => {
-    const topRatings = pin.averageRating >= 3
-    console.log('top ratings', topRatings)
-    return topRatings
-  })
 
   useEffect(() => {
-    if (pinData.length) {
-      const filteredPins = []
-      pinData.map(pin => { filteredPins.push(pin.tags) })
-      setFilterList(filteredPins)
-    }
+
+    let tagsList = []
+    const filteredTagsList = []
+
+    pinData.forEach((pin) => {
+      tagsList = [...tagsList, ...pin.tags]
+    })
+    tagsList.forEach((item) => {
+      filteredTagsList.indexOf(item) === -1 && filteredTagsList.push(item)
+    })
+    setFilterTagList(filteredTagsList.sort())
   }, [pinData])
 
-  const showFilteredPins = (e) => {
+
+  const handleTagSearch = (e) => {
     const search = e.target.value
     console.log('user search', search)
-    const pinsSearched = pinData.filter(pin => pin.tags.includes(search))
-    setFilteredPins(pinsSearched)
+    const tagSearched = pinData.filter(pin => pin.tags.includes(search))
+    setFilteredTagPins(tagSearched)
   }
 
+  useEffect(() => {
+
+    let typeOfPlaceList = []
+
+    pinData.forEach((pin) => {
+      const placeType = pin.typeOfPlace
+      typeOfPlaceList.push(placeType)
+      console.log('pin.typeOfPlace => ',typeOfPlaceList)
+    })
+    const uniqueTypes = [ ...new Set(typeOfPlaceList)]
+    setFilterTypeList(uniqueTypes.sort())
+  }, [pinData])
+
+
+  const handleTypeSearch = (e) => {
+    const search = e.target.value
+    console.log('user search', search)
+    const tagSearched = pinData.filter(pin => pin.typeOfPlace.includes(search))
+    setFilteredTypePins(tagSearched)
+  }
 
   return (
 
     <>
-      <section className='hero-container'>
+      <section className='hero-container container-sm'>
         {pinData ?
           <HeroCarousel pinData={pinData} />
           :
@@ -80,56 +91,69 @@ const Home = ({ pinData, setPindata }) => {
             <Spinner />
         }
       </section>
+      <main>
         <section className='most-rated-container container-sm'>
-            <h2>Most Rated</h2>
-          <div className='cards-container'>
-            {filteredRatings &&
-              filteredRatings.map((pin, i) => {
-                return (
-                  <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
-                    <Link className='pins-link' to={`/pins/${pin._id}`}>
-                      <Card.Img className='card-img' variant="top" src={pin.imageUrl} />
-                      <Card.Body>
-                        <Card.Title>{pin.title}</Card.Title>
-                        <Card.Text>Rating test: {pin.averageRating}</Card.Text>
-                        <Card.Text>{pin.avgRating}</Card.Text>
-                      </Card.Body>
-                    </Link>
-                  </Card>
-                )
-              })}
-          </div>
+          {pinData ?
+            <MostRated pinData={pinData} />
+            :
+            <Spinner />
+          }
+
         </section>
-        <section className='search-container container-sm'>
+        <section className='search-section'>
+        <h2>Not sure what you fancy?</h2>
+          <div className='searchbar-container container-sm'>
             <form>
-              <label className='search-label'>Not sure what you fancy?</label>
-              <select onChange={showFilteredPins}>
+            <label className='search-label'>Select a type of place</label>
+              <select onChange={handleTypeSearch}>
+                <option value='' defaultValue disabled>Select a type of place</option>
+                {filterTypeList.map((typeOfPlace, id) => <option key={id} value={typeOfPlace}>{typeOfPlace}</option>
+                )}
+              </select>
+              <label className='search-label'>Select a tag </label>
+              <select onChange={handleTagSearch}>
                 <option value='' defaultValue disabled>Select a tag</option>
-                {filterList.map((tag, id) => <option key={id} value={tag}>{tag}</option>
+                {filterTagList.map((tag, id) => <option key={id} value={tag}>{tag}</option>
                 )}
               </select>
             </form>
-            </section>
-            <section className='search-result-container'>
-            {filteredPins &&
-              filteredPins.map((pin, i) => {
+          </div>
+          <div className='search-result-container container-sm'>
+            {filteredTagPins &&
+              filteredTagPins.map((pin, i) => {
                 return (
-                  <Card key={i} style={{ width: '18rem' }}>
+                  <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
                     <Link className='pins-link' to={`/pins/${pin._id}`}>
-                      <Card.Img variant='top' src={pin.imageUrl} />
+                      <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
                       <Card.Body>
                         <Card.Title>{pin.title}</Card.Title>
                         <Card.Text>Rating: {pin.avgRating}</Card.Text>
-                        <Card.Text>Rating: {pin.averageRating}</Card.Text>
                       </Card.Body>
                     </Link>
                   </Card>
                 )
               })
             }
-          </section>
+            {filteredTypePins &&
+              filteredTypePins.map((pin, i) => {
+                return (
+                  <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
+                    <Link className='pins-link' to={`/pins/${pin._id}`}>
+                      <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
+                      <Card.Body>
+                        <Card.Title>{pin.title}</Card.Title>
+                        <Card.Text>Rating: {pin.avgRating}</Card.Text>
+                      </Card.Body>
+                    </Link>
+                  </Card>
+                )
+              })
+            }
+          </div>
+        </section>
+      </main>
       <footer>
-      <hr />
+        <hr />
         © Made by Mayur, Tom &amp; Marilyn
       </footer>
     </>

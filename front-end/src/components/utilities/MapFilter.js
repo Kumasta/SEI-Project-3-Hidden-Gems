@@ -6,7 +6,8 @@ import Button from 'react-bootstrap/Button'
 
 const MapFilter = ({ pinData, filterList, setFilterList }) => {
   const [selectedOption, setSelectedOtions] = useState('')
-
+  const [options, setOptions] = useState([])
+  const [tagList, setTagList] = useState([])
 
   useEffect(() => {
     const typeOfPlaceList = []
@@ -20,8 +21,7 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
     const uniqueTags = [...new Set(allTags)]
     setTagList(uniqueTags)
   }, [pinData])
-  const [options, setOptions] = useState([])
-  const [tagList, setTagList] = useState([])
+
 
   const handelDropdown = (e) => {
     const dropDownSelected = e.target.value
