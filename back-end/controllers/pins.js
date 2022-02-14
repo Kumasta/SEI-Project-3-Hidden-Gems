@@ -77,13 +77,13 @@ export const addUserRating = async (req, res) => {
     const { id } = req.params
     // console.log(id)
     const pin = await Pin.findById(id)
-    // console.log(pin)
-    // console.log(req.body)
+    console.log(pin)
+    console.log(req.body)
     if (!pin) throw new Error('Pin not found')
     const newRating = { ...req.body, owner: req.currentUser._id }
-    // console.log(newRating)
+    console.log(newRating)
     pin.ratings.push(newRating)
-    // console.log(pin)
+    console.log(pin)
     await pin.save()
     res.status(201).json(pin)
   } catch (err) {

@@ -8,7 +8,6 @@ export default [
     tags: ['art'], //Array of strings
     latitude: '51.50466505', //Number
     longitude: -0.17496841769678714, //Number
-    averageRating: 4,
   },
   {
     title: 'ArcelorMittal Orbit', //String
@@ -19,7 +18,6 @@ export default [
     tags: ['sculpture'], //Array of strings
     latitude: 51.5382759, //Number
     longitude: -0.01298326647465152, //Number
-    averageRating: 4,
   },
   {
     title: 'Dans Le Noir', //String
@@ -30,7 +28,6 @@ export default [
     tags: ['restaurant'], //Array of strings
     latitude: 51.5227734, //Number
     longitude: -0.10626521794643069, //Number
-    averageRating: 0,
   },
   {
     title: 'Jet Star Camping',
@@ -41,7 +38,6 @@ export default [
     tags: ['hotel'],
     latitude: 51.705811496716116, 
     longitude: -4.7772600797718106,
-    averageRating: 4,
   },
   {
     title: 'Waterloo bridge', //String
@@ -52,7 +48,6 @@ export default [
     tags: ['city walk','city skyline'], //Array of strings
     latitude: 51.50852877586289, //Number
     longitude: -0.11696577072143556, //Number
-    averageRating: 0,
   },
   {
     title: 'Phone Booth Book Exchange', //String

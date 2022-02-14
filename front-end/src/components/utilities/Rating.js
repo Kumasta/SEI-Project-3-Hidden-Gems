@@ -30,25 +30,39 @@ const Rating = ({ avgRating, id }) => {
   }, [avgRating])
 
   //Submit rating
-  const [ selectRating, setSelectRating ] = useState(null)
+  const [ selectRating, setSelectRating ] = useState({
+    rating: 1
+  })
 
-  const userSelectRating = async (e) => {
-    try {
-      // await axios.post(`/api/pins/${id}/rating`, selectRating)
-      setSelectRating(e.target.value)
-      console.log(selectRating)
-    } catch (error) {
-      console.log(error)
-    }
+  const getLocalToken = `${window.localStorage.getItem('hidden-gems-token')}`
+
+  const clickRating = (e) => {
+    const rating = { rating: e.target.name }
+    setSelectRating(rating)
   }
+
+  useEffect(() => {
+    const userSelectRating = async (e) => {
+      const headers = {'Authorization': getLocalToken}
+      console.log(headers)
+      try {
+        await axios.post(`/api/pins/${id}/rating`, selectRating, { headers })
+        // console.log('e.target.value', e.target.name)
+        console.log('selectRating', selectRating)
+      } catch (error) {
+        console.log({ message: error.message})
+      }
+    }
+    userSelectRating()
+  }, [selectRating, getLocalToken, id])
 
   return (
     <div className='rating-container'>
       {hasRating ?
         averageRating?.map((diamond, i) => {
           return (
-            <div key={i} onClick={userSelectRating} >
-              <img className={`diamond ${i+1}`} value={i+1} src={diamond} alt={diamond} />
+            <div key={i}>
+              <img onClick={clickRating} className={`diamond ${i+1}`} name={i+1} src={diamond} alt={diamond} />
             </div>
           )
         })
