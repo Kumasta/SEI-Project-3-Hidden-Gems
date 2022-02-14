@@ -7,14 +7,7 @@ import Button from 'react-bootstrap/Button'
 // import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 
-const PinForm = ({ newPin }) => {
-
-  useEffect(() => {
-    if (!newPin) return
-    setFormData({ ...formData, latitude: newPin.latitude, longitude: newPin.longitude })
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+const PinForm = () => {
 
   const selectOptions = [
     { value: 'Chill', label: 'Chill' },

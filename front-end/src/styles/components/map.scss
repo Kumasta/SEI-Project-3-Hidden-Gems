@@ -1,4 +1,12 @@
 .map-container{
+  .container{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    background-color: white;
+    width: 80%;
+  }
   height: 100vh;
   width: 100%;
 }
@@ -75,6 +83,7 @@
       align-items: center;
       img{
         max-height: 150px;
+        max-width: 100%;
       }
       h6{
         margin-top: 10px;
