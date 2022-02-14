@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Rating from './utilities/Rating'
 
-const ShowCase = () => {
+const ShowCase = ( { commentsData }) => {
 
   const [pin, setPin] = useState([])
   const [hasError, setHasError] = useState({ error: false, message: '' })

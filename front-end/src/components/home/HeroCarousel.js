@@ -10,10 +10,10 @@ const HeroCarousel = ({ pinData }) => {
       <Carousel className='carousel-container'>
         {pinData.map((pin, i) => {
             return (
-              <Carousel.Item key={i} interval={1750}>
+              <Carousel.Item key={i} interval={1800}>
                 <Link className='pins-link' to={`/pins/${pin._id}`}>
                   <img
-                    className='d-block w-100'
+                    className='d-block w-100 carousel-img'
                     src={pin.imageUrl}
                     alt={pin.title}
                   />
