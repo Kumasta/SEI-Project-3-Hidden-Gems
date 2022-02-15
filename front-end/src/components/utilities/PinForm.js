@@ -7,13 +7,21 @@ import Button from 'react-bootstrap/Button'
 // import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 
+import { getPayload, getLocalToken } from '../../enviroment/auth'
+
 const PinForm = ({ newPin }) => {
+
+  const userIsOwner = () => {
+    const payload = getPayload()
+    if (!payload) return false
+    return true
+  }
 
   useEffect(() => {
     if (!newPin) return
     setFormData({ ...formData, latitude: newPin.latitude, longitude: newPin.longitude })
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const selectOptions = [
@@ -99,67 +107,73 @@ const PinForm = ({ newPin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post('/api/pins', formData)
+      await axios.post('/api/pins', 
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${getLocalToken()}`
+        }
+      })
       navigate('/pins/')
     } catch (error) {
       setFormErrors({ ...formErrors, ...error.response.data.errors })
+      console.log(error.message)
     }
   }
 
   return (
-    <div className='form-page' >
-      <Container>
-        <Form onSubmit={handleSubmit} className='mt-4'>
-          <h2>Create a new pin</h2>
-          <hr />
-          <Form.Group className='mb-2'>
-            <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
-            <Form.Control onChange={handleChange} type='text' placeholder='Name of place' name='title' defaultValue={formData.title} />
-            {formErrors.title && <Form.Text>{formErrors.title}</Form.Text>}
-          </Form.Group>
-          <Form.Group className='mb-2'>
-            <Form.Label htmlFor='typeOfPlace'>Type of Place<span className='text-danger'>*</span></Form.Label>
-            <Form.Select onChange={handleChange} placeholder='typeOfPlace' name='typeOfPlace' defaultValue={formData.typeOfPlace}>
-              <option>Great View</option>
-              <option>Place of Interest</option>
-              <option>Restaurant</option>
-              <option>Landmark</option>
-              <option>Walk</option>
-            </Form.Select>
-            {formErrors.typeOfPlace && <Form.Text>{formErrors.typeOfPlace}</Form.Text>}
-          </Form.Group>
-          <Form.Group className='mb-2'>
-            <Form.Label htmlFor='description'>Description<span className='text-danger'>*</span></Form.Label>
-            <Form.Control onChange={handleChange} as='textarea' rows={3} placeholder='Name of place' name='description' defaultValue={formData.description} />
-            {formErrors.description && <Form.Text>{formErrors.description}</Form.Text>}
-          </Form.Group>
-          <Form.Group className='mb-2'>
-            <Form.Label htmlFor='imageUrl'>Picture<span className='text-danger'>*</span></Form.Label>
-            <Form.Control onChange={handleUpload} type='file' placeholder='imageUrl' name='imageUrl' defaultValue={formData.imageUrl} />
-            {formErrors.imageUrl && <Form.Text>{formErrors.imageUrl}</Form.Text>}
-          </Form.Group>
-          <Form.Group className='mb-2'>
-            <Form.Label htmlFor='tags'>Add Tags</Form.Label>
-            <CreatableSelect
-              isClearable
-              isMulti
-              onChange={(value) => handleMultiCreateChange('tags', value)}
-              options={selectOptions}
-              defaultValue={formData.tags}
-            />
-            {console.log(tags)}
-          </Form.Group>
-          {formData.imageUrl &&
-            <div id='form-pin-image'>
-              <img src={formData.imageUrl} alt="Uploaded pic of place to add" />
-            </div>
-          }
-          <Form.Group className='text-center mt-4'>
-            <Button type='submit' className='btn btn-red'>Submit</ Button>
-          </Form.Group>
-        </Form>
-      </Container>
-    </div >
+
+    <Container>
+      <Form onSubmit={handleSubmit} className='mt-4'>
+        <h2>Create a new pin</h2>
+        <hr />
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
+          <Form.Control onChange={handleChange} type='text' placeholder='Name of place' name='title' defaultValue={formData.title} />
+          {formErrors.title && <Form.Text>{formErrors.title}</Form.Text>}
+        </Form.Group>
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='typeOfPlace'>Type of Place<span className='text-danger'>*</span></Form.Label>
+          <Form.Select onChange={handleChange} placeholder='typeOfPlace' name='typeOfPlace' defaultValue={formData.typeOfPlace}>
+            <option>Great View</option>
+            <option>Place of Interest</option>
+            <option>Restaurant</option>
+            <option>Landmark</option>
+            <option>Walk</option>
+          </Form.Select>
+          {formErrors.typeOfPlace && <Form.Text>{formErrors.typeOfPlace}</Form.Text>}
+        </Form.Group>
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='description'>Description<span className='text-danger'>*</span></Form.Label>
+          <Form.Control onChange={handleChange} as='textarea' rows={3} placeholder='Name of place' name='description' defaultValue={formData.description} />
+          {formErrors.description && <Form.Text>{formErrors.description}</Form.Text>}
+        </Form.Group>
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='imageUrl'>Picture<span className='text-danger'>*</span></Form.Label>
+          <Form.Control onChange={handleUpload} type='file' placeholder='imageUrl' name='imageUrl' defaultValue={formData.imageUrl} />
+          {formErrors.imageUrl && <Form.Text>{formErrors.imageUrl}</Form.Text>}
+        </Form.Group>
+        <Form.Group className='mb-2'>
+          <Form.Label htmlFor='tags'>Add Tags</Form.Label>
+          <CreatableSelect
+            isClearable
+            isMulti
+            onChange={(value) => handleMultiCreateChange('tags', value)}
+            options={selectOptions}
+            defaultValue={formData.tags}
+          />
+          {console.log(tags)}
+        </Form.Group>
+        {formData.imageUrl &&
+          <div id='form-pin-image'>
+            <img src={formData.imageUrl} alt="Uploaded pic of place to add" />
+          </div>
+        }
+        <Form.Group className='text-center mt-4'>
+          <Button type='submit' className='btn btn-red'>Submit</ Button>
+        </Form.Group>
+      </Form>
+    </Container>
   )
 }
 

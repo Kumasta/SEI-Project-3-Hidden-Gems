@@ -28,7 +28,7 @@ export const addPin = async (req, res) => {
 export const findSinglePin = async (req, res) => {
   try {
     const { id } = req.params
-    const pin = await (await Pin.findById(id).populate('owner')).populate('reviews.owner')// to add review info
+    const pin = await (await (await Pin.findById(id).populate('owner')).populate('reviews.owner')).populate('owner')
     console.log(pin)
     return res.status(200).json(pin)
   } catch (err) {
