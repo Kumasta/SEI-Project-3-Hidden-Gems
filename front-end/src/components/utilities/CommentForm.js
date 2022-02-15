@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 // Import Auth helpers
 import { getLocalToken } from '../../enviroment/auth'
-import { getPayload } from '../../enviroment/auth'
+
 
 //React Bootstrap Components 
 import { Container, Form, Button } from 'react-bootstrap'
@@ -19,12 +19,11 @@ const CommentForm = ({ pin }) => {
 
   // const navToShowCase = useNavigate()
 
-  console.log('payload => ', getPayload())
-
+  // Post a new comment 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      console.log('pinCheck',pin._id)
+      if (pin._id === undefined) return 
       await axios.post(`/api/pins/${pin._id}/reviews`,
         commentsData,
         {
@@ -53,11 +52,6 @@ const CommentForm = ({ pin }) => {
       <Container>
         <h2>Comment</h2>
         <Form onSubmit={handleSubmit}>
-          {/* <Form.Group className='mb-2'>
-            <Form.Label htmlFor='name'>Name</Form.Label>
-            <Form.Control onChange={handleChange} type='name' name='name' placeholder='Name' defaultValue={commentsData.name} />
-            {formErrors.username && <Form.Text>{formErrors.username}</Form.Text>}
-          </Form.Group> */}
           <Form.Group className='mb-2'>
             <Form.Control onChange={handleChange} as='textarea' rows={3} type='text' name='text' placeholder='Leave a comment...' defaultValue={commentsData.text} />
             {formErrors.username && <Form.Text>{formErrors.username}</Form.Text>}

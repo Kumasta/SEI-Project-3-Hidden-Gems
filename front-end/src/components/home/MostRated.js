@@ -38,7 +38,6 @@ const MostRated = ({ pinData }) => {
                     <Card.Img className='card-img' variant="top" src={pin.imageUrl} />
                     <Card.Body>
                       <Card.Title>{pin.title}</Card.Title>
-                      <Card.Text>Rating test: {pin.averageRating}</Card.Text>
                       <Card.Text>{pin.avgRating}</Card.Text>
                     </Card.Body>
                   </Link>

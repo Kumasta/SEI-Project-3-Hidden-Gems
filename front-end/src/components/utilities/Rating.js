@@ -54,7 +54,7 @@ const Rating = ({ avgRating, id, pin }) => {
     // console.log(hasRating)
     const checkOwnerRating = () => {
       const payload = getPayload()
-      const ratingArray = [ ...pin.ratings ]
+      // const ratingArray = [ ...pin.ratings ]
       setPinRating(pin.ratings)
       // console.log(pinRating.findIndex(i => i.owner.equals(payload.sub)))
       const returnedRating = pinRating.findIndex(i => i.owner === payload.sub)
@@ -67,35 +67,35 @@ const Rating = ({ avgRating, id, pin }) => {
     checkOwnerRating()
   }, [pin, pinRating])
   
-  //Post request to add rating
-  useEffect(() => {
-    if (ownedRating === -1){
-    const userPostRating = async () => {
-      const headers = {'Authorization': `${getLocalToken()}`}
-      console.log(headers)
-      try {
-        await axios.post(`/api/pins/${id}/rating`, selectRating, { headers })
-      } catch (error) {
-        console.log({ message: error.message})
-      }
-    }
-    userPostRating()
-  } 
-  //PUT request to change rating
-  else {
-    const userPostRating = async () => {
-      const headers = {'Authorization': `${getLocalToken()}`}
-      // console.log(headers)
-      try {
-        const { data } = await axios.put(`/api/pins/${id}/rating/${filteredRating._id}`, selectRating, { headers })
-        console.log(data.res)
-      } catch (error) {
-        console.log({ message: error.message})
-      }
-    }
-    userPostRating()
-  }
-  }, [selectRating, id, ownedRating])
+  // //Post request to add rating
+  // useEffect(() => {
+  //   if (ownedRating === -1){
+  //   const userPostRating = async () => {
+  //     const headers = {'Authorization': `${getLocalToken()}`}
+  //     console.log(headers)
+  //     try {
+  //       await axios.post(`/api/pins/${id}/rating`, selectRating, { headers })
+  //     } catch (error) {
+  //       console.log({ message: error.message})
+  //     }
+  //   }
+  //   userPostRating()
+  // } 
+  // //PUT request to change rating
+  // else {
+  //   const userPostRating = async () => {
+  //     const headers = {'Authorization': `${getLocalToken()}`}
+  //     // console.log(headers)
+  //     try {
+  //       const { data } = await axios.put(`/api/pins/${id}/rating/${filteredRating._id}`, selectRating, { headers })
+  //       console.log(data.res)
+  //     } catch (error) {
+  //       console.log({ message: error.message})
+  //     }
+  //   }
+  //   userPostRating()
+  // }
+  // }, [selectRating, id, ownedRating])
 
   return (
     <div className='rating-container'>
