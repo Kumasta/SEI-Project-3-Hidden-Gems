@@ -26,7 +26,6 @@ const Rating = ({ avgRating, id, pin }) => {
       }
       setAverageRating(diamonds)
       setHasRating(avgRating)
-      console.log('Diamonds array', diamonds)
   }, [avgRating, hasRating])
   
 
@@ -42,6 +41,11 @@ const Rating = ({ avgRating, id, pin }) => {
 
   const [ pinRating, setPinRating ] = useState([])
   const [ ownedRating, setOwnedRating ] = useState([])
+  const [ filteredRating, setFilteredRating ] = useState({
+    owner: '',
+    rating: null,
+    _id: ''
+  })
 
   //Check if logged in user has already posted rating
   useEffect(() => {
@@ -52,16 +56,13 @@ const Rating = ({ avgRating, id, pin }) => {
       const payload = getPayload()
       const ratingArray = [ ...pin.ratings ]
       setPinRating(pin.ratings)
-      console.log(pin)
-      console.log(ratingArray)
-      console.log(payload.sub)
       // console.log(pinRating.findIndex(i => i.owner.equals(payload.sub)))
       const returnedRating = pinRating.findIndex(i => i.owner === payload.sub)
-      console.log(returnedRating)
-      const filteredRating = pinRating.slice(returnedRating, 1)
-
-      console.log(filteredRating.i)
+      const filteredRating = pinRating[returnedRating]
+      setFilteredRating(filteredRating)
       setOwnedRating(returnedRating)
+      if (!filteredRating) return
+      console.log(filteredRating._id)
     }
     checkOwnerRating()
   }, [pin, pinRating])
@@ -84,9 +85,10 @@ const Rating = ({ avgRating, id, pin }) => {
   else {
     const userPostRating = async () => {
       const headers = {'Authorization': `${getLocalToken()}`}
-      console.log(headers)
+      // console.log(headers)
       try {
-        await axios.put(`/api/pins/${id}/rating/`, selectRating, { headers })
+        const { data } = await axios.put(`/api/pins/${id}/rating/${filteredRating._id}`, selectRating, { headers })
+        console.log(data.res)
       } catch (error) {
         console.log({ message: error.message})
       }
