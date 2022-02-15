@@ -36,8 +36,6 @@ export const findSinglePin = async (req, res) => {
   }
 }
 
-
-
 //Update One Pin
 export const updatePin = async (req, res) => {
   try {
