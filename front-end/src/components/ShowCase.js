@@ -11,11 +11,11 @@ import CommentCard from './utilities/CommentCard'
 
 const ShowCase = () => {
 
-  const [pin, setPin] = useState(null)
-  const [hasError, setHasError] = useState({ error: false, message: '' })
+  const [ pin, setPin ] = useState(null)
+  const [ hasError, setHasError ] = useState({ error: false, message: '' })
   const { id } = useParams()
-  const [user, setUser] = useState([])
-
+  const [ user, setUser ] = useState([])
+  const [ ratingUpdated, setRatingUpdated ] = useState(null)
 
   useEffect(() => {
     const getSinglePin = async () => {
@@ -28,8 +28,9 @@ const ShowCase = () => {
         setHasError({ error: true, message: error.message })
       }
     }
+    setRatingUpdated(null)
     getSinglePin()
-  }, [id])
+  }, [id, ratingUpdated])
 
 
   return (

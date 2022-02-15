@@ -5,7 +5,7 @@ import diamond from '../../images/black-diamond.png'
 import halfDiamond from '../../images/half-diamond.png'
 import hollowDiamond from '../../images/hollow-diamond.png'
 
-const Rating = ({ avgRating, id, pin }) => { 
+const Rating = ({ avgRating, id, pin, setRatingUpdated }) => { 
 
   const [ hasRating, setHasRating ] = useState(avgRating)
   const [ averageRating, setAverageRating ] = useState([])
@@ -30,72 +30,68 @@ const Rating = ({ avgRating, id, pin }) => {
   
 
   //Submit rating
-  const [ selectRating, setSelectRating ] = useState({
-    // rating: null
-  })
-
+  const [ selectRating, setSelectRating ] = useState({})
+  const [ pinRating, setPinRating ] = useState([])
+  const [ ownedRating, setOwnedRating ] = useState([])
+  const [ filteredRating, setFilteredRating ] = useState({})
+  
+  //Set rating on click
   const clickRating = (e) => {
     const rating = { rating: e.target.name }
     setSelectRating(rating)
+    setRatingUpdated(true)
   }
-
-  const [ pinRating, setPinRating ] = useState([])
-  const [ ownedRating, setOwnedRating ] = useState([])
-  const [ filteredRating, setFilteredRating ] = useState({
-    owner: '',
-    rating: null,
-    _id: ''
-  })
 
   //Check if logged in user has already posted rating
   useEffect(() => {
     if (!pin) return
     if (!pin.ratings) return
-    // console.log(hasRating)
     const checkOwnerRating = () => {
       const payload = getPayload()
-      // const ratingArray = [ ...pin.ratings ]
+      if (!payload) return
       setPinRating(pin.ratings)
-      // console.log(pinRating.findIndex(i => i.owner.equals(payload.sub)))
       const returnedRating = pinRating.findIndex(i => i.owner === payload.sub)
       const filteredRating = pinRating[returnedRating]
       setFilteredRating(filteredRating)
       setOwnedRating(returnedRating)
-      if (!filteredRating) return
-      console.log(filteredRating._id)
     }
     checkOwnerRating()
   }, [pin, pinRating])
   
-  // //Post request to add rating
-  // useEffect(() => {
-  //   if (ownedRating === -1){
-  //   const userPostRating = async () => {
-  //     const headers = {'Authorization': `${getLocalToken()}`}
-  //     console.log(headers)
-  //     try {
-  //       await axios.post(`/api/pins/${id}/rating`, selectRating, { headers })
-  //     } catch (error) {
-  //       console.log({ message: error.message})
-  //     }
-  //   }
-  //   userPostRating()
-  // } 
-  // //PUT request to change rating
-  // else {
-  //   const userPostRating = async () => {
-  //     const headers = {'Authorization': `${getLocalToken()}`}
-  //     // console.log(headers)
-  //     try {
-  //       const { data } = await axios.put(`/api/pins/${id}/rating/${filteredRating._id}`, selectRating, { headers })
-  //       console.log(data.res)
-  //     } catch (error) {
-  //       console.log({ message: error.message})
-  //     }
-  //   }
-  //   userPostRating()
-  // }
-  // }, [selectRating, id, ownedRating])
+  //Post request to add rating
+  useEffect(() => {
+    if (ownedRating === -1){
+      if (!selectRating) return
+      const userPostRating = async () => {
+      const headers = {'Authorization': `${getLocalToken()}`}
+      try {
+        await axios.post(`/api/pins/${id}/rating`, selectRating, { headers })
+        setOwnedRating(40)
+      } catch (error) {
+        console.log({ message: error.message})
+      }
+    }
+    userPostRating()
+    }
+  }, [selectRating, id, ownedRating])
+
+  //PUT request to change rating
+  useEffect(() => {
+  if (selectRating){
+    if (!id) return
+    if (!filteredRating) return
+    const userPostRating = async () => {
+      const headers = {'Authorization': `${getLocalToken()}`}
+      try {
+        const { data } = await axios.put(`/api/pins/${id}/rating/${filteredRating._id}`, selectRating, { headers })
+        console.log(data)
+      } catch (error) {
+        console.log({ message: error.message})
+      }
+    }
+    userPostRating()
+    }
+  }, [selectRating, filteredRating, id])
 
   return (
     <div className='rating-container'>
