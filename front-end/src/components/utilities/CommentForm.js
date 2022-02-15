@@ -19,7 +19,7 @@ const CommentForm = ({ pin }) => {
 
   // const navToShowCase = useNavigate()
 
-  console.log('payload => ', getPayload())
+  // console.log('payload => ', getPayload())
 
   const handleSubmit = async (e) => {
     e.preventDefault()

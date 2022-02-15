@@ -9,25 +9,27 @@ import CommentForm from './utilities/CommentForm'
 
 const ShowCase = () => {
 
-  const [pin, setPin] = useState([])
-  const [hasError, setHasError] = useState({ error: false, message: '' })
+  const [ pin, setPin ] = useState(null)
+  const [ hasError, setHasError ] = useState({ error: false, message: '' })
   const { id } = useParams()
-  const [ user, setUser] = useState([])
+  const [ user, setUser ] = useState([])
+  const [ ratingUpdated, setRatingUpdated ] = useState(null)
 
   useEffect(() => {
     const getSinglePin = async () => {
       try {
         const { data } = await axios.get(`/api/pins/${id}`)
-        console.log(data)
-        console.log('review',data.reviews[0])
+        // console.log(data)
+        // console.log('review',data.reviews[0])
         setPin(data)
         setUser(data.owner.username)
       } catch (error) {
         setHasError({ error: true, message: error.message })
       }
     }
+    setRatingUpdated(null)
     getSinglePin()
-  }, [id])
+  }, [id, ratingUpdated])
 
 
   return (
@@ -42,7 +44,7 @@ const ShowCase = () => {
                 <h3 className='title'>{pin.title}</h3>
                 <h5 className='type'>{pin.typeOfPlace}</h5>
                 <h5 className='rating'>{pin.avgRating}</h5>
-                <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} />
+                <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
                 <h5 className='status'>{pin.status}</h5>
                 <h5 className='tags'>{pin.tags}</h5>
                 <h5 className='username'>Posted by {user}</h5>
