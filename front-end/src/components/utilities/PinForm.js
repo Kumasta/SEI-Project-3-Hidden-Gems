@@ -7,41 +7,87 @@ import Button from 'react-bootstrap/Button'
 // import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 
-import { getPayload, getLocalToken } from '../../enviroment/auth'
+import { getLocalToken } from '../../enviroment/auth'
 
 const PinForm = ({ newPin }) => {
+  const [allPins, setAllPins] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/pins')
+        setAllPins(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
 
-  const userIsOwner = () => {
-    const payload = getPayload()
-    if (!payload) return false
-    return true
-  }
+  const [allType, setAllTypes] = useState([])
+  const [allTags, setAllTags] = useState([])
+  const [allTagsStructured, setAllTagsStructured] = useState([])
 
   useEffect(() => {
-    if (!newPin) return
-    setFormData({ ...formData, latitude: newPin.latitude, longitude: newPin.longitude })
+    const typeOfPlaceList = []
+    let allTag = []
+    allPins.forEach(pin => {
+      typeOfPlaceList.push(pin.typeOfPlace)
+      allTag = [...allTag, ...pin.tags]
+    })
+    const uniqueOptions = [...new Set(typeOfPlaceList)]
+    const uniqueTagArray = [...new Set(allTag)]
+    setAllTypes(uniqueOptions)
+    setAllTags(uniqueTagArray)
+  }, [allPins])
 
+  useEffect(() => {
+    let storedLocation = {}
+    if (!newPin) {
+      storedLocation = JSON.parse(window.localStorage.getItem('lngLat'))
+      setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
+    }
+    if (newPin) {
+      window.localStorage.setItem('lngLat', JSON.stringify(newPin))
+      storedLocation = JSON.parse(window.localStorage.getItem('lngLat'))
+      setFormData({ ...formData, latitude: newPin.latitude, longitude: newPin.longitude })
+      return
+    }
+    if (!storedLocation) return
+    console.log(storedLocation)
+    setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
+    setLatLng(storedLocation)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const selectOptions = [
-    { value: 'Chill', label: 'Chill' },
-    { value: 'Outdoors', label: 'Outdoors' },
-    { value: 'Art', label: 'Art' },
-    { value: 'Food', label: 'Food' },
-    { value: 'Drink', label: 'Drink' },
-    { value: 'Food & Drink', label: 'Food & Drink' },
-    { value: 'Nightlife', label: 'Nightlife' },
-    { value: 'Coutryside', label: 'Coutryside' },
-    { value: 'Offbeat', label: 'Offbeat' },
-    { value: 'Date-spot', label: 'Date-Spot' }
-  ]
+
+  useEffect(() => {
+    const selectOptions = []
+    // allTags.forEach(tag => {
+    //   let newObj = new Object()
+    //   newObj.label = tag
+    //   newObj.name = tag
+    //   selectOptions.push(newObj)
+    // })
+    // console.log(selectOptions)
+    console.log(allTags[0])
+    allTags.map(tag => {
+      const obj = {}
+      obj.label = tag
+      obj.value = tag
+      return selectOptions.push(obj)
+    })
+    setAllTagsStructured(selectOptions)
+    console.log(selectOptions)
+  }, [allTags])
+
+
 
   const uploadAPI = 'https://api.cloudinary.com/v1_1/dv2dfzekf/image/upload'
   const uploadPreset = 'ip80rysk'
 
-  const [tags, setsTags] = useState('')
+  const [tags, setsTags] = useState(null)
 
+  const [latLng, setLatLng] = useState()
   const [formData, setFormData] = useState({
     title: '',
     typeOfPlace: '',
@@ -58,10 +104,6 @@ const PinForm = ({ newPin }) => {
     typeOfPlace: '',
     description: '',
     imageUrl: '',
-    status: true,
-    tags: '',
-    latitude: null,
-    longitude: null,
   })
 
   const navigate = useNavigate()
@@ -97,7 +139,7 @@ const PinForm = ({ newPin }) => {
         break;
     }
     const values = tags ? value.map(item => item.value) : []
-    setFormData({ ...formData, [value.label]: [...values] })
+    setFormData({ ...formData, tags: [...values] })
   }
 
   const handleImageUrl = (url) => {
@@ -106,63 +148,70 @@ const PinForm = ({ newPin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    // console.log(getLocalToken())
     try {
-      await axios.post('/api/pins', 
-      formData,
-      {
-        headers: {
-          Authorization: `Bearer ${getLocalToken()}`
-        }
-      })
-      navigate('/pins/')
+      const {data} = await axios.post('/api/pins',
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${getLocalToken()}`
+          }
+        })
+        console.log(data)
+      navigate(`/pins/${data.id}`)
     } catch (error) {
-      setFormErrors({ ...formErrors, ...error.response.data.errors })
-      console.log(error.message)
+      const errorObj = {}
+      Object.keys(error.response.data.errors).forEach((key) => {
+        errorObj[key] = error.response.data.errors[key].message
+      })
+      setFormErrors(errorObj)
     }
   }
 
   return (
-
     <Container>
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Create a new pin</h2>
+        {/* <div className='mini-map'>
+          I will add a mini map that will allow us see where the pin is. 
+        </div> */}
         <hr />
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
           <Form.Control onChange={handleChange} type='text' placeholder='Name of place' name='title' defaultValue={formData.title} />
-          {formErrors.title && <Form.Text>{formErrors.title}</Form.Text>}
+          {formErrors.title && <Form.Text className='text-danger'>{formErrors.title}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='typeOfPlace'>Type of Place<span className='text-danger'>*</span></Form.Label>
           <Form.Select onChange={handleChange} placeholder='typeOfPlace' name='typeOfPlace' defaultValue={formData.typeOfPlace}>
-            <option>Great View</option>
-            <option>Place of Interest</option>
-            <option>Restaurant</option>
-            <option>Landmark</option>
-            <option>Walk</option>
+            <option value={''}>-Select Type of place-</option>
+            {allType?.map((item, i) => {
+              return (
+                <option key={i} value={item}>{item}</option>
+              )
+            })}
           </Form.Select>
-          {formErrors.typeOfPlace && <Form.Text>{formErrors.typeOfPlace}</Form.Text>}
+          {formErrors.typeOfPlace && <Form.Text className='text-danger'>{formErrors.typeOfPlace}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='description'>Description<span className='text-danger'>*</span></Form.Label>
           <Form.Control onChange={handleChange} as='textarea' rows={3} placeholder='Name of place' name='description' defaultValue={formData.description} />
-          {formErrors.description && <Form.Text>{formErrors.description}</Form.Text>}
+          {formErrors.description && <Form.Text className='text-danger'>{formErrors.description}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='imageUrl'>Picture<span className='text-danger'>*</span></Form.Label>
           <Form.Control onChange={handleUpload} type='file' placeholder='imageUrl' name='imageUrl' defaultValue={formData.imageUrl} />
-          {formErrors.imageUrl && <Form.Text>{formErrors.imageUrl}</Form.Text>}
+          {formErrors.imageUrl && <Form.Text className='text-danger'>{formErrors.imageUrl}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='tags'>Add Tags</Form.Label>
           <CreatableSelect
             isClearable
             isMulti
+            options={allTagsStructured}
             onChange={(value) => handleMultiCreateChange('tags', value)}
-            options={selectOptions}
             defaultValue={formData.tags}
           />
-          {console.log(tags)}
         </Form.Group>
         {formData.imageUrl &&
           <div id='form-pin-image'>
