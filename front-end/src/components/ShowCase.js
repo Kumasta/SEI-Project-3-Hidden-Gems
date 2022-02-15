@@ -5,8 +5,9 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Rating from './utilities/Rating'
+import CommentForm from './utilities/CommentForm'
 
-const ShowCase = ( { commentsData }) => {
+const ShowCase = () => {
 
   const [pin, setPin] = useState([])
   const [hasError, setHasError] = useState({ error: false, message: '' })
@@ -18,6 +19,7 @@ const ShowCase = ( { commentsData }) => {
       try {
         const { data } = await axios.get(`/api/pins/${id}`)
         console.log(data)
+        console.log('review',data.reviews[0])
         setPin(data)
         setUser(data.owner.username)
       } catch (error) {
@@ -26,6 +28,7 @@ const ShowCase = ( { commentsData }) => {
     }
     getSinglePin()
   }, [id])
+
 
   return (
       <Container className='mt-4'>
@@ -47,11 +50,22 @@ const ShowCase = ( { commentsData }) => {
                 <p className='description'>{pin.description}</p>
                 <h5 className='review'>Comments</h5>
                 <hr />
+                {/* {pin && 
+                pin.map((pin, i)=> {
+                  console.log('pin.review.data', pin.reviews[0].text)
+                  return (
+                    <div key={i}>
+                      <p>{pin.reviews[0].text}</p>
+                    </div>
+                  )
+                })} */}
+              
+                  < CommentForm pin={pin}/>
               </Row>
             </Col>
           </>
           :
-          <h2 className="text-center">
+          <h2 className='text-center'>
             {hasError.error ? 'Something went wrong!' : 'Loading...'}
           </h2>
         }

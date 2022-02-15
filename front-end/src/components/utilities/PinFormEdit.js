@@ -144,7 +144,7 @@ const PinForm = () => {
           </Form.Group>
           {formData.imageUrl &&
             <div id='form-pin-image'>
-              <img src={formData.imageUrl} alt="Uploaded pic of place to add" />
+              <img src={formData.imageUrl} alt='Uploaded pic of place to add' />
             </div>
           }
           <Form.Group className='text-center mt-4'>
