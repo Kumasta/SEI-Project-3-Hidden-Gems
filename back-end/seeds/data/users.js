@@ -34,5 +34,17 @@ export default [
       bio: '',
       profilePicURL: '',
     },
+  },
+  {
+    username: 'marilyn',
+    email: 'mp@mail.com',
+    password: 'pass',
+    passwordConfirmation: 'pass',
+    superUser: false,
+    profile: {
+      name: '',
+      bio: '',
+      profilePicURL: '',
+    },
   }
 ]

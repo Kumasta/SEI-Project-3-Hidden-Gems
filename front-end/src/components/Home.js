@@ -16,7 +16,6 @@ const Home = ({ pinData, setPindata }) => {
   const [hasError, setHasError] = useState({ error: false, message: '' })
 
 
-
   useEffect(() => {
     const getPinsData = async () => {
       try {
