@@ -11,13 +11,13 @@ import { getLocalToken } from '../../enviroment/auth'
 //React Bootstrap Components 
 import { Container, Form, Button } from 'react-bootstrap'
 
-const CommentForm = ({ pin }) => {
+const CommentForm = ({ pin, setRatingUpdated }) => {
 
   const [commentsData, setCommentsData] = useState({ text: '' })
   const [formErrors, setFormErrors] = useState({ text: '' })
   const isTextareaDisabled = commentsData.text.length === 0
+  
 
-  // const navToShowCase = useNavigate()
 
   // Post a new comment 
   const handleSubmit = async (e) => {
@@ -32,11 +32,10 @@ const CommentForm = ({ pin }) => {
           },
         }
       )
-      // navToShowCase(`/pin/${pin._id}`)
+      setRatingUpdated(true)
     } catch (error) {
       console.log('error on commentForm', error)
       setFormErrors({ ...formErrors, ...error.response.data.errors })
-
     }
   }
 

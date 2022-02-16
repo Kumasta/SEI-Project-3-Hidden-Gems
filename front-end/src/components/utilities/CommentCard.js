@@ -3,72 +3,91 @@ import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { getPayload, getLocalToken } from '../../enviroment/auth'
+import CommentEdit from './CommentEdit'
 
-const CommentCard = ({ pin }) => {
+const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
 
-  const [ currentReviewId, setCurrentReviewId ] = useState()
+  const [commentsData, setCommentsData] = useState({ text: '' })
+  const [formErrors, setFormErrors] = useState({ text: '' })
+  const [ commentEdit, setCommentEdit ] = useState(true)
+  
 
-  useEffect(() => {
-    if (pin) {
-      console.log('pin id', pin._id)
-      console.log('pin reviews', pin.reviews)
-      console.log('pin reviews id', pin.reviews[1].id)
-    }
-  }, [pin])
-
-  const userIsOwnerOfComment = () => {
-    const payload = getPayload()
-    if (!payload) return
-    return pin.reviews.owner.id === payload.sub
-  }
 
   const deleteComment = async () => {
     try {
-      await axios.delete(`/api/pins/${pin._id}/reviews/${pin.reviews._id}`, {
+      await axios.delete(`/api/pins/${pin._id}/reviews/${review.id}`, {
         headers: {
           Authorization: `Bearer ${getLocalToken()}`
-        },
+        }
       }
       )
+      setRatingUpdated(true)
     } catch (error) {
       console.log(error)
     }
   }
 
+  const userIsOwnerOfComment = () => {
+    const payload = getPayload()
+    if (!payload) return
+    return review.owner.id === payload.sub
+  }
 
 
-  // useEffect(()=> {
-  //   const findReviewId = findIndex(pin.reviews._id)
-  // })
+  const editComment = async (e) => {
+    e.preventDefault()
+    try {
+      await axios.put(`/api/pins/${pin._id}/reviews/${review.id}`,
+        commentsData,
+        {
+          headers: {
+            Authorization: `Bearer ${getLocalToken()}`
+          }
+        }
+      )
+      setRatingUpdated(true)
+      handleEditButtonClick()
+    } catch (error) {
+      console.log('error on commentForm', error)
+      setFormErrors({ ...formErrors, ...error.response.data.errors })
+    }
+  }
 
+
+  const handleEditButtonClick = () => {
+    if (commentEdit) return setCommentEdit(false)
+    return setCommentEdit(true)
+  }
 
 
   return (
 
+
     <>
-      {pin.reviews.length &&
-        pin.reviews.map((review, i) => {
-          return (
-            <Card key={i}>
-              <Card.Header>{review.owner.username}</Card.Header>
-              <Card.Body>
-                <Card.Text>{review.text}</Card.Text>
-                {/* { userIsOwnerOfComment() &&
-                        <>  */}
-                <Button onClick={deleteComment} className='btn btn-dark ' variant='primary'>Edit</Button>
-                <Button className='btn btn-dark ' variant='primary'>Delete</Button>
-                {/* </>
-                        }  */}
-              </Card.Body>
-            </Card>
-          )
-        })}
-
-
+      <Card>
+        <Card.Header>{review.owner.username}</Card.Header>
+        {commentEdit ?
+          <Card.Body>
+            <Card.Text>{review.text}</Card.Text>
+            {userIsOwnerOfComment() &&
+              <>
+                <Button className='btn btn-dark ' onClick={handleEditButtonClick} variant='primary'>Edit</Button>
+                <Button className='btn btn-dark ' onClick={deleteComment} variant='primary'>Delete</Button>
+              </>
+            }
+          </Card.Body>
+          :
+          <CommentEdit
+            handleEditButtonClick={handleEditButtonClick}
+            review={review}
+            formErrors={formErrors}
+            editComment={editComment}
+            setCommentsData={setCommentsData}
+            commentsData={commentsData} />}
+      </Card>
     </>
   )
 }
-
 
 export default CommentCard

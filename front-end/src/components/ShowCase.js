@@ -45,7 +45,7 @@ const ShowCase = () => {
               <h3 className='title'>{pin.title}</h3>
               <h5 className='type'>{pin.typeOfPlace}</h5>
               <h5 className='rating'>{pin.avgRating}</h5>
-              <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} />
+              <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated}/>
               <h5 className='status'>{pin.status}</h5>
               <h5 className='tags'>{pin.tags}</h5>
               <h5 className='username'>Posted by{user}</h5>
@@ -53,8 +53,13 @@ const ShowCase = () => {
               <p className='description'>{pin.description}</p>
               <h5 className='review'>Comments</h5>
               <hr />
-              <CommentCard pin={pin}/>
-              < CommentForm pin={pin}/>
+              {pin.reviews.length &&
+        pin.reviews.map((review ) => {
+          return (
+              <CommentCard key={review.id}  pin={pin} review={review} setRatingUpdated={setRatingUpdated}  />
+              )
+            })}
+              <CommentForm pin={pin} setRatingUpdated={setRatingUpdated}/>
             </Row>
           </Col>
         </>
