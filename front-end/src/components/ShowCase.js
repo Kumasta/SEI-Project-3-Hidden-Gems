@@ -12,11 +12,11 @@ import CommentCard from './utilities/CommentCard'
 
 const ShowCase = () => {
 
-  const [ pin, setPin ] = useState(null)
-  const [ hasError, setHasError ] = useState({ error: false, message: '' })
+  const [pin, setPin] = useState(null)
+  const [hasError, setHasError] = useState({ error: false, message: '' })
   const { id } = useParams()
-  const [ user, setUser ] = useState([])
-  const [ ratingUpdated, setRatingUpdated ] = useState(null)
+  const [user, setUser] = useState([])
+  const [ratingUpdated, setRatingUpdated] = useState(null)
 
   useEffect(() => {
     const getSinglePin = async () => {
@@ -46,7 +46,7 @@ const ShowCase = () => {
               <h3 className='title'>{pin.title}</h3>
               <h5 className='type'>{pin.typeOfPlace}</h5>
               <h5 className='rating'>{pin.avgRating}</h5>
-              <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated}/>
+              <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
               <h5 className='status'>{pin.status}</h5>
               <h5 className='tags'>{pin.tags}</h5>
               <h5 className='username'>Posted by {user}</h5>
@@ -55,12 +55,12 @@ const ShowCase = () => {
               <h5 className='review'>Comments</h5>
               <hr />
               {pin.reviews.length &&
-                pin.reviews.map((review ) => {
+                pin.reviews.map((review) => {
                   return (
-                <CommentCard key={review.id}  pin={pin} review={review} setRatingUpdated={setRatingUpdated}  />
-                )
+                    <CommentCard key={review.id} pin={pin} review={review} setRatingUpdated={setRatingUpdated} />
+                  )
                 })}
-              <CommentForm pin={pin} setRatingUpdated={setRatingUpdated}/>
+              <CommentForm pin={pin} setRatingUpdated={setRatingUpdated} />
             </Row>
           </Col>
         </>

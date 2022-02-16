@@ -11,7 +11,7 @@ const MostRated = ({ pinData }) => {
 
   console.log('pinDataProp', pinData)
 
-  // Sorting the pinData for the avgrating in descending order
+  // Sorting the pinData for the avgRating in descending order
   useEffect(() => {
     const sortedRatings = pinData.sort((a, b) => parseFloat(b.averageRating) -
       parseFloat(a.averageRating))

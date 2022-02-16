@@ -46,8 +46,6 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
   }
 
   return (
-
-    <div className='form-page'>
       <Container>
         <h2>Comment</h2>
         <Form onSubmit={handleSubmit}>
@@ -60,7 +58,6 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
           </Form.Group>
         </Form>
       </Container>
-    </div>
   )
 }
 

@@ -8,53 +8,30 @@ import Form from 'react-bootstrap/Form'
 const SearchFilter = ({ pinData }) => {
 
 
-  const [typeOptions, setTypeOptions] = useState([])
-  const [tagOptions, setTagOptions] = useState([])
 
   const [filteredPins, setFilteredPins] = useState([])
+  const [filters, setFilters ] = useState({ typeOfPlace: 'All', searchInput: ''})
 
-  const [filteredPinsTest, setFilteredPinsTest] = useState([])
-  const [filters, setFilters] = useState({ typeOfPlace: '', tags: 'All' })
 
-  useEffect(() => {
-
-    const typeOfPlaceList = []
-    const tagList = []
-
-    pinData.forEach((pin) => {
-      typeOfPlaceList.push(pin.typeOfPlace)
-      pin.tags.forEach(tag => tagList.push(tag))
-    })
-    const uniquePlaceTypes = [...new Set(typeOfPlaceList)]
-    setTypeOptions(uniquePlaceTypes.sort())
-
-    const uniqueTags = [...new Set(tagList)]
-    setTagOptions(uniqueTags.sort())
-  }, [pinData])
+  const typesOfPlaces = [...new Set(pinData.map(pin => pin.typeOfPlace))]
 
   const handleFilterChange = (e) => {
-    const filterObj = { ...filters, [e.target.name]: e.target.name }
-    setFilters(filterObj)
+    console.log('e.target.name.', e.target.name)
+    const filterObject = { ...filters, [e.target.name]: e.target.value}
+    console.log('filter object', filterObject)
+    setFilters(filterObject)
   }
 
   useEffect(() => {
 
-    if (pinData.length) {
-      const tagSelect = new RegExp(filters.tags, 'i')
-      setFilteredPinsTest(pinData.filter(pin => {
-        return (tagSelect.test(pinData.tags) && (filters.typeOfPlace === pin.typeOfPlace)) || (filters.typeOfPlace === '' && filters.tags === '' )
-      }))
+    if (pinData.length){
 
+      const search = new RegExp(filters.searchInput, 'i')
+      setFilteredPins(pinData.filter(pin => {
+        return search.test(pin.title) && (filters.typeOfPlace === pin.typeOfPlace || filters.typeOfPlace === 'All')
+      })) 
     }
-  }, [filters, pinData])
-
-
-  const handleSelect  = (e) => {
-    const option = e.target.value
-    console.log('user option', option)
-    const optionSelected = pinData.filter(pin => pin.typeOfPlace.includes(option))
-    setFilteredPins(optionSelected)
-  }
+  }, [pinData, filters])
 
 
   return (
@@ -64,26 +41,22 @@ const SearchFilter = ({ pinData }) => {
       <div className='searchbar-container container-sm'>
         <Form >
           <Form.Group>
-          <Form.Label className='search-label'>Type of place</Form.Label>
-          <Form.Select onChange={handleSelect} name='typeOfPlace'>
-          <option value='' defaultValue disabled> -- Select a type -- </option>
-            {typeOptions.map((typeOfPlace, id) => <option key={id} value={typeOfPlace}>{typeOfPlace}</option>
-            )}
-          </Form.Select>
+            <Form.Label className='search-label'>Type of place</Form.Label>
+            <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
+              <option value='All'>All</option>
+              {typesOfPlaces.length && typesOfPlaces.map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
+            </Form.Select>
           </Form.Group>
-          <Form.Group>
-          <Form.Label className='search-label'>Tag </Form.Label>
-          <Form.Select onChange={handleSelect} name='tags'>
-          <option value='' defaultValue disabled> -- Select a tag -- </option>
-            {tagOptions.map((tag, id) => <option key={id} value={tag}>{tag}</option>
-            )}
-          </Form.Select>
+          <Form.Group className='mb-3'>
+            <Form.Control onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
+            <Form.Text className='text-muted'>
+              Remember to update for error
+            </Form.Text>
           </Form.Group>
         </Form>
       </div>
       <div className='search-result-container container-sm'>
-        {filteredPins &&
-          filteredPins.map((pin, i) => {
+        {(filteredPins.length ? filteredPins : pinData).map((pin, i) => {
             return (
               <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
                 <Link className='pins-link' to={`/pins/${pin._id}`}>
