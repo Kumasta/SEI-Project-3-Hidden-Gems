@@ -27,7 +27,7 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
     const uniqueOptions = [...new Set(typeOfPlaceList)]
     const uniqueTagArray = [...new Set(allTag)]
     setOptions(uniqueOptions)
-    setAllTags([uniqueTagArray])
+    setAllTags(uniqueTagArray)
     // console.log(allTags)
   }, [pinData])
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -9,8 +9,10 @@ import CreatableSelect from 'react-select/creatable'
 
 import { getLocalToken } from '../../enviroment/auth'
 
-const PinForm = ({ newPin }) => {
+const PinFormEdit = () => {
   const [allPins, setAllPins] = useState([])
+  const { id } = useParams()
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -40,36 +42,10 @@ const PinForm = ({ newPin }) => {
     setAllTags(uniqueTagArray)
   }, [allPins])
 
-  useEffect(() => {
-    let storedLocation = {}
-    if (!newPin) {
-      storedLocation = JSON.parse(window.localStorage.getItem('lngLat'))
-      setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
-    }
-    if (newPin) {
-      window.localStorage.setItem('lngLat', JSON.stringify(newPin))
-      storedLocation = JSON.parse(window.localStorage.getItem('lngLat'))
-      setFormData({ ...formData, latitude: newPin.latitude, longitude: newPin.longitude })
-      return
-    }
-    if (!storedLocation) return
-    console.log(storedLocation)
-    setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
-    setLatLng(storedLocation)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
 
   useEffect(() => {
     const selectOptions = []
-    // allTags.forEach(tag => {
-    //   let newObj = new Object()
-    //   newObj.label = tag
-    //   newObj.name = tag
-    //   selectOptions.push(newObj)
-    // })
-    // console.log(selectOptions)
-    console.log(allTags[0])
     allTags.map(tag => {
       const obj = {}
       obj.label = tag
@@ -77,7 +53,7 @@ const PinForm = ({ newPin }) => {
       return selectOptions.push(obj)
     })
     setAllTagsStructured(selectOptions)
-    console.log(selectOptions)
+    console.log(allTagsStructured)
   }, [allTags])
 
 
@@ -99,12 +75,59 @@ const PinForm = ({ newPin }) => {
     longitude: null,
   })
 
+  const [defaultMultiSelect, setDefaultMultiSelect] = useState([])
+  const [defaultTypeSelect, setDefaultTypeSelect] = useState([])
+
   const [formErrors, setFormErrors] = useState({
     title: '',
     typeOfPlace: '',
     description: '',
     imageUrl: '',
   })
+
+
+  useEffect(() => {
+    const getData = async () => {
+      console.log(id)
+      try {
+        const { data } = await axios.get(`/api/pins/${id}`)
+        console.log(data)
+        setFormData(data)
+        handleIncomingtags(data.tags)
+        handleIncomingType(data.typeOfPlace)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [id])
+
+  const handleIncomingtags = (tags) => {
+    const selectOptions = []
+    tags.map(tag => {
+      const obj = {}
+      obj.label = tag
+      obj.value = tag
+      return selectOptions.push(obj)
+    })
+    setDefaultMultiSelect(selectOptions)
+    console.log(selectOptions)
+    console.log(defaultMultiSelect)
+  }
+
+  const handleIncomingType = (type) => {
+    const selectOptions = []
+    type.map(oneType => {
+      const obj = {}
+      obj.label = oneType
+      obj.value = oneType
+      return selectOptions.push(obj)
+    })
+    setDefaultTypeSelect(selectOptions)
+    console.log(defaultTypeSelect)
+  }
+
+
 
   const navigate = useNavigate()
 
@@ -123,14 +146,8 @@ const PinForm = ({ newPin }) => {
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
 
-  // const handleMultiChange = (selected, name) => {
-  //   console.log(selected)
-  //   console.log(name)
-  //   const values = selected ? selected.map(item => item.value) : []
-  //   setFormData({ ...formData, [name]: [...values] })
-  // }
-
   const handleMultiCreateChange = (field, value) => {
+    console.log(value)
     switch (field) {
       case 'tags':
         setsTags(value)
@@ -150,14 +167,25 @@ const PinForm = ({ newPin }) => {
     e.preventDefault()
     // console.log(getLocalToken())
     try {
-      const {data} = await axios.post('/api/pins',
+      const { data } = await axios.put(`/api/pins/${id}`,
         formData,
         {
           headers: {
             Authorization: `Bearer ${getLocalToken()}`
           }
         })
-        console.log(data)
+      console.log(data)
+      setFormData({
+        title: '',
+        typeOfPlace: '',
+        description: '',
+        imageUrl: '',
+        status: true,
+        tags: '',
+        latitude: null,
+        longitude: null,
+      })
+      window.localStorage.removeItem('lngLat')
       navigate(`/pins/${data.id}`)
     } catch (error) {
       const errorObj = {}
@@ -177,13 +205,13 @@ const PinForm = ({ newPin }) => {
         </div> */}
         <hr />
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
+          <Form.Label htmlFor='title'>Update name of place?<span className='text-danger'>*</span></Form.Label>
           <Form.Control onChange={handleChange} type='text' placeholder='Name of place' name='title' defaultValue={formData.title} />
           {formErrors.title && <Form.Text className='text-danger'>{formErrors.title}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='typeOfPlace'>Type of Place<span className='text-danger'>*</span></Form.Label>
-          <Form.Select onChange={handleChange} placeholder='typeOfPlace' name='typeOfPlace' defaultValue={formData.typeOfPlace}>
+          <Form.Label htmlFor='typeOfPlace'>Change type of place?<span className='text-danger'>*</span></Form.Label>
+          <Form.Select  onChange={handleChange} placeholder={defaultTypeSelect} name='typeOfPlace' defaultValue={defaultTypeSelect}>
             <option value={''}>-Select Type of place-</option>
             {allType?.map((item, i) => {
               return (
@@ -191,27 +219,29 @@ const PinForm = ({ newPin }) => {
               )
             })}
           </Form.Select>
+          <p>Pre-edit Type of place: {defaultTypeSelect}</p>
           {formErrors.typeOfPlace && <Form.Text className='text-danger'>{formErrors.typeOfPlace}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='description'>Description<span className='text-danger'>*</span></Form.Label>
+          <Form.Label htmlFor='description'>Edit description?<span className='text-danger'>*</span></Form.Label>
           <Form.Control onChange={handleChange} as='textarea' rows={3} placeholder='Name of place' name='description' defaultValue={formData.description} />
           {formErrors.description && <Form.Text className='text-danger'>{formErrors.description}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='imageUrl'>Picture<span className='text-danger'>*</span></Form.Label>
+          <Form.Label htmlFor='imageUrl'>Upload new picture?<span className='text-danger'>*</span></Form.Label>
           <Form.Control onChange={handleUpload} type='file' placeholder='imageUrl' name='imageUrl' defaultValue={formData.imageUrl} />
           {formErrors.imageUrl && <Form.Text className='text-danger'>{formErrors.imageUrl}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='tags'>Add Tags</Form.Label>
-          <CreatableSelect
+          <Form.Label htmlFor='tags'>Edit/Add Tags?</Form.Label>
+          {defaultMultiSelect && <CreatableSelect
             isClearable
             isMulti
             options={allTagsStructured}
             onChange={(value) => handleMultiCreateChange('tags', value)}
-            defaultValue={formData.tags}
-          />
+            defaultValue={[{label: 'sculpture', value: 'sculpture'}, {label: 'offbeat', value: 'offbeat'}]}
+          />}
+          <Form.Label htmlFor='tags'>Current Tags: {defaultMultiSelect.map(tag => tag.label + ', ')} {'(Add them again if wanted)'}</Form.Label>
         </Form.Group>
         {formData.imageUrl &&
           <div id='form-pin-image'>
@@ -226,16 +256,6 @@ const PinForm = ({ newPin }) => {
   )
 }
 
-export default PinForm
+export default PinFormEdit
 
-
-  // < Form.Group className = 'mb-2' >
-  //   <Form.Label htmlFor='tags'>Add Tags</Form.Label>
-  //      <Select
-  //         options={selectOptions}
-  //         isMulti
-  //         name='tags'
-  //         defaultValue={formData.tags}
-  //         onChange={(selected) => handleMultiChange(selected, 'tags')}
-  //       />
-  // </Form.Group >
+// { label: 2002, value: 2002 }

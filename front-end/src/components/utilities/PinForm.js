@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button'
 // import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 
+import MiniMap from './MiniMap'
+
 import { getLocalToken } from '../../enviroment/auth'
 
 const PinForm = ({ newPin }) => {
@@ -62,14 +64,7 @@ const PinForm = ({ newPin }) => {
 
   useEffect(() => {
     const selectOptions = []
-    // allTags.forEach(tag => {
-    //   let newObj = new Object()
-    //   newObj.label = tag
-    //   newObj.name = tag
-    //   selectOptions.push(newObj)
-    // })
-    // console.log(selectOptions)
-    console.log(allTags[0])
+    console.log(allTags)
     allTags.map(tag => {
       const obj = {}
       obj.label = tag
@@ -150,14 +145,25 @@ const PinForm = ({ newPin }) => {
     e.preventDefault()
     // console.log(getLocalToken())
     try {
-      const {data} = await axios.post('/api/pins',
+      const { data } = await axios.post('/api/pins',
         formData,
         {
           headers: {
             Authorization: `Bearer ${getLocalToken()}`
           }
         })
-        console.log(data)
+      console.log(data)
+      setFormData({
+        title: '',
+        typeOfPlace: '',
+        description: '',
+        imageUrl: '',
+        status: true,
+        tags: '',
+        latitude: null,
+        longitude: null,
+      })
+      window.localStorage.removeItem('lngLat')
       navigate(`/pins/${data.id}`)
     } catch (error) {
       const errorObj = {}
@@ -170,6 +176,7 @@ const PinForm = ({ newPin }) => {
 
   return (
     <Container>
+      <MiniMap />
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Create a new pin</h2>
         {/* <div className='mini-map'>

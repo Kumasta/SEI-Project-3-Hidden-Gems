@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 import Rating from './utilities/Rating'
 import CommentForm from './utilities/CommentForm'
@@ -45,7 +46,7 @@ const ShowCase = () => {
               <h3 className='title'>{pin.title}</h3>
               <h5 className='type'>{pin.typeOfPlace}</h5>
               <h5 className='rating'>{pin.avgRating}</h5>
-              <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} />
+              <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
               <h5 className='status'>{pin.status}</h5>
               <h5 className='tags'>{pin.tags}</h5>
               <h5 className='username'>Posted by{user}</h5>
@@ -53,8 +54,13 @@ const ShowCase = () => {
               <p className='description'>{pin.description}</p>
               <h5 className='review'>Comments</h5>
               <hr />
-              <CommentCard pin={pin}/>
-              < CommentForm pin={pin}/>
+              {/* <CommentCard pin={pin}/>
+              < CommentForm pin={pin}/> */}
+            </Row>
+            <Row>
+              <Link to={`/pins/${pin.id}/edit`}>
+              <Button>Edit Pin?</Button>
+              </Link>
             </Row>
           </Col>
         </>
