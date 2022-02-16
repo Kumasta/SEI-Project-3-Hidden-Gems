@@ -13,6 +13,7 @@ import { getLocalToken } from '../../enviroment/auth'
 
 const PinForm = ({ newPin }) => {
   const [allPins, setAllPins] = useState([])
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -58,8 +59,9 @@ const PinForm = ({ newPin }) => {
     console.log(storedLocation)
     setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
     setLatLng(storedLocation)
+    console.log(latLng)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [newPin])
 
 
   useEffect(() => {
@@ -176,7 +178,7 @@ const PinForm = ({ newPin }) => {
 
   return (
     <Container>
-      <MiniMap />
+      {latLng && <MiniMap latLng={latLng}/>}
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Create a new pin</h2>
         {/* <div className='mini-map'>

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 // React bootstap components
 import Navbar from 'react-bootstrap/Navbar'
@@ -13,9 +14,16 @@ import { userIsAuthenticated } from '../enviroment/auth'
 const SiteNav = () => {
   const navigate = useNavigate()
 
+
   const handleLogout = () => {
     window.localStorage.removeItem('hidden-gems-token')
+    window.localStorage.removeItem('hidden-gems-userId')
     navigate('/')
+  }
+
+  const getUserId = () => {
+    const userId = window.localStorage.getItem('hidden-gems-userId')
+    navigate(`/profile/${userId}`)
   }
 
   return (
@@ -32,6 +40,9 @@ const SiteNav = () => {
         <Navbar.Collapse className='justify-content-end'>
           {userIsAuthenticated() ?
             <>
+              <Nav.Item>
+                <Button className='btn-dark btn' onClick={getUserId}>Profile</Button>
+              </Nav.Item>
               <Nav.Item onClick={handleLogout}>
                 <span>Logout</span>
               </Nav.Item>

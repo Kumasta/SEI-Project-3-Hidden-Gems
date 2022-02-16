@@ -1,12 +1,12 @@
-// .map-container{
-//   .container{
-//     position: absolute;
-//     top: 10px;
-//     left: 10px;
-//     z-index: 1;
-//     background-color: white;
-//     width: 80%;
-//   }
-//   height: 300px;
-//   width: 600px;
-// }
+.mini-map-container{
+  .container{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    background-color: white;
+    width: 80%;
+  }
+  height: 300px;
+  width: 100%;
+}

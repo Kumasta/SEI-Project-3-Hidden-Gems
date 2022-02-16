@@ -21,6 +21,8 @@ const userSchema = new Schema({
   password: { type: String, required: true },
   superUser: { type: Boolean },
   profile: userProfile,//Embbed Schema / [profile]
+}, {
+  timestamps: true,
 })
 
 

@@ -13,6 +13,8 @@ import Login from './components/auth/Login'
 import PinForm from './components/utilities/PinForm'
 import ScrollToTop from './components/utilities/ScrollToTop'
 import PinFormEdit from './components/utilities/PinFormEdit'
+import Profile from './components/Profile'
+import ProfileEdit from './components/utilities/ProfileEdit'
 
 
 const App = () => {
@@ -33,6 +35,8 @@ const App = () => {
           <Route path='/Login' element={<Login />} />
           <Route path='/pinForm' element={<PinForm newPin={newPin}/>} />
           <Route path='/pins/:id/edit' element={<PinFormEdit />} />
+          <Route path='/profile/:userId' element={<Profile />} />
+          <Route path='/profile/:userId/edit' element={<ProfileEdit />} />
         </Routes>
         <ScrollToTop />
       </BrowserRouter>

@@ -19,7 +19,7 @@ const likeSchema = new Schema({
 
 ///Comment
 const reviewSchema = new Schema({
-  text: { type: String, required: true, maxlength: 300, minlength: 15 },
+  text: { type: String, required: true, maxlength: 300 },
   owner: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   likes: [likeSchema],
 }, {
@@ -40,6 +40,7 @@ const pinSchema = new Schema({
   ratings: [pinRatingSchema],
   averageRating: { type: Number },
 }, {
+  timestamps: true,
 })
 
 pinSchema.virtual('avgRating')

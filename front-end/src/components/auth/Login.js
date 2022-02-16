@@ -1,20 +1,21 @@
-import React, { useState } from 'react' 
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { getPayload } from '../../enviroment/auth'
 
 const Login = () => {
 
   const navigate = useNavigate()
 
-  const [ formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
 
-  const [ formError, setFormError ] = useState('')
+  const [formError, setFormError] = useState('')
 
   const handleChange = (e) => {
     const newObj = { ...formData, [e.target.name]: e.target.value }
@@ -26,11 +27,17 @@ const Login = () => {
     window.localStorage.setItem('hidden-gems-token', token)
   }
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
       const { data } = await axios.post('/api/login', formData)
       setLocalToken(data.token)
+      const payload = getPayload()
+      const userId = payload.sub
+      window.localStorage.setItem('hidden-gems-userId', userId)
+      console.log(userId)
       navigate('/')
     } catch (error) {
       setFormError(error.response.data.message)
@@ -48,7 +55,7 @@ const Login = () => {
           </Form.Group>
           <Form.Group className='mb-2'>
             <Form.Label htmlFor='password'>Password</Form.Label>
-            <Form.Control onChange={handleChange} type='password' name='password' placeholder='Password' defaultValue={formData.password}/> 
+            <Form.Control onChange={handleChange} type='password' name='password' placeholder='Password' defaultValue={formData.password} />
           </Form.Group>
           {formError && <Form.Text>{formError}</Form.Text>}
           <Form.Group className='text-center mt-4'>
