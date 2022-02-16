@@ -7,7 +7,6 @@ import { Form, Button } from 'react-bootstrap'
 
 const CommentEdit  = ({ review, editComment, formErrors, commentsData, setCommentsData,handleEditButtonClick}) => {
 
-
   const isTextareaDisabled = commentsData.text.length === 0
 
   useEffect(()=> {
@@ -20,7 +19,6 @@ const CommentEdit  = ({ review, editComment, formErrors, commentsData, setCommen
     console.log('comments data => ', commentsData)
   }
 
-
   return (
       <Form onSubmit={editComment}>
         <Form.Group className='mb-2'>
@@ -28,7 +26,7 @@ const CommentEdit  = ({ review, editComment, formErrors, commentsData, setCommen
           {formErrors.username && <Form.Text>{formErrors.username}</Form.Text>}
         </Form.Group>
         <Form.Group className='text-center mt-4'>
-          <Button disabled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
+          <Button onClick={editComment} disabled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
           <Button onClick={handleEditButtonClick} className='btn btn-dark'>Cancel</ Button>
         </Form.Group>
       </Form>
