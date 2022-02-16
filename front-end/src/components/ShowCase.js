@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-
+import Spinner from './utilities/Spinner'
 import Rating from './utilities/Rating'
 import CommentForm from './utilities/CommentForm'
 import CommentCard from './utilities/CommentCard'
@@ -49,24 +49,26 @@ const ShowCase = () => {
               <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated}/>
               <h5 className='status'>{pin.status}</h5>
               <h5 className='tags'>{pin.tags}</h5>
-              <h5 className='username'>Posted by{user}</h5>
+              <h5 className='username'>Posted by {user}</h5>
               <hr />
               <p className='description'>{pin.description}</p>
               <h5 className='review'>Comments</h5>
               <hr />
               {pin.reviews.length &&
-        pin.reviews.map((review ) => {
-          return (
-              <CommentCard key={review.id}  pin={pin} review={review} setRatingUpdated={setRatingUpdated}  />
-              )
-            })}
+                pin.reviews.map((review ) => {
+                  return (
+                <CommentCard key={review.id}  pin={pin} review={review} setRatingUpdated={setRatingUpdated}  />
+                )
+                })}
               <CommentForm pin={pin} setRatingUpdated={setRatingUpdated}/>
             </Row>
           </Col>
         </>
         :
         <h2 className='text-center'>
-          {hasError.error ? 'Something went wrong!' : 'Loading...'}
+          {hasError.error ? 'Something went wrong!' 
+          : 
+          <Spinner />}
         </h2>
       }
     </Container>

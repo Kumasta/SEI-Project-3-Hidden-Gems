@@ -209,6 +209,7 @@ export const deleteReviewLike = async (req, res) => {
     // console.log(review)
     if (!review) throw new Error('Review not found')
     const likeToRemove = review.likes.id(likeId)
+    console.log(likeToRemove)
     if (!likeToRemove) throw new Error('Not Liked')
     if (!likeToRemove.owner.equals(req.currentUser._id)) throw new Error('Unauthorised')
     await likeToRemove.remove()
