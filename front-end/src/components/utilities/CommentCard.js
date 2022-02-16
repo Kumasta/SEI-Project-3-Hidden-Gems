@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -62,7 +62,6 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
 
   return (
-
 
     <>
       <Card>
