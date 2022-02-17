@@ -23,12 +23,24 @@
       .card-img {
         height: 191px;
         &:hover {
-          transform: scale(110%);
+          transform: scale(105%);
         }
       }
       .pins-link {
         text-decoration: none;
         color: black;
+      }
+      .card-title, .h5 {
+        height: 48px;
+      &:hover{
+        text-decoration: underline;
+      }
+      }
+      .card-buttons{
+        .btn{
+          width: 80px;
+          height: 35px;
+        }
       }
     }
   }

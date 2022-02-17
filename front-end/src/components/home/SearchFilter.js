@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom'
 //React Bootstrap Components 
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
+import { typeList } from '../../enviroment/typeList'
 
 const SearchFilter = ({ pinData }) => {
-
+  const allTypes = typeList()
 
 
   const [filteredPins, setFilteredPins] = useState([])
   const [filters, setFilters ] = useState({ typeOfPlace: 'All', searchInput: ''})
 
 
-  const typesOfPlaces = [...new Set(pinData.map(pin => pin.typeOfPlace))]
+  // const typesOfPlaces = [...new Set(pinData.map(pin => pin.typeOfPlace))]
 
   const handleFilterChange = (e) => {
     console.log('e.target.name.', e.target.name)
@@ -44,7 +45,7 @@ const SearchFilter = ({ pinData }) => {
             <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
             <option value="" defaultValue disabled> -- Select a type of place -- </option>
               <option value='All'>All</option>
-              {typesOfPlaces.length && typesOfPlaces.sort().map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
+              {allTypes && allTypes.sort().map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
             </Form.Select>
             <Form.Control className='input-form'onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
           </Form.Group>

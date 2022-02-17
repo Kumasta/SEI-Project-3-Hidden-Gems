@@ -10,11 +10,14 @@ import Card from 'react-bootstrap/Card'
 import spinner from '../images/spinner.gif'
 import blankProfile from '../images/966-9665493_my-profile-icon-blank-profile-image-circle.png'
 import { getPayload } from '../enviroment/auth'
+import Button from 'react-bootstrap/esm/Button'
+import { getLocalToken } from '../enviroment/auth'
 
 const Profile = () => {
   const { userId } = useParams()
   const [userData, setUserData] = useState(null)
   const [userAvgPinRating, setUserAvgPinRating] = useState(null)
+  const [render, setRender] = useState(false)
 
 
   useEffect(() => {
@@ -28,7 +31,23 @@ const Profile = () => {
       }
     }
     getUserData()
-  }, [userId])
+  }, [userId, render])
+
+  const handDelete = async (e) => {
+    console.log(e.target.value)
+    try {
+      await axios.delete(`/api/pins/${e.target.value}`,
+        {
+          headers: {
+            Authorization: `Bearer ${getLocalToken()}`
+          }
+        })
+      setRender(true)
+      setRender(false)
+    } catch (error) {
+
+    }
+  }
 
   useEffect(() => {
     if (!userData) return
@@ -47,7 +66,7 @@ const Profile = () => {
     setUserAvgPinRating(total / totalRatingArr.length)
   }, userData)
 
-  const userIsOwnerOfComment = () => {
+  const userIsOwner = () => {
     const payload = getPayload()
     if (!payload) return
     return userData.id === payload.sub
@@ -71,7 +90,7 @@ const Profile = () => {
                 <h4>Total Average Pin Rating: <span>{userAvgPinRating ? userAvgPinRating.toFixed(2) : 'No ratings'}</span></h4>
                 <h4>Member Since: <span>{userData.createdAt.slice(0, 10)}</span></h4>
 
-                {userIsOwnerOfComment() && <Link className='btn-dark btn' to={`/profile/${userId}/edit`}>Edit Profile</Link>}
+                {userIsOwner() && <Link className='btn-dark btn' to={`/profile/${userId}/edit`}>Edit Profile</Link>}
 
               </Col>
             </Row>
@@ -84,14 +103,19 @@ const Profile = () => {
               {userData.ownedPins.length > 0 ?
                 userData.ownedPins?.map(pin => {
                   return (
-                    <Card className='card-container' key={pin.id} style={{ width: '18rem', height: '18rem' }}>
+                    <Card className='card-container h' key={pin.id} style={{ width: '18rem', height: '18rem' }}>
                       <Link className='pins-link' to={`/pins/${pin._id}`}>
                         <Card.Img className='card-img' variant="top" src={pin.imageUrl} />
-                        <Card.Body>
                           <Card.Title>{pin.title}</Card.Title>
                           <Card.Text>{pin.avgRating}</Card.Text>
+                          </Link>
+                          <Card.Body>
+                          {userIsOwner() && 
+                          <div className='d-flex justify-content-md-around card-buttons'>
+                            <Link className='btn-dark btn' to={`/pins/${pin.id}/edit`}>Edit</Link>
+                            <Button value={pin.id} onClick={handDelete} className='btn-dark btn'>Delete?</Button>
+                          </div>}
                         </Card.Body>
-                      </Link>
                     </Card>
                   )
                 })

@@ -8,62 +8,59 @@
           max-height: 60vh;
         }
         .carousel-caption {
-          text-shadow: 2px 2px 0 black, 2px -2px 0 black, -2px 2px 0 black, -2px -2px 0 black, 2px 0px 0 black,
-            0px 2px 0 black, -2px 0px 0 black, 0px -2px 0 black, 29px 2px 2px rgba(0, 0, 0, 0);
-          color: #ffffff;
+          color: white;
           margin: 20px;
         }
       }
     }
   }
 }
-
 main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.most-rated-container {
-  margin: 40px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h2 {
-    align-self: flex-start;
-    margin-top: 10px;
-  }
-  .cards-container {
+  .most-rated-container {
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+      h2 {
+        align-self: flex-start;
+        margin-top: 10px;
+      }
+    .cards-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    .card-container {
-      margin: 12px;
-      min-height: 330px;
-      border: 1px solid rgb(243, 237, 237);
-      box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
-      &:hover {
-        transform: scale(105%);
-        z-index: 10;
-      }
-      .card-img {
-        height: 191px;
-        // &:hover {
-        //   transform: scale(110%);
-        //   z-index: 10;
-        // }
-      }
-      .pins-link {
-        text-decoration: none;
-        color: black;
+      .card-container {
+        margin: 10px;
+        min-height: 330px;
+        border: 1px solid rgb(243, 237, 237);
+        box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
+        &:hover {
+          transform: scale(105%);
+          z-index: 10;
+        }
+          .card-img {
+            height: 191px;
+            // &:hover {
+            //   transform: scale(110%);
+            //   z-index: 10;
+            // }
+          }
+          .pins-link {
+            text-decoration: none;
+            color: black;
+          }
+          // .card.body{
+          // }
       }
     }
   }
-
-  .search-section {
+  .search-section  {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -75,53 +72,49 @@ main {
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      select {
-        margin: 10px;
-        padding: 5px;
-        border-radius: 5px;
-      }
-      .form-group-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        .input-form {
-          width: 187px;
-          height: 36px;
-          padding: 10px;
+        select {
+          margin: 10px;
+          padding: 5px;
           border-radius: 5px;
         }
-      }
-    }
-    .search-result-container {
+    .form-group-container {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
-      margin: 40px;
-      .card-container {
-        margin: 12px;
-        min-height: 330px;
-        border: 1px solid rgb(243, 237, 237);
-        box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
-        &:hover {
-          transform: scale(110%);
-        }
-        .card-img {
-          height: 191px;
-        }
-        .pins-link {
-          text-decoration: none;
-          color: black;
-        }
-        // .card.body {
-        //   .diamond-container
-        // }
+      .input-form {
+        width: 187px;
+        height: 36px;
+        padding: 10px;
+        border-radius: 5px;
       }
     }
   }
+  .search-result-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 40px;
+        .card-container {
+          margin: 5px;
+          min-height: 330px;
+          border: 1px solid rgb(243, 237, 237);
+          box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
+            .card-img {
+              height: 191px;
+              &:hover {
+                transform: scale(110%);
+              }
+            }
+            .pins-link {
+              text-decoration: none;
+              color: black;
+            }
+        }
+  }
 }
-
+}
 footer {
   padding: 30px;
   background-color: black;
