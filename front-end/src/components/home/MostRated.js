@@ -36,7 +36,9 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
               return (
                 <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem'}}>
                   <Link className='pins-link' to={`/pins/${pin._id}`}>
+                    <div clasName='card-img-container'>
                     <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
+                    </div>
                     <Card.Body>
                       <Card.Title>{pin.title}</Card.Title>
                       <div clasName='diamond-container'>

@@ -46,8 +46,8 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
   }
 
   return (
-      <Container>
-        <h2>Comment</h2>
+      <Container className='comment-container'>
+        <h3>Comment</h3>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-2'>
             <Form.Control onChange={handleChange} as='textarea' rows={3} type='text' name='text' placeholder='Leave a comment...' defaultValue={commentsData.text} />
@@ -56,7 +56,7 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
             {formErrors && <Form.Text>{formErrors}</Form.Text>}
           </Form.Group>
           <Form.Group className='text-center mt-4'>
-            <Button onSubmit={handleSubmit} type='submit' disasbled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
+            <Button onSubmit={handleSubmit} type='submit' disabled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
           </Form.Group>
         </Form>
       </Container>
