@@ -39,21 +39,15 @@ const SearchFilter = ({ pinData }) => {
     <>
       <h2>Not sure what you fancy?</h2>
       <div className='searchbar-container container-sm'>
-        <Form >
-          <Form.Group>
-            <Form.Label className='search-label'>Type of place</Form.Label>
+        <Form>
+          <Form.Group className='form-group-container'>
             <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
+            <option value="" defaultValue disabled> -- Select a type of place -- </option>
               <option value='All'>All</option>
               {typesOfPlaces.length && typesOfPlaces.map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
             </Form.Select>
-            <Form.Control onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
+            <Form.Control className='input-form'onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
           </Form.Group>
-          {/* <Form.Group className='mb-3'>
-           
-            <Form.Text className='text-muted'>
-              Remember to update for error
-            </Form.Text>
-          </Form.Group> */}
         </Form>
       </div>
       <div className='search-result-container container-sm'>
