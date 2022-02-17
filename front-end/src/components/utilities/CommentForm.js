@@ -47,7 +47,8 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
 
   return (
       <Container className='comment-container'>
-        <h3>Comment</h3>
+        {/* <h3>Comment</h3> */}
+        <hr/>
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-2'>
             <Form.Control onChange={handleChange} as='textarea' rows={3} type='text' name='text' placeholder='Leave a comment...' defaultValue={commentsData.text} />

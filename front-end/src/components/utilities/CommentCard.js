@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
@@ -15,7 +16,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
   const deleteComment = async () => {
     try {
-      await axios.delete(`/ai/pins/${pin._id}/reviews/${review.id}`, {
+      await axios.delete(`/api/pins/${pin._id}/reviews/${review.id}`, {
         headers: {
           Authorization: `Bearer ${getLocalToken()}`
         }
@@ -99,7 +100,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
   return (
     <>
       <Card>
-        <Card.Header>{review.owner.username}</Card.Header>
+        <Card.Header><Link to={`/profile/${review.owner.id}`}>{review.owner.username}</Link></Card.Header>
         {commentEdit ?
           <Card.Body>
             <Card.Text>{review.text}</Card.Text>
