@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import ReactMapGL, { Popup, NavigationControl, FullscreenControl, GeolocateControl } from 'react-map-gl'
 import { Link } from 'react-router-dom/'
 import Button from 'react-bootstrap/Button'
@@ -8,6 +8,8 @@ import axios from 'axios'
 import Markers from './utilities/Markers'
 import Spinner from './utilities/Spinner'
 import MapFilter from './utilities/MapFilter'
+import { userIsAuthenticated } from '../enviroment/auth'
+
 
 function Map({ newPin, setNewPin }) {
   const [filterOn, setFilterOn] = useState(false)
@@ -17,10 +19,12 @@ function Map({ newPin, setNewPin }) {
     latitude: 51.515,
     longitude: -0.078,
     zoom: 6,
-    height: '100%',
-    width: '100%',
+    
   })
 
+
+
+  const TOKEN = 'pk.eyJ1IjoibWF5dXJyYWprdW1hciIsImEiOiJja3plNnRmbGswZjA4MnZvY24weGdhNmhhIn0.98MAuzBpjQkKuGouobKz5Q'
 
   useEffect(() => {
     const getData = async () => {
@@ -51,17 +55,19 @@ function Map({ newPin, setNewPin }) {
       {viewPort ?
         <>
           <ReactMapGL
-            mapboxAccessToken='pk.eyJ1IjoibWF5dXJyYWprdW1hciIsImEiOiJja3plNnRmbGswZjA4MnZvY24weGdhNmhhIn0.98MAuzBpjQkKuGouobKz5Q'
+            mapboxAccessToken={TOKEN}
             mapStyle='mapbox://styles/mapbox/dark-v10'
             onMove={evt => setViewPort(evt.viewState)}
             onClick={e => handleMapOnClick(e)}
             maxBounds={[{ lng: -11.538372871576541, lat: 48.723398702522076 }, { lng: 2.9694145317975256, lat: 60.126150999344304 }]}
+            height={'100%'}
+            width={'100%'}
             {...viewPort}
           >
-            <Markers filterList={filterList} handleCloseNewPopup={handleCloseNewPopup} />
+            <Markers viewPort={viewPort} setViewPort={setViewPort} filterList={filterList} handleCloseNewPopup={handleCloseNewPopup} />
             <NavigationControl visualizePitch={true} />
             <FullscreenControl />
-            <GeolocateControl trackUserLocation={true} />
+            <GeolocateControl />
             {newPin &&
               <Popup latitude={newPin.latitude} longitude={newPin.longitude} closeOnClick={false} onClose={() => setNewPin(null)}>
                 <div>
@@ -69,12 +75,13 @@ function Map({ newPin, setNewPin }) {
                     pathname: '/pinform',
                     state: { newPin: true }
                   }}>
-                    <Button variant='primary'>Create new pin?</Button>
+                    <Button className='btn-dark btn' variant='primary'>Create new pin?</Button>
                   </Link>
                 </div>
               </Popup>
             }
-            <MapFilter pinData={pinData} filterList={filterList} setFilterList={setFilterList} setFilterOn={setFilterOn}/>
+            <MapFilter pinData={pinData} filterList={filterList} setFilterList={setFilterList} setFilterOn={setFilterOn} />
+            {/* <GeocoderComp viewPort={viewPort}/> */}
           </ReactMapGL>
         </>
         :

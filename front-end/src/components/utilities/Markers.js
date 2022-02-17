@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom/'
 
 //Components
 
-const Markers = ({ filterList, handleCloseNewPopup }) => {
+const Markers = ({ viewPort, setViewPort, filterList, handleCloseNewPopup }) => {
   const [popup, setPopup] = useState(null)
 
   return (
@@ -16,6 +16,7 @@ const Markers = ({ filterList, handleCloseNewPopup }) => {
             <button id='map-pin' onClick={e => {
               e.preventDefault()
               setPopup(pin)
+              setViewPort({...viewPort, longitude: pin.longitude, latitude: pin.latitude})
             }} />
           </Marker>
         )
@@ -33,7 +34,7 @@ const Markers = ({ filterList, handleCloseNewPopup }) => {
   
             <div className='df'>
               <p>{popup.typeOfPlace}</p>
-              <p>{popup.avgRating}</p>
+              <p>{popup.avgRating === 'Not rated yet' ? popup.avgRating : popup.avgRating + ' 💎'}</p>
             </div>
           </div>
         </Popup>

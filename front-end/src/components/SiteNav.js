@@ -9,6 +9,7 @@ import Nav, { } from 'react-bootstrap/Nav'
 
 // Authorisation file
 import { userIsAuthenticated } from '../enviroment/auth'
+import diamond from '../images/blue-diamond-transparent.png'
 
 
 const SiteNav = () => {
@@ -29,7 +30,7 @@ const SiteNav = () => {
   return (
     <Navbar expand='sm' className='w-100'>
       <Container>
-        <Navbar.Brand href='/'>Hidden Gems</Navbar.Brand>
+        <Navbar.Brand href='/'><img src={diamond} alt='Brand'/>Hidden Gems</Navbar.Brand>
         <Nav.Item>
           <Link to='/About'>About</Link>
         </Nav.Item>
@@ -50,7 +51,7 @@ const SiteNav = () => {
             :
             <>
               <Nav.Item>
-                <Link to='/Login'>Login</Link>
+                <Link className='btn-dark btn' to='/Login'>Login</Link>
               </Nav.Item>
               <Nav.Item>
                 <Link className='btn-dark btn' to='/Register'>Register now</Link>

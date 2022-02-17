@@ -29,7 +29,7 @@ const MiniMap = ({ latLng }) => {
             maxBounds={[{ lng: -11.538372871576541, lat: 48.723398702522076 }, { lng: 2.9694145317975256, lat: 60.126150999344304 }]}
             {...viewPort}
           >
-            <Marker latitude={latLng.latitude} longitude={latLng.longitude}>
+            <Marker id='map-pin' classname='map-pin' latitude={latLng.latitude} longitude={latLng.longitude}>
 
             </Marker>
           </ReactMapGL>
