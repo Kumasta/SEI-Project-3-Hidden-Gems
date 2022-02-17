@@ -110,8 +110,8 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
             <Card.Text className='heart' onClick={likeClick}>🖤 ‏‏‎ ‎{review.likes.length}</Card.Text>}
             {userIsOwnerOfComment() &&
               <>
-                <Button className='btn btn-dark ' onClick={handleEditButtonClick} variant='primary'>Edit</Button>
-                <Button className='btn btn-dark ' onClick={deleteComment} variant='primary'>Delete</Button>
+                <Button className='btn btn-dark comment' onClick={handleEditButtonClick} variant='primary'>Edit</Button>
+                <Button className='btn btn-dark comment' onClick={deleteComment} variant='primary'>Delete</Button>
               </>
             }
           </Card.Body>
