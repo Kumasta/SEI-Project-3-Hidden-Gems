@@ -37,7 +37,7 @@ const SearchFilter = ({ pinData }) => {
   return (
 
     <>
-      <h2>Not sure what you fancy?</h2>
+      <h2 id='search'>Not sure what you fancy?</h2>
       <div className='searchbar-container container-sm'>
         <Form >
           <Form.Group>

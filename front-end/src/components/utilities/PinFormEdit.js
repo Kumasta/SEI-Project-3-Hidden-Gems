@@ -197,7 +197,7 @@ const PinFormEdit = () => {
   }
 
   return (
-    <Container>
+    <Container className='form'>
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Create a new pin</h2>
         {/* <div className='mini-map'>
@@ -249,7 +249,7 @@ const PinFormEdit = () => {
           </div>
         }
         <Form.Group className='text-center mt-4'>
-          <Button type='submit' className='btn btn-red'>Submit</ Button>
+          <Button type='submit' className='btn-dark btn'>Submit</ Button>
         </Form.Group>
       </Form>
     </Container>

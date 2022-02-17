@@ -9,6 +9,8 @@ import { getLocalToken } from '../../enviroment/auth'
 
 const ProfileEdit = () => {
   const { userId } = useParams()
+  const [count, setCount] = useState(0)
+  const [countError, setCountError] = useState(null)
   const [formData, setFormData] = useState({
     bio: '',
     name: '',
@@ -27,6 +29,7 @@ const ProfileEdit = () => {
         const { data } = await axios.get(`/api/profile/${userId}`)
         console.log(data.profile)
         setFormData(data.profile)
+        setCount(data.profile.bio.length)
       } catch (error) {
         console.log(error)
       }
@@ -47,6 +50,13 @@ const ProfileEdit = () => {
     console.log(res)
     handleImageUrl(res.data.url)
   }
+
+  const handleCharCount = (e) => {
+    setCount(e.target.value.length)
+    handleChange(e)
+  }
+  
+
 
   const handleChange = (e) => {
     const newObj = { ...formData, [e.target.name]: e.target.value }
@@ -81,6 +91,7 @@ const ProfileEdit = () => {
     } catch (error) {
       console.log(error)
       const errorObj = {}
+      setCountError('Too many characters used')
       Object.keys(error.response.data.errors).forEach((key) => {
         errorObj[key] = error.response.data.errors[key].message
       })
@@ -89,22 +100,24 @@ const ProfileEdit = () => {
   }
 
   return (
-    <Container>
+    <Container className='form'>
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Update Profile</h2>
         <hr />
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='name'>Edit Name<span className='text-danger'>*</span></Form.Label>
+          <Form.Label htmlFor='name'>Edit Name</Form.Label>
           <Form.Control onChange={handleChange} type='text' placeholder='Name of place' name='name' defaultValue={formData.name} />
           {formErrors.name && <Form.Text className='text-danger'>{formErrors.name}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='bio'>Edit Bio<span className='text-danger'>*</span></Form.Label>
-          <Form.Control onChange={handleChange} as='textarea' rows={3} placeholder='Name of place' name='bio' defaultValue={formData.bio} />
-          {formErrors.bio && <Form.Text className='text-danger'>{formErrors.bio}</Form.Text>}
+          <Form.Label htmlFor='bio'>Edit Bio</Form.Label>
+          <Form.Control onChange={handleCharCount} as='textarea' rows={3} placeholder='Name of place' name='bio' defaultValue={formData.bio} />
+          {countError && <Form.Text className='text-danger'>{countError}</Form.Text>}
+          {count ? <Form.Text htmlFor='bio'>{`Word count ${count}/2000`}</Form.Text> : null}
+          {count > 300 && <Form.Text className='text-danger'> Too many characters</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
-          <Form.Label htmlFor='profilePicURL'>Upload Profile Picture<span className='text-danger'>*</span></Form.Label>
+          <Form.Label htmlFor='profilePicURL'>Upload Profile Picture</Form.Label>
           <Form.Control onChange={handleUpload} type='file' placeholder='profilePicURL' name='profilePicURL' defaultValue={formData.profilePicURL} />
           {formErrors.profilePicURL && <Form.Text className='text-danger'>{formErrors.profilePicURL}</Form.Text>}
         </Form.Group>
@@ -114,7 +127,7 @@ const ProfileEdit = () => {
           </div>
         }
         <Form.Group className='text-center mt-4'>
-          <Button type='submit' className='btn btn-red'>Submit</ Button>
+          <Button type='submit' className='btn-dark btn'>Submit</ Button>
         </Form.Group>
       </Form>
     </Container>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
+import { HashLink } from 'react-router-hash-link';
 
 // React bootstap components
 import Navbar from 'react-bootstrap/Navbar'
@@ -30,12 +31,17 @@ const SiteNav = () => {
   return (
     <Navbar expand='sm' className='w-100'>
       <Container>
-        <Navbar.Brand href='/'><img src={diamond} alt='Brand'/>Hidden Gems</Navbar.Brand>
+        <Navbar.Brand href='/'><img src={diamond} alt='Brand' />Hidden Gems</Navbar.Brand>
         <Nav.Item>
           <Link to='/About'>About</Link>
         </Nav.Item>
         <Nav.Item>
           <Link to='/Map'>Map</Link>
+        </Nav.Item>
+        <Nav.Item>
+          <HashLink smooth to={'/#search'}>
+            Search
+          </HashLink>
         </Nav.Item>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse className='justify-content-end'>

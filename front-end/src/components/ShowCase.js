@@ -66,12 +66,15 @@ const ShowCase = () => {
               <p className='description'>{pin.description}</p>
               <h5 className='review'>Comments</h5>
               <hr/>
-              {pin.reviews.length &&
+              {pin.reviews.length ?
                 pin.reviews.map((review) => {
                   return (
                     <CommentCard key={review.id} pin={pin} review={review} setRatingUpdated={setRatingUpdated} />
                   )
-                })}
+                })
+                :
+                null
+                }
               <CommentForm pin={pin} setRatingUpdated={setRatingUpdated} />
             </Row>
             <Row>

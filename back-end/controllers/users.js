@@ -31,8 +31,9 @@ export const viewUserProfile = async (req, res) => {
   try {
     const { id } = req.params
     console.log(id)
+    console.log('id:', id)
     const user = await User.findById(id).populate('ownedPins')
-    console.log(user)
+    console.log('Succes:', user)
     return res.status(200).json(user)
   } catch (err) {
     return res.status(404).json({ message: 'pin not found.' })
