@@ -32,19 +32,19 @@ const SiteNav = () => {
     <Navbar expand='sm' className='w-100'>
       <Container>
         <Navbar.Brand href='/'><img src={diamond} alt='Brand' />Hidden Gems</Navbar.Brand>
-        <Nav.Item>
-          <Link to='/About'>About</Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Link to='/Map'>Map</Link>
-        </Nav.Item>
-        <Nav.Item>
-          <HashLink smooth to={'/#search'}>
-            Search
-          </HashLink>
-        </Nav.Item>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse className='justify-content-end'>
+          <Nav.Item>
+            <Link to='/Map'>Map</Link>
+          </Nav.Item>
+          <Nav.Item>
+            <HashLink smooth to={'/#search'}>
+            Search
+            </HashLink>
+          </Nav.Item>
+          <Nav.Item>
+            <Link to='/About'>About</Link>
+          </Nav.Item>
           {userIsAuthenticated() ?
             <>
               <Nav.Item>
