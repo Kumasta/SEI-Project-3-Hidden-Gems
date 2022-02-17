@@ -49,9 +49,10 @@ const SiteNav = () => {
             <>
               <Nav.Item>
                 <Button className='btn-dark btn' onClick={getUserId}>Profile</Button>
+                {/* <Link to={getUserId}>Profile</Link> */}
               </Nav.Item>
-              <Nav.Item onClick={handleLogout}>
-                <span>Logout</span>
+              <Nav.Item>
+              <Button className='btn-dark btn' onClick={handleLogout}>Logout</Button>
               </Nav.Item>
             </>
             :

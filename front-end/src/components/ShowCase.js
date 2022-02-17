@@ -57,11 +57,19 @@ const ShowCase = () => {
             </Row>
             <Row>
               <h2 className='title'>{pin.title}</h2>
-              <h5 className='type'>{pin.typeOfPlace}</h5>
-              <h5 className='rating'>{pin.avgRating}</h5>
+              <h6 className='type'>{pin.typeOfPlace}</h6>
+              <h6 className='rating'>Average rating: {pin.avgRating}</h6>
               <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
               <h5 className='status'>{pin.status}</h5>
-              <h5 className='tags'>{pin.tags}</h5>
+              <ul>
+                {pin.tags.length &&
+                  pin.tags.map((tag, i) => {
+                    return (
+                        <li key={i}>#{tag} </li>
+                    )
+                  })
+                }
+              </ul>
               <h5 className='username'>Posted by <Link to={`/profile/${pin.owner.id}`}>{user}</Link></h5>
               <hr />
               <p className='description'>{pin.description}</p>
