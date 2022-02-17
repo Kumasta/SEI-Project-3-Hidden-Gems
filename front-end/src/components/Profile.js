@@ -70,7 +70,7 @@ return (
             <h1>Bio</h1>
             <div>{userData.profile.bio ? userData.profile.bio : <p>No bio added</p>}</div>
           </Row>
-          <Row>
+          <Row className='profile-cards-container'>
             <h1>Created Pins</h1>
             {userData.ownedPins.length > 0 ?
               userData.ownedPins?.map(pin => {

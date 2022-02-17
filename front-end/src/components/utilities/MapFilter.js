@@ -78,9 +78,11 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
         aria-controls="example-collapse-text"
         aria-expanded={open}
         style={{width:100, position:'absolute'}}
+        className='btn-light btn'
+        id='map-filter-button'
       >
-        click
-      </Button>
+        Fliter
+      </Button >
       <div style={{ minHeight: '150px' }}>
         <Collapse in={open} dimension="height">
           <Container>

@@ -1,3 +1,4 @@
+@import './variables.scss';
 @import './components/login.scss';
 @import './components/nav.scss';
 @import './components/home.scss';
@@ -5,6 +6,8 @@
 @import './components/showCase.scss';
 @import './components/miniMap.scss';
 @import './components/about.scss';
+@import './components/profile.scss';
+
 
 #root {
   width: 100%;
@@ -12,6 +15,16 @@
 
 * {
   box-sizing: border-box;
+  margin: 0
+}
+
+body{
+  background: rgb(35,49,66);
+background: -moz-linear-gradient(180deg, rgba(35,49,66,1) 0%, rgba(53,77,107,1) 50%, rgba(54,80,108,1) 100%);
+background: -webkit-linear-gradient(180deg, rgba(35,49,66,1) 0%, rgba(53,77,107,1) 50%, rgba(54,80,108,1) 100%);
+background: linear-gradient(180deg, rgba(35,49,66,1) 0%, rgba(53,77,107,1) 50%, rgba(54,80,108,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#233142",endColorstr="#36506c",GradientType=1);
+color: $white;
 }
 
 #scroll-to-top{
@@ -24,9 +37,9 @@
   bottom: 15px;
   position: fixed;
   margin-bottom: 5px;
-  background-image: url('../images/blue-up-arrow.png');
+  background-image: url('../images/png-transparent-computer-icons-arrow-symbol-font-awesome-up-arrow-blue-angle-text.png');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  // border-radius: 12px;
+  border-radius: 100%;
 }
