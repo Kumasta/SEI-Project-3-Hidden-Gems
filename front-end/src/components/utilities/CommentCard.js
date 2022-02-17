@@ -7,7 +7,6 @@ import CommentEdit from './CommentEdit'
 
 const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
-
   const [commentsData, setCommentsData] = useState({ text: '' })
   const [formErrors, setFormErrors] = useState({ text: '' })
   const [ commentEdit, setCommentEdit ] = useState(true)
@@ -60,7 +59,10 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
   }
 
   const payload = getPayload()
+
   const likeClick = () => {
+    const userId = window.localStorage.getItem('userId')
+    console.log(userId)
     const likeOwner = review.likes.findIndex(owner => {
       return owner.owner = payload.sub
     })
