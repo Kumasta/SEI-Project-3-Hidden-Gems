@@ -23,7 +23,7 @@ const CommentEdit  = ({ review, editComment, formErrors, commentsData, setCommen
       <Form onSubmit={editComment}>
         <Form.Group className='mb-2'>
           <Form.Control onChange={handleChange} as='textarea' rows={3} type='text' name='text' placeholder='update your comment...' defaultValue={commentsData.text} />
-          {formErrors.username && <Form.Text>{formErrors.username}</Form.Text>}
+          {formErrors && <Form.Text>{formErrors}</Form.Text>}
         </Form.Group>
         <Form.Group className='text-center mt-4'>
           <Button onClick={editComment} disabled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>

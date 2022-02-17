@@ -65,7 +65,7 @@ const ShowCase = () => {
               <hr />
               <p className='description'>{pin.description}</p>
               <h5 className='review'>Comments</h5>
-              <hr />
+              <hr/>
               {pin.reviews.length &&
                 pin.reviews.map((review) => {
                   return (

@@ -32,26 +32,15 @@ const Home = ({ pinData, setPindata }) => {
 
 
   return (
-
     <>
-      <section className='hero-container container-sm'>
-        {pinData ?
-          <HeroCarousel pinData={pinData} />
-          :
-          hasError.error ?
-            <p>{hasError.message}</p>
-            :
-            <Spinner />
-        }
+    {pinData ?   
+    <>
+    <section className='hero-container container-sm'>
+        <HeroCarousel pinData={pinData} />
       </section>
       <main>
         <section className='most-rated-container container-sm'>
-          {pinData ?
-            <MostRated pinData={pinData} />
-            :
-            <Spinner />
-          }
-
+          <MostRated pinData={pinData} />
         </section>
         <section className='search-section'>
           <SearchFilter pinData={pinData} />
@@ -61,6 +50,14 @@ const Home = ({ pinData, setPindata }) => {
         <hr />
         © Made by Mayur, Tom &amp; Marilyn
       </footer>
+      </>
+      :
+      <h2 className='text-center'>
+        {hasError.error ? 'Page loading...' 
+        : 
+        <Spinner />}
+      </h2>
+      }
     </>
   )
 }
