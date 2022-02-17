@@ -7,13 +7,11 @@ import HeroCarousel from './home/HeroCarousel'
 import Spinner from './utilities/Spinner'
 import MostRated from './home/MostRated'
 import SearchFilter from './home/SearchFilter'
-
-
+import Footer from './utilities/Footer'
 
 const Home = ({ pinData, setPindata }) => {
 
   const [hasError, setHasError] = useState({ error: false, message: '' })
-
 
   useEffect(() => {
     const getPinsData = async () => {
@@ -28,33 +26,28 @@ const Home = ({ pinData, setPindata }) => {
     getPinsData()
   }, [])
 
-
-
   return (
     <>
     {pinData ?   
-    <>
-    <section className='hero-container container-sm'>
-        <HeroCarousel pinData={pinData} />
-      </section>
-      <main>
-        <section className='most-rated-container container-sm'>
-          <MostRated pinData={pinData} />
+      <>
+        <section className='hero-container container-sm'>
+          <HeroCarousel pinData={pinData} />
         </section>
-        <section className='search-section'>
-          <SearchFilter pinData={pinData} />
-        </section>
-      </main>
-      <footer>
-        <hr />
-        © Made by Mayur, Tom &amp; Marilyn
-      </footer>
+        <main>
+          <section className='most-rated-container container-sm'>
+            <MostRated pinData={pinData} />
+          </section>
+          <section className='search-section'>
+            <SearchFilter pinData={pinData} />
+          </section>
+        </main>
+        <Footer />
       </>
       :
       <h2 className='text-center'>
         {hasError.error ? 'Page loading...' 
-        : 
-        <Spinner />}
+        : <Spinner />
+        }
       </h2>
       }
     </>
