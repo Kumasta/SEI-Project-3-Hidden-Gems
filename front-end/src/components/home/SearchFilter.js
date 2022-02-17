@@ -44,7 +44,7 @@ const SearchFilter = ({ pinData }) => {
             <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
             <option value="" defaultValue disabled> -- Select a type of place -- </option>
               <option value='All'>All</option>
-              {typesOfPlaces.length && typesOfPlaces.map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
+              {typesOfPlaces.length && typesOfPlaces.sort().map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
             </Form.Select>
             <Form.Control className='input-form'onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
           </Form.Group>

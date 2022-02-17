@@ -10,8 +10,6 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
 
   const [topRated, setTopRated] = useState([])
 
-  console.log('pinDataProp', pinData)
-
   // Sorting the pinData for the avgRating in descending order
   useEffect(() => {
     const sortedRatings = pinData.sort((a, b) => parseFloat(b.averageRating) -
@@ -36,12 +34,12 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
               return (
                 <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem'}}>
                   <Link className='pins-link' to={`/pins/${pin._id}`}>
-                    <div clasName='card-img-container'>
+                    <div className='card-img-container'>
                     <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
                     </div>
                     <Card.Body>
                       <Card.Title>{pin.title}</Card.Title>
-                      <div clasName='diamond-container'>
+                      <div className='diamond-container'>
                       <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
                       </div>
                     </Card.Body>

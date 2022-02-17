@@ -10,7 +10,6 @@ import SearchFilter from './home/SearchFilter'
 
 
 
-
 const Home = ({ pinData, setPindata }) => {
 
   const [hasError, setHasError] = useState({ error: false, message: '' })

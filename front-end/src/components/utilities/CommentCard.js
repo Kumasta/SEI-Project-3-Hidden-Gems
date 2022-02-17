@@ -15,7 +15,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
   const deleteComment = async () => {
     try {
-      await axios.delete(`/ai/pins/${pin._id}/reviews/${review.id}`, {
+      await axios.delete(`/api/pins/${pin._id}/reviews/${review.id}`, {
         headers: {
           Authorization: `Bearer ${getLocalToken()}`
         }
