@@ -3,12 +3,13 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Collapse from 'react-bootstrap/Collapse'
-// import Dropdown from 'react-bootstrap/Dropdown'
+
+import { typeList } from '../../enviroment/typeList'
 
 const MapFilter = ({ pinData, filterList, setFilterList }) => {
+  const allTypes = typeList()
   const [selectedType, setSelectedType] = useState('')
   const [selectedTag, setSelectedTag] = useState('')
-  const [options, setOptions] = useState([])
   const [tagList, setTagList] = useState([])
   const [allTags, setAllTags] = useState([])
   const [pinsbyType, setPinsBytype] = useState([])
@@ -17,18 +18,13 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
 
   //Generate type and all tags list
   useEffect(() => {
-    const typeOfPlaceList = []
     let allTag = []
     setPinsBytype([...pinData])
     pinData.forEach(pin => {
-      typeOfPlaceList.push(pin.typeOfPlace)
       allTag = [...allTag, ...pin.tags]
     })
-    const uniqueOptions = [...new Set(typeOfPlaceList)]
     const uniqueTagArray = [...new Set(allTag)]
-    setOptions(uniqueOptions)
     setAllTags(uniqueTagArray)
-    // console.log(allTags)
   }, [pinData])
 
   //Shown Tags list
@@ -77,7 +73,7 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
         onClick={() => setOpen(!open)}
         aria-controls="example-collapse-text"
         aria-expanded={open}
-        style={{width:100, position:'absolute'}}
+        style={{ width: 100, position: 'absolute' }}
         className='btn-light btn'
         id='map-filter-button'
       >
@@ -93,7 +89,7 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
                   <Form.Label htmlFor='typeOfPlace'>Type of Place</Form.Label>
                   <Form.Select onChange={handelTypeDropdown} name='typeOfPlace' defaultValue={'Type of place'}>
                     <option value={''}>-None-</option>
-                    {options?.map((item, i) => {
+                    {allTypes?.map((item, i) => {
                       return (
                         <option key={i} value={item}>{item}</option>
                       )
@@ -114,6 +110,7 @@ const MapFilter = ({ pinData, filterList, setFilterList }) => {
                     :
                     <p>Selet a Type</p>
                   }
+                  {filterList && <Form.Text>{`Found: ${filterList.length} pins`}</Form.Text>}
                 </Form.Group>
               </Form>
             </>

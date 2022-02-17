@@ -6,13 +6,14 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 // import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
-
+import MiniMap from './MiniMap'
 import { getLocalToken } from '../../enviroment/auth'
-
+import { typeList } from '../../enviroment/typeList'
 const PinFormEdit = () => {
   const [allPins, setAllPins] = useState([])
   const { id } = useParams()
-
+  const [latLng, setLatLng] = useState()
+  const allTypes = typeList()
   useEffect(() => {
     const getData = async () => {
       try {
@@ -25,20 +26,15 @@ const PinFormEdit = () => {
     getData()
   }, [])
 
-  const [allType, setAllTypes] = useState([])
   const [allTags, setAllTags] = useState([])
   const [allTagsStructured, setAllTagsStructured] = useState([])
 
   useEffect(() => {
-    const typeOfPlaceList = []
     let allTag = []
     allPins.forEach(pin => {
-      typeOfPlaceList.push(pin.typeOfPlace)
       allTag = [...allTag, ...pin.tags]
     })
-    const uniqueOptions = [...new Set(typeOfPlaceList)]
     const uniqueTagArray = [...new Set(allTag)]
-    setAllTypes(uniqueOptions)
     setAllTags(uniqueTagArray)
   }, [allPins])
 
@@ -62,8 +58,6 @@ const PinFormEdit = () => {
   const uploadPreset = 'ip80rysk'
 
   const [tags, setsTags] = useState(null)
-
-  const [latLng, setLatLng] = useState()
   const [formData, setFormData] = useState({
     title: '',
     typeOfPlace: '',
@@ -95,6 +89,7 @@ const PinFormEdit = () => {
         setFormData(data)
         handleIncomingtags(data.tags)
         handleIncomingType(data.typeOfPlace)
+        setLatLng({ latitude: data.latitude, longitude: data.longitude })
       } catch (error) {
         console.log(error)
       }
@@ -112,14 +107,13 @@ const PinFormEdit = () => {
     })
     setDefaultMultiSelect(selectOptions)
     console.log(selectOptions)
-    console.log(defaultMultiSelect)
   }
 
   const handleIncomingType = (type) => {
     const selectOptions = {}
     selectOptions.value = type
     selectOptions.label = type
-    console.log(selectOptions)
+    // console.log(selectOptions)
     setDefaultTypeSelect(selectOptions)
   }
 
@@ -192,11 +186,9 @@ const PinFormEdit = () => {
 
   return (
     <Container className='form'>
+      {latLng && <MiniMap latLng={latLng} />}
       <Form onSubmit={handleSubmit} className='mt-4'>
-        <h2>Create a new pin</h2>
-        {/* <div className='mini-map'>
-          I will add a mini map that will allow us see where the pin is. 
-        </div> */}
+        <h2>Edit pin</h2>
         <hr />
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='title'>Update name of place?<span className='text-danger'>*</span></Form.Label>
@@ -205,16 +197,15 @@ const PinFormEdit = () => {
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='typeOfPlace'>Change type of place?<span className='text-danger'>*</span></Form.Label>
-          <Form.Select  onChange={handleChange} placeholder={defaultTypeSelect} name='typeOfPlace' defaultValue={defaultTypeSelect}>
+          <Form.Select onChange={handleChange} placeholder={defaultTypeSelect} name='typeOfPlace' defaultValue={defaultTypeSelect}>
             <option value={''}>-Select Type of place-</option>
-            {allType?.map((item, i) => {
+            {allTypes?.map((item, i) => {
               return (
                 <option key={i} value={item}>{item}</option>
               )
             })}
-            {console.log(defaultTypeSelect)}
           </Form.Select>
-          <p>Pre-edit Type of place: {formData.typeOfPlace}</p>
+          <p>Pre-edit: {formData.typeOfPlace}</p>
           {formErrors.typeOfPlace && <Form.Text className='text-danger'>{formErrors.typeOfPlace}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
@@ -229,14 +220,14 @@ const PinFormEdit = () => {
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='tags'>Edit/Add Tags?</Form.Label>
-          {defaultMultiSelect && 
-          <CreatableSelect
-            isClearable
-            isMulti
-            options={allTagsStructured}
-            onChange={(value) => handleMultiCreateChange('tags', value)}
-            defaultValue={defaultMultiSelect}
-          />}
+          {defaultMultiSelect &&
+            <CreatableSelect
+              isClearable
+              isMulti
+              options={allTagsStructured}
+              onChange={(value) => handleMultiCreateChange('tags', value)}
+              defaultValue={defaultMultiSelect}
+            />}
           {/* <Form.Label htmlFor='tags'>Current Tags: {defaultMultiSelect.map(tag => tag.label + ', ')} {'(Add them again if wanted)'}</Form.Label> */}
         </Form.Group>
         {formData.imageUrl &&

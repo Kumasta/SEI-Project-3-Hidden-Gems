@@ -10,8 +10,10 @@ import CreatableSelect from 'react-select/creatable'
 import MiniMap from './MiniMap'
 
 import { getLocalToken } from '../../enviroment/auth'
+import { typeList } from '../../enviroment/typeList'
 
 const PinForm = ({ newPin }) => {
+  const allTypes = typeList()
   const [allPins, setAllPins] = useState([])
 
   useEffect(() => {
@@ -26,20 +28,15 @@ const PinForm = ({ newPin }) => {
     getData()
   }, [])
 
-  const [allType, setAllTypes] = useState([])
   const [allTags, setAllTags] = useState([])
   const [allTagsStructured, setAllTagsStructured] = useState([])
 
   useEffect(() => {
-    const typeOfPlaceList = []
     let allTag = []
     allPins.forEach(pin => {
-      typeOfPlaceList.push(pin.typeOfPlace)
       allTag = [...allTag, ...pin.tags]
     })
-    const uniqueOptions = [...new Set(typeOfPlaceList)]
     const uniqueTagArray = [...new Set(allTag)]
-    setAllTypes(uniqueOptions)
     setAllTags(uniqueTagArray)
   }, [allPins])
 
@@ -181,9 +178,6 @@ const PinForm = ({ newPin }) => {
       {latLng && <MiniMap latLng={latLng}/>}
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Create a new pin</h2>
-        {/* <div className='mini-map'>
-          I will add a mini map that will allow us see where the pin is. 
-        </div> */}
         <hr />
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
@@ -194,7 +188,7 @@ const PinForm = ({ newPin }) => {
           <Form.Label htmlFor='typeOfPlace'>Type of Place<span className='text-danger'>*</span></Form.Label>
           <Form.Select onChange={handleChange} placeholder='typeOfPlace' name='typeOfPlace' defaultValue={formData.typeOfPlace}>
             <option value={''}>-Select Type of place-</option>
-            {allType?.map((item, i) => {
+            {allTypes?.map((item, i) => {
               return (
                 <option key={i} value={item}>{item}</option>
               )
