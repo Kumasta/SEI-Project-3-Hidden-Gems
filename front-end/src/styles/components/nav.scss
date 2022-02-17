@@ -1,24 +1,26 @@
 .navbar {
-  background: rgb(4,134,209);
-background: -moz-linear-gradient(0deg, rgba(4,134,209,1) 0%, rgba(0,110,173,1) 50%);
-background: -webkit-linear-gradient(0deg, rgba(4,134,209,1) 0%, rgba(0,110,173,1) 50%);
-background: linear-gradient(0deg, rgba(4,134,209,1) 0%, rgba(0,110,173,1) 50%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0486d1",endColorstr="#006ead",GradientType=1);
-color: $white;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.11);
 img{
-  height: 45px;
+  height: 30px;
+  margin-right: 5px;
 }
   .nav-item {
     a{
       text-decoration: none;
       margin: 10px;
       color: black;
-      color: $white;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .navbar-collapse{
     .btn {
       color: white;
+      margin-right: 10px;
+      &:hover{
+        transform: scale(105%);
+      }
     }
     span {
       cursor: pointer;

@@ -1,4 +1,9 @@
+.search-section {
+  margin-top: 10px;
+}
+
 .hero-container {
+  margin-top: 40px;
   cursor: pointer;
   .carousel {
     .carousel-inner {
@@ -44,6 +49,7 @@ main {
             height: 191px;
             &:hover {
               transform: scale(110%);
+              z-index: 10;
             }
           }
           .pins-link {

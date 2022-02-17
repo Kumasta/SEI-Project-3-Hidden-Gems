@@ -9,7 +9,7 @@ import Nav, { } from 'react-bootstrap/Nav'
 
 // Authorisation file
 import { userIsAuthenticated } from '../enviroment/auth'
-import diamond from '../images/blue-diamond-transparent.png'
+import diamond from '../images/black-diamond.png'
 
 
 const SiteNav = () => {

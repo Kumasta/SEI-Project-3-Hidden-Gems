@@ -19,7 +19,6 @@ function Map({ newPin, setNewPin }) {
     latitude: 51.515,
     longitude: -0.078,
     zoom: 6,
-    
   })
 
 
@@ -70,14 +69,23 @@ function Map({ newPin, setNewPin }) {
             <GeolocateControl />
             {newPin &&
               <Popup latitude={newPin.latitude} longitude={newPin.longitude} closeOnClick={false} onClose={() => setNewPin(null)}>
-                <div>
-                  <Link to={{
-                    pathname: '/pinform',
-                    state: { newPin: true }
-                  }}>
-                    <Button className='btn-dark btn' variant='primary'>Create new pin?</Button>
-                  </Link>
-                </div>
+                {userIsAuthenticated() ?
+                  <div>
+                    <Link to={{
+                      pathname: '/pinform',
+                      state: { newPin: true }
+                    }}>
+                      <Button className='btn-dark btn' variant='primary'>Create new pin?</Button>
+                    </Link>
+                  </div>
+                  :
+                  <div >
+                    <p>Want to make a new pin?</p>
+                    <Link className='btn-dark btn' variant='primary' to={'/Register'}>Register</Link>
+                    <Link className='btn-dark btn' variant='primary' to={'/Login'}>Login</Link>
+                  </div>
+                }
+
               </Popup>
             }
             <MapFilter pinData={pinData} filterList={filterList} setFilterList={setFilterList} setFilterOn={setFilterOn} />
