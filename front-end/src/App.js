@@ -20,7 +20,7 @@ import ProfileEdit from './components/utilities/ProfileEdit'
 const App = () => {
 
   const [newPin, setNewPin] = useState()
-  const [pinData, setPindata] = useState([])
+  const [pinData, setPindata] = useState(null)
   
   return (
     <>

@@ -5,68 +5,70 @@ import { Link } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 
-const SearchFilter = ({ pinData }) => {
+import Rating from '../utilities/Rating'
+
+const SearchFilter = ({ pinData, setRatingUpdated }) => {
 
 
 
   const [filteredPins, setFilteredPins] = useState([])
-  const [filters, setFilters ] = useState({ typeOfPlace: 'All', searchInput: ''})
+  const [filters, setFilters] = useState({ typeOfPlace: 'All', searchInput: '' })
 
 
   const typesOfPlaces = [...new Set(pinData.map(pin => pin.typeOfPlace))]
 
   const handleFilterChange = (e) => {
-    console.log('e.target.name.', e.target.name)
-    const filterObject = { ...filters, [e.target.name]: e.target.value}
-    console.log('filter object', filterObject)
+    const filterObject = { ...filters, [e.target.name]: e.target.value }
     setFilters(filterObject)
   }
 
   useEffect(() => {
 
-    if (pinData.length){
+    if (pinData.length) {
 
       const search = new RegExp(filters.searchInput, 'i')
       setFilteredPins(pinData.filter(pin => {
         return search.test(pin.title) && (filters.typeOfPlace === pin.typeOfPlace || filters.typeOfPlace === 'All')
-      })) 
+      }))
     }
   }, [pinData, filters])
 
 
   return (
 
-    <>
-      <h2 id='search'>Not sure what you fancy?</h2>
-      <div className='searchbar-container container-sm'>
-        <Form>
-          <Form.Group className='form-group-container'>
-            <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
-            <option value="" defaultValue disabled> -- Select a type of place -- </option>
-              <option value='All'>All</option>
-              {typesOfPlaces.length && typesOfPlaces.sort().map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
-            </Form.Select>
-            <Form.Control className='input-form'onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
-          </Form.Group>
-        </Form>
-      </div>
-      <div className='search-result-container container-sm'>
-        {(filteredPins.length ? filteredPins : pinData).map((pin, i) => {
+      <section className='search-section'>
+        <h2 id='search'>Not sure what you fancy?</h2>
+        <div className='searchbar-container container-sm'>
+          <Form>
+            <Form.Group className='form-group-container'>
+              <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
+                <option value="" defaultValue disabled> -- Select a type of place -- </option>
+                <option value='All'>All</option>
+                {typesOfPlaces.length && typesOfPlaces.sort().map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
+              </Form.Select>
+              <Form.Control className='input-form' onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput} placeholder='Search' />
+            </Form.Group>
+          </Form>
+        </div>
+        <div className='search-result-container container-sm'>
+          {(filteredPins.length ? filteredPins : pinData).map((pin, i) => {
             return (
               <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
                 <Link className='pins-link' to={`/pins/${pin._id}`}>
                   <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
                   <Card.Body>
-                    <Card.Title>{pin.title}</Card.Title>
-                    <Card.Text>Rating: {pin.avgRating}</Card.Text>
+                    <Card.Title >{pin.title}</Card.Title>
+                    <div className='diamond-container'>
+                      <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
+                    </div>
                   </Card.Body>
                 </Link>
               </Card>
             )
           })
-        }
-      </div>
-    </>
+          }
+        </div>
+      </section>
   )
 }
 
