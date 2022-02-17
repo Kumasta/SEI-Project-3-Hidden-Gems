@@ -9,14 +9,14 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
 
   const [commentsData, setCommentsData] = useState({ text: '' })
-  const [formErrors, setFormErrors] = useState({ text: '' })
+  const [formErrors, setFormErrors] = useState('')
   const [ commentEdit, setCommentEdit ] = useState(true)
   const [ likeId, setLikeId ] = useState(false)
 
 
   const deleteComment = async () => {
     try {
-      await axios.delete(`/api/pins/${pin._id}/reviews/${review.id}`, {
+      await axios.delete(`/ai/pins/${pin._id}/reviews/${review.id}`, {
         headers: {
           Authorization: `Bearer ${getLocalToken()}`
         }
@@ -24,7 +24,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
       )
       setRatingUpdated(true)
     } catch (error) {
-      console.log(error)
+      console.log('delete error message', error.response.data.message)
     }
   }
 

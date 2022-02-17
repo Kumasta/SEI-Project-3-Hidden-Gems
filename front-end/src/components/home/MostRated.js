@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 
 //React Bootstrap Components
 import Card from 'react-bootstrap/Card'
+import Rating from '../utilities/Rating'
 
-const MostRated = ({ pinData }) => {
+const MostRated = ({ pinData, setRatingUpdated }) => {
 
 
   const [topRated, setTopRated] = useState([])
@@ -35,10 +36,12 @@ const MostRated = ({ pinData }) => {
               return (
                 <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem'}}>
                   <Link className='pins-link' to={`/pins/${pin._id}`}>
-                    <Card.Img className='card-img' variant="top" src={pin.imageUrl} />
+                    <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
                     <Card.Body>
                       <Card.Title>{pin.title}</Card.Title>
-                      <Card.Text>{pin.avgRating}</Card.Text>
+                      <div clasName='diamond-container'>
+                      <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
+                      </div>
                     </Card.Body>
                   </Link>
                 </Card>

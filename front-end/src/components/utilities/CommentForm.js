@@ -14,7 +14,7 @@ import { Container, Form, Button } from 'react-bootstrap'
 const CommentForm = ({ pin, setRatingUpdated }) => {
 
   const [commentsData, setCommentsData] = useState({ text: '' })
-  const [formErrors, setFormErrors] = useState({ text: '' })
+  const [formErrors, setFormErrors] = useState('')
   const isTextareaDisabled = commentsData.text.length === 0
   
 
@@ -34,15 +34,13 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
       )
       setRatingUpdated(true)
     } catch (error) {
-      console.log('error on commentForm', error)
-      setFormErrors({ ...formErrors, ...error.response.data.errors })
+      console.log('error on commentForm', error.response.data.message)
+      setFormErrors(error.response.data.message)
     }
   }
 
   const handleChange = (e) => {
-    console.log('event.target.value => ', e.target.value)
     setCommentsData({ ...commentsData, [e.target.name]: e.target.value })
-    console.log('comments data => ', commentsData)
   }
 
   return (
@@ -51,10 +49,10 @@ const CommentForm = ({ pin, setRatingUpdated }) => {
         <Form onSubmit={handleSubmit}>
           <Form.Group className='mb-2'>
             <Form.Control onChange={handleChange} as='textarea' rows={3} type='text' name='text' placeholder='Leave a comment...' defaultValue={commentsData.text} />
-            {formErrors.username && <Form.Text>{formErrors.username}</Form.Text>}
+            {formErrors && <Form.Text>{formErrors}</Form.Text>}
           </Form.Group>
           <Form.Group className='text-center mt-4'>
-            <Button onSubmit={handleSubmit} type='submit' disabled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
+            <Button onSubmit={handleSubmit} type='submit' disasbled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
           </Form.Group>
         </Form>
       </Container>

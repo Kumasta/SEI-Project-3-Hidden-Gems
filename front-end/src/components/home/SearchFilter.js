@@ -46,13 +46,14 @@ const SearchFilter = ({ pinData }) => {
               <option value='All'>All</option>
               {typesOfPlaces.length && typesOfPlaces.map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
             </Form.Select>
-          </Form.Group>
-          <Form.Group className='mb-3'>
             <Form.Control onChange={handleFilterChange} name={'searchInput'} type='text' defaultValue={filters.searchInput}  placeholder='Search' />
+          </Form.Group>
+          {/* <Form.Group className='mb-3'>
+           
             <Form.Text className='text-muted'>
               Remember to update for error
             </Form.Text>
-          </Form.Group>
+          </Form.Group> */}
         </Form>
       </div>
       <div className='search-result-container container-sm'>
