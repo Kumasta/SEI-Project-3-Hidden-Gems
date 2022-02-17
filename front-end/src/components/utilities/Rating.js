@@ -73,7 +73,7 @@ const Rating = ({ avgRating, id, pin, setRatingUpdated }) => {
     }
     userPostRating()
     }
-  }, [selectRating, id, ownedRating])
+  }, [selectRating])
 
   //PUT request to change rating
   useEffect(() => {
@@ -91,7 +91,7 @@ const Rating = ({ avgRating, id, pin, setRatingUpdated }) => {
     }
     userPostRating()
     }
-  }, [selectRating, filteredRating, id])
+  }, [selectRating])
 
   return (
     <div className='rating-container'>
