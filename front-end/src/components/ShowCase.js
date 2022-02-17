@@ -55,7 +55,7 @@ const ShowCase = () => {
               <img src={pin.imageUrl} alt={pin.title} />
             </Row>
             <Row>
-              <h3 className='title'>{pin.title}</h3>
+              <h2 className='title'>{pin.title}</h2>
               <h5 className='type'>{pin.typeOfPlace}</h5>
               <h5 className='rating'>{pin.avgRating}</h5>
               <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />

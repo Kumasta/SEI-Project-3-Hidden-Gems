@@ -11,7 +11,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
   const [formErrors, setFormErrors] = useState('')
   const [ commentEdit, setCommentEdit ] = useState(true)
   const [ likeId, setLikeId ] = useState(false)
-
+  
 
   const deleteComment = async () => {
     try {
@@ -60,18 +60,14 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
 
   const payload = getPayload()
 
+  const likeOwner = review.likes.findIndex(owner => {
+    return owner.owner === payload.sub
+  })
+
   const likeClick = () => {
-    const userId = window.localStorage.getItem('userId')
-    console.log(userId)
-    const likeOwner = review.likes.findIndex(owner => {
-      return owner.owner = payload.sub
-    })
-    console.log(likeOwner)
     if (likeOwner === -1){
       return postLike()
     }
-    console.log(payload.sub)
-    console.log(review.likes[likeOwner]._id)
     setLikeId(review.likes[likeOwner]._id)
   }
 
@@ -81,7 +77,6 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
       await axios.post(`/api/pins/${pin._id}/reviews/${review.id}/like`, 
       { like: true }, 
       { headers })
-      // setLikes(true)
       setRatingUpdated(true)
     } catch (error) {
       console.log(error)
@@ -93,7 +88,6 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
     const headers = {'Authorization': `Bearer ${getLocalToken()}`}
     try {
       await axios.delete(`/api/pins/${pin._id}/reviews/${review.id}/like/${likeId}`, { headers })
-      // setLikes(false)
       setRatingUpdated(true)
     } catch (error) {
       console.log(error)
@@ -109,7 +103,10 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
         {commentEdit ?
           <Card.Body>
             <Card.Text>{review.text}</Card.Text>
-            <Card.Text>Likes: {review.likes.length}</Card.Text>
+            {likeOwner === -1 ?
+            <Card.Text className='heart' onClick={likeClick}>🤍 ‏‏‎ ‎{review.likes.length}</Card.Text>
+            :
+            <Card.Text className='heart' onClick={likeClick}>🖤 ‏‏‎ ‎{review.likes.length}</Card.Text>}
             {userIsOwnerOfComment() &&
               <>
                 <Button className='btn btn-dark ' onClick={handleEditButtonClick} variant='primary'>Edit</Button>
@@ -125,9 +122,6 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
             editComment={editComment}
             setCommentsData={setCommentsData}
             commentsData={commentsData} />}
-        {payload && 
-        <Button className='btn btn-dark' onClick={likeClick} variant='primary'>Like</Button>
-        }
       </Card>
     </>
   )
