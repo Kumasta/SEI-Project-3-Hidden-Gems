@@ -12,7 +12,7 @@ const MiniMap = ({ latLng }) => {
 
   useEffect(()=> {
     setViewPort({...viewPort, latitude: latLng.latitude, longitude: latLng.longitude})
-    console.log(viewPort)
+    // console.log(viewPort)
   }, [latLng])
 
   return (
