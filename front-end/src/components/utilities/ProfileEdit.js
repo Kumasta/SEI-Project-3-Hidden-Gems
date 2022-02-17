@@ -114,7 +114,7 @@ const ProfileEdit = () => {
           <Form.Control onChange={handleCharCount} as='textarea' rows={3} placeholder='Name of place' name='bio' defaultValue={formData.bio} />
           {countError && <Form.Text className='text-danger'>{countError}</Form.Text>}
           {count ? <Form.Text htmlFor='bio'>{`Word count ${count}/2000`}</Form.Text> : null}
-          {count > 300 && <Form.Text className='text-danger'> Too many characters</Form.Text>}
+          {count > 2000 && <Form.Text className='text-danger'> Too many characters</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='profilePicURL'>Upload Profile Picture</Form.Label>

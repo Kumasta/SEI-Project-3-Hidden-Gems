@@ -75,8 +75,8 @@ const PinFormEdit = () => {
     longitude: null,
   })
 
-  const [defaultMultiSelect, setDefaultMultiSelect] = useState([])
-  const [defaultTypeSelect, setDefaultTypeSelect] = useState([])
+  const [defaultMultiSelect, setDefaultMultiSelect] = useState(null)
+  const [defaultTypeSelect, setDefaultTypeSelect] = useState(null)
 
   const [formErrors, setFormErrors] = useState({
     title: '',
@@ -116,18 +116,12 @@ const PinFormEdit = () => {
   }
 
   const handleIncomingType = (type) => {
-    const selectOptions = []
-    type.map(oneType => {
-      const obj = {}
-      obj.label = oneType
-      obj.value = oneType
-      return selectOptions.push(obj)
-    })
+    const selectOptions = {}
+    selectOptions.value = type
+    selectOptions.label = type
+    console.log(selectOptions)
     setDefaultTypeSelect(selectOptions)
-    console.log(defaultTypeSelect)
   }
-
-
 
   const navigate = useNavigate()
 
@@ -218,8 +212,9 @@ const PinFormEdit = () => {
                 <option key={i} value={item}>{item}</option>
               )
             })}
+            {console.log(defaultTypeSelect)}
           </Form.Select>
-          <p>Pre-edit Type of place: {defaultTypeSelect}</p>
+          <p>Pre-edit Type of place: {formData.typeOfPlace}</p>
           {formErrors.typeOfPlace && <Form.Text className='text-danger'>{formErrors.typeOfPlace}</Form.Text>}
         </Form.Group>
         <Form.Group className='mb-2'>
@@ -234,14 +229,15 @@ const PinFormEdit = () => {
         </Form.Group>
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='tags'>Edit/Add Tags?</Form.Label>
-          {defaultMultiSelect && <CreatableSelect
+          {defaultMultiSelect && 
+          <CreatableSelect
             isClearable
             isMulti
             options={allTagsStructured}
             onChange={(value) => handleMultiCreateChange('tags', value)}
-            defaultValue={[{label: 'sculpture', value: 'sculpture'}, {label: 'offbeat', value: 'offbeat'}]}
+            defaultValue={defaultMultiSelect}
           />}
-          <Form.Label htmlFor='tags'>Current Tags: {defaultMultiSelect.map(tag => tag.label + ', ')} {'(Add them again if wanted)'}</Form.Label>
+          {/* <Form.Label htmlFor='tags'>Current Tags: {defaultMultiSelect.map(tag => tag.label + ', ')} {'(Add them again if wanted)'}</Form.Label> */}
         </Form.Group>
         {formData.imageUrl &&
           <div id='form-pin-image'>

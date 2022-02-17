@@ -46,7 +46,7 @@ const Login = () => {
 
   return (
     <div className='form-page'>
-      <Container>
+      <Container className='form'>
         <Form onSubmit={handleSubmit} className='mt-4'>
           <h2>Login</h2>
           <Form.Group className='mb-2'>

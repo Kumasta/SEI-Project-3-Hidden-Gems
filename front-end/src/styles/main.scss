@@ -42,3 +42,15 @@ body{
   background-repeat: no-repeat;
   border-radius: 100%;
 }
+
+.form{
+  max-width: 696px;
+  margin: 0 auto;
+  #form-pin-image{
+    display: flex;
+    justify-content: center;
+    img{
+      max-width: 100%;
+    }
+  }
+}

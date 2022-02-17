@@ -41,7 +41,7 @@ const Register = () => {
 
   return (
     <div  className='form-page'>
-      <Container>
+      <Container className='form'>
         <Form onSubmit={handleSubmit} className='mt-4'>
           <h2>Register to Hidden Gems</h2>
           <hr />

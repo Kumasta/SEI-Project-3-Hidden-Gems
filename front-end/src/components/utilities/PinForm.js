@@ -177,7 +177,7 @@ const PinForm = ({ newPin }) => {
   }
 
   return (
-    <Container>
+    <Container className='form'>
       {latLng && <MiniMap latLng={latLng}/>}
       <Form onSubmit={handleSubmit} className='mt-4'>
         <h2>Create a new pin</h2>
@@ -228,7 +228,7 @@ const PinForm = ({ newPin }) => {
           </div>
         }
         <Form.Group className='text-center mt-4'>
-          <Button type='submit' className='btn btn-red'>Submit</ Button>
+          <Button type='submit' className='btn-dark btn'>Submit</ Button>
         </Form.Group>
       </Form>
     </Container>

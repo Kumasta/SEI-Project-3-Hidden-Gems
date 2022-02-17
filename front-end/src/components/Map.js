@@ -79,10 +79,12 @@ function Map({ newPin, setNewPin }) {
                     </Link>
                   </div>
                   :
-                  <div >
-                    <p>Want to make a new pin?</p>
+                  <div id='new-popup'>
+                    <h6>Want to make a new pin?</h6>
+                    <div>
+                    {/* <Link className='btn-dark btn' variant='primary' to={'/Login'}>Login</Link> */}
                     <Link className='btn-dark btn' variant='primary' to={'/Register'}>Register</Link>
-                    <Link className='btn-dark btn' variant='primary' to={'/Login'}>Login</Link>
+                    </div>
                   </div>
                 }
 

@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card'
 
 import spinner from '../images/spinner.gif'
 import blankProfile from '../images/966-9665493_my-profile-icon-blank-profile-image-circle.png'
+import { getPayload } from '../enviroment/auth'
 
 const Profile = () => {
   const { userId } = useParams()
@@ -21,7 +22,7 @@ const Profile = () => {
       try {
         const { data } = await axios.get(`/api/profile/${userId}`)
         setUserData(data)
-        // console.log(data)
+        console.log(data)
       } catch (error) {
         console.log(error)
       }
@@ -46,6 +47,12 @@ const Profile = () => {
     setUserAvgPinRating(total / totalRatingArr.length)
   }, userData)
 
+  const userIsOwnerOfComment = () => {
+    const payload = getPayload()
+    if (!payload) return
+    return userData.id === payload.sub
+  }
+
   return (
     <>
       <Container id='profile-Container'>
@@ -58,13 +65,13 @@ const Profile = () => {
                   {userData.profile.profilePicURL ? <img src={userData.profile.profilePicURL} alt='Profile' /> : <img src={blankProfile} alt='Blank Profile' />}
                 </div>
               </Col>
-              <Col>
+              <Col md={5}>
                 <h1>Profile Stats</h1>
                 <h4>No. of pins added: <span>{userData.ownedPins.length ? userData.ownedPins.length : 0}</span></h4>
                 <h4>Total Average Pin Rating: <span>{userAvgPinRating ? userAvgPinRating.toFixed(2) : 'No ratings'}</span></h4>
                 <h4>Member Since: <span>{userData.createdAt.slice(0, 10)}</span></h4>
 
-                <Link className='btn-dark btn' to={`/profile/${userId}/edit`}>Edit Profile</Link>
+                {userIsOwnerOfComment() && <Link className='btn-dark btn' to={`/profile/${userId}/edit`}>Edit Profile</Link>}
 
               </Col>
             </Row>

@@ -82,6 +82,11 @@
 .mapboxgl-popup-content{
   background-color: rgba(128, 128, 128, 0.904) !important;
   border-radius: 5px !important;
+  #new-popup{
+    div{
+      display: flex;
+    }
+  }
   .mapboxgl-popup-close-button{
     background-color: rgba(179, 247, 244, 0.527);
     border-radius: 25px;
