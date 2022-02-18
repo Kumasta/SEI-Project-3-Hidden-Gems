@@ -337,6 +337,52 @@ export default [
     longitude: -1.8943114, //Number
   },
   {
+    title: 'Appuldurcombe House', 
+    typeOfPlace: 'Landmark with a twist', 
+    description: `Begun in the early 18th century as the seat of the Worsley family, Appuldurcombe was once the grandest house on the Isle of Wight. A later owner, Sir Richard Worsley, the 7th baronet, gained notoriety for a 1782 court case in which his wife, Seymour, admitted to having had 27 lovers.
+    Appuldurcombe was a masterpiece of English Baroque architecture, and though now a graceful shell, still retains more than a ghost of its former dignity, and many fine architectural details.
+    It is said that Lady Seymour's ghost can be seen at Freemantle Gate, the old gatehouse, where she would meet for her illicit affairs. The ghost of a monk has also been seen in the cellars.`,
+    imageUrl: 'https://img.atlasobscura.com/kbPKWSZEDZbgMwlehZwXxiM9kD8767AooAmp-QM2LAE/rt:fit/h:390/q:81/sm:1/scp:1/ar:1/aHR0cHM6Ly9hdGxh/cy1kZXYuczMuYW1h/em9uYXdzLmNvbS91/cGxvYWRzL3BsYWNl/X2ltYWdlcy82Mjgx/OWNkMzVlNDkxNjI5/NDRfQXBwdWxkdXJj/b21iZV9Ib3VzZV8w/Mi5qcGc.jpg',
+    status: true, 
+    tags: ['abondoned', 'ruins', 'haunted'],
+    latitude: 50.6169, 
+    longitude: -1.2337, 
+  },
+  {
+    title: 'The Hobbit', 
+    typeOfPlace: 'Bar', 
+    description: `The Hobbit is a pub in the Bevois Valley area of Southampton, England. Previously the Portswood Hotel, it was named after J. R. R. Tolkien's book The Hobbit in 1989. In 2012 the pub was involved in a legal dispute with Middle-earth Enterprises, a company owned by film producer Saul Zaentz, over its use of the name.
+    he Hobbit used to be known for cocktails and shots named after characters from Tolkien's novels The Hobbit and The Lord of the Rings, but were issued a cease and desist letter from the Tolkien Estate in July 2020.`,
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/The_hobbit_southampton.JPG',
+    status: true, 
+    tags: ['pub', 'themed', 'lotr'],
+    latitude: 50.918783, 
+    longitude: -1.395139, 
+  },
+  {
+    title: 'National Poo Museum', 
+    typeOfPlace: 'Museum', 
+    description: `The National Poo Museum on the Isle of Wight, southern England, is a museum dedicated to the collection, conservation and display of faeces.
+    he faeces are displayed in resin spheres, where it can be viewed and held. The process involves drying the poo, which can take up to two weeks, before it is encapsulated and placed in a vacuum chamber, so that air bubbles are removed.
+    The main aim of the museum is to break down the 'taboo' surrounding poo in human life, the museum hopes to do this by receiving donations of poo from celebrities.`,
+    imageUrl: 'https://cdn.thelondoneconomic.com/wp-content/uploads/2018/04/SWNS_POO_MUSEUM_02.jpg',
+    status: true, 
+    tags: ['poo', 'museum'],
+    latitude: 50.65006196799413, 
+    longitude: -1.160609173567385, 
+  },
+  {
+    title: 'Spitbank Fort', 
+    typeOfPlace: 'Hotel', 
+    description: `Spitbank Fort is a sea fort built as a result of the 1859 Royal Commission. The fort is one of four built as part of the Palmerston Forts constructions. Located in the Solent, near Portsmouth, England, and is now a luxury hotel.
+    The fort remained unused after the abolition of coastal artillery in 1956. Until 1982 it underwent restoration and was opened to the public as a museum. In 2012 The fort was remodelled, with works reportedly costing around £2.6 million, it opened as a luxury spa hotel and retreat with nine bedroom suites.`,
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Guests_Arriving_at_Spitbank_Fort.jpg/1024px-Guests_Arriving_at_Spitbank_Fort.jpg',
+    status: true, 
+    tags: ['hotel', 'fort'],
+    latitude: 50.770444, 
+    longitude: -1.099083, 
+  },
+  {
     title: 'Old Sarum', //String
     typeOfPlace: 'Place of Interest', //String
     description: `
