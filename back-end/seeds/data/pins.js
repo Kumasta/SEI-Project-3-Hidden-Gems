@@ -41,7 +41,7 @@ export default [
   },
   {
     title: 'Waterloo bridge', //String
-    typeOfPlace: 'Great View', //String
+    typeOfPlace: 'View point', //String
     description: 'Great place to see Big ben, london Eye, the shard and other iconic landmark of London at one place.', //String
     imageUrl: 'https://live.staticflickr.com/1204/696567178_c24e7d78ab_b.jpg', //String
     status: true, //Boolean
@@ -110,7 +110,7 @@ export default [
   },
   {
     title: 'Sheffield Botanical Gardens Bear Pit', //String
-    typeOfPlace: 'Landmark', //String
+    typeOfPlace: 'Other', //String
     description: `THIS BEAR PIT IS THE finest surviving example in the United Kingdom, and its superb condition of the structure is thanks to the many years it was used as Yorkshire's biggest compost pit.
 
     This is a Grade II listed structure and was built in 1836 to home Bruin, a black bear whose sole entertainment was a tree placed in the middle of the pit for him to climb, according to research by local historian Alison Hunter.`, //String
@@ -131,7 +131,7 @@ export default [
   },
   {
     title: 'Forterra brickworks ropeway', //String
-    typeOfPlace: 'Point of Interest', //String
+    typeOfPlace: 'Place of Interest', //String
     description: `Little changed since its construction in 1924, the ropeway is used to bring shale from a quarry on Claughton Moor, approximately a mile and a quarter distant from, and 750 ft above, Hanson Brick Works.
 
     At the quarry, shale is lifted by a front loading shovel and moved up a ramp to be tipped into an initial crusher, and fed into the loading bunker, from which the ropeway buckets are loaded. Having made the journey to the works, the shale is either tipped into dry stock, or loaded into a dump-truck and moved into the stocking area.
@@ -150,7 +150,7 @@ export default [
   },
   {
     title: 'The hill house', //String
-    typeOfPlace: 'Point of Interest', //String
+    typeOfPlace: 'Place of Interest', //String
     description: `The Hill House is considered to be Charles Rennie Mackintosh's domestic masterpiece. Working to a commission from Glasgow book publisher Walter Blackie, up-and-coming architect Mackintosh and his wife Margaret created almost everything you see here, from the building itself to the furniture and textiles.
 
     Mackintosh was a revolutionary designer, but the materials and techniques at the cutting edge of architectural design in 1900 haven't withstood a century of the west of Scotland's harsh, wet weather conditions.
@@ -166,7 +166,7 @@ export default [
   },
   {
     title: 'Mannakin', //String
-    typeOfPlace: 'Place of interest', //String
+    typeOfPlace: 'Place of Interest', //String
     description: `Mannequins are generally bought, used once for a project, and then thrown away to landfill. Except here, at Mannakin in Lincolnshire. Thanks to Roz and the team at Mannakin.
 
     "My first thought was "don't those mannequins rot, just sitting out there in the weather?" And then I realised: no, not really, they're fibreglass." That's part of the problem Mannakin's trying to help with!
@@ -198,7 +198,7 @@ export default [
   },
   {
     title: 'Siccar Point', //String
-    typeOfPlace: 'Point of interest', //String
+    typeOfPlace: 'Place of Interest', //String
     description: `Siccar Point - the world's most important geological site?
     Not far from Edinburgh, Siccar Point is a rocky promontory that has become a place of pilgrimage for geologists from across the globe, and you can visit it too. Prepare to be inspired!
     James Hutton, father of modern geology, visited Siccar Point by boat in 1788, an event which led to a profound change in the way the history of the Earth was understood. A man ahead of his time, James Hutton used the evidence from Siccar Point to decode Earth processes and to argue for a much greater length of geological time than was popularly accepted. As John Playfair later recorded of their visit “The mind seemed to grow giddy by looking so far into the abyss of time”. A concept of ‘deep time’ emerged with the recognition that the geological processes occurring around us today have operated over a long period and will continue to do so into the future.
@@ -226,7 +226,7 @@ export default [
   },
   {
     title: 'The Strid at Bolton Abbey', //String
-    typeOfPlace: 'Walk', //String
+    typeOfPlace: 'Nature', //String
     description: `Strid Wood, one of the largest remnants of sessile oak trees in the Yorkshire Dales hugs the banks of the river Wharfe and invites visitors to walk its shaded paths. Renowned for the flora and fauna, bluebells flower in late April and early May, followed by wild garlic in bloom. This majestic wood is home to a myriad of wildlife including roe deer, otters, kingfisher and greater spotted woodpecker.
 
     In 1810 the 6th Duke of Devonshire and the Rev. William Carr opened Strid Wood and invited the public to walk the paths they created. Enjoy the views from the carefully placed seats along the nature trails.
@@ -242,7 +242,7 @@ export default [
   },
   {
     title: 'LEADHILLS AND WANLOCKHEAD RAILWAY', //String
-    typeOfPlace: 'train', //String
+    typeOfPlace: 'Other', //String
     description: `This narrow gauge railway operates between Scotland's highest villages, Leadhills and Wanlockhead.
 
     The railway has been built on the track-bed of the erstwhile Caledonian Railway branch line which ran from Elvanfoot to Wanlockhead and was opened in 1901 and closed in 1938. Now is open again run by vulunteers. 
@@ -258,7 +258,7 @@ export default [
   },
   {
     title: 'Uffington White Horse', //String
-    typeOfPlace: 'landmark', //String
+    typeOfPlace: 'Landmark', //String
     description: 'The Uffington White Horse is a prehistoric hill figure, 110 m (360 ft) long, formed from deep trenches filled with crushed white chalk. The figure is situated on the upper slopes of White Horse Hill in the English civil parish of Uffington (in the ceremonial county of Oxfordshire and historic county of Berkshire), some 16 km (10 mi) east of Swindon, 8 km (5.0 mi) south of the town of Faringdon and a similar distance west of the town of Wantage; or 2.5 km (1.6 mi) south of Uffington. The hill forms a part of the scarp of the Berkshire Downs and overlooks the Vale of White Horse to the north. The best views of the figure are obtained from the air, or from directly across the Vale, particularly around the villages of Great Coxwell, Longcot and Fernham. The site is owned and managed by the National Trust and is a scheduled monument. The Guardian stated in 2003 that "for more than 3,000 years, the Uffington White Horse has been jealously guarded as a masterpiece of minimalist art." The Uffington Horse is by far the oldest of the white horse figures in Britain and is of an entirely different design from the others inspired by it.', //String
     imageUrl: 'https://www.thetimes.co.uk/imageserver/image/%2Fmethode%2Fsundaytimes%2Fprod%2Fweb%2Fbin%2F429d73be-debf-11e9-b45c-5f9a8625c8c9.jpg?crop=2667%2C1500%2C0%2C0', //String
     status: false, //Boolean
@@ -298,7 +298,7 @@ export default [
   },
   {
     title: 'Toca Social', //String
-    typeOfPlace: 'Gaming Centre', //String
+    typeOfPlace: 'Recreation', //String
     description: 'TOCA Social is the world\'s first interactive football and dining experience, combining immersive gaming and world class food and drink. Book a private box or two, for 60 or 90 minutes to play all our games. Each box accommodates 12 players. Or just walk-in to enjoy our fantastic food and drinks, as well as free-to-use foosball tables, arcades, selfie booths, and more.', //String
     imageUrl: 'https://img2.storyblok.com/1650x848/smart/filters:quality(100):format(webp)/f/110790/2000x1333/f9f56711f2/casual_kicking_rear_01_lr.jpg', //String
     status: true, //Boolean

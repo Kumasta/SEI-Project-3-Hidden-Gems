@@ -14,6 +14,7 @@
     background-color: rgb(255, 255, 255);
     margin-top: 0.5%;
     margin-left: 0.5%;
+    width: 190px !important;
   }
   .collapse, .show, .container{
     margin-top: 45px;
@@ -24,6 +25,25 @@
   @media only screen and (max-width: 800px) {
     .collapse, .show, .container{
       width: 80%;
+    }
+  }
+}
+
+#map-filter-box{
+  padding-bottom: 10px;
+  select{
+    background-color: rgb(241, 241, 241);
+  }
+  .address-box{
+    border: 1px solid rgba(0, 0, 0, 0.103);
+    border-radius: 5px;
+    min-height: 42px;
+    margin-bottom: 2px;
+    padding: 5px;
+    background-color: rgb(231, 231, 231);
+    &:hover{
+      background-color: rgb(194, 194, 194);
+      cursor: pointer;
     }
   }
 }

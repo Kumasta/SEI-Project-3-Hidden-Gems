@@ -4,16 +4,42 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 import MiniMap from './MiniMap'
 import { getLocalToken } from '../../enviroment/auth'
 import { typeList } from '../../enviroment/typeList'
 const PinFormEdit = () => {
   const [allPins, setAllPins] = useState([])
-  const { id } = useParams()
+  const [allTags, setAllTags] = useState([])
+  const [allTagsStructured, setAllTagsStructured] = useState([])
+  const [defaultMultiSelect, setDefaultMultiSelect] = useState(null)
+  const [defaultTypeSelect, setDefaultTypeSelect] = useState(null)
+  const [tags, setsTags] = useState(null)
   const [latLng, setLatLng] = useState()
+  const [formData, setFormData] = useState({
+    title: '',
+    typeOfPlace: '',
+    description: '',
+    imageUrl: '',
+    status: true,
+    tags: '',
+    latitude: null,
+    longitude: null,
+  })
+
+  const [formErrors, setFormErrors] = useState({
+    title: '',
+    typeOfPlace: '',
+    description: '',
+    imageUrl: '',
+  })
+
+  const uploadAPI = 'https://api.cloudinary.com/v1_1/dv2dfzekf/image/upload'
+  const uploadPreset = 'ip80rysk'
+  const { id } = useParams()
   const allTypes = typeList()
+  const navigate = useNavigate()
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -26,9 +52,6 @@ const PinFormEdit = () => {
     getData()
   }, [])
 
-  const [allTags, setAllTags] = useState([])
-  const [allTagsStructured, setAllTagsStructured] = useState([])
-
   useEffect(() => {
     let allTag = []
     allPins.forEach(pin => {
@@ -37,8 +60,6 @@ const PinFormEdit = () => {
     const uniqueTagArray = [...new Set(allTag)]
     setAllTags(uniqueTagArray)
   }, [allPins])
-
-
 
   useEffect(() => {
     const selectOptions = []
@@ -51,34 +72,6 @@ const PinFormEdit = () => {
     setAllTagsStructured(selectOptions)
     console.log(allTagsStructured)
   }, [allTags])
-
-
-
-  const uploadAPI = 'https://api.cloudinary.com/v1_1/dv2dfzekf/image/upload'
-  const uploadPreset = 'ip80rysk'
-
-  const [tags, setsTags] = useState(null)
-  const [formData, setFormData] = useState({
-    title: '',
-    typeOfPlace: '',
-    description: '',
-    imageUrl: '',
-    status: true,
-    tags: '',
-    latitude: null,
-    longitude: null,
-  })
-
-  const [defaultMultiSelect, setDefaultMultiSelect] = useState(null)
-  const [defaultTypeSelect, setDefaultTypeSelect] = useState(null)
-
-  const [formErrors, setFormErrors] = useState({
-    title: '',
-    typeOfPlace: '',
-    description: '',
-    imageUrl: '',
-  })
-
 
   useEffect(() => {
     const getData = async () => {
@@ -117,8 +110,6 @@ const PinFormEdit = () => {
     setDefaultTypeSelect(selectOptions)
   }
 
-  const navigate = useNavigate()
-
   const handleUpload = async (e) => {
     const data = new FormData()
     data.append('file', e.target.files[0])
@@ -133,6 +124,11 @@ const PinFormEdit = () => {
     setFormData(newObj)
     setFormErrors({ ...formErrors, [e.target.name]: '' })
   }
+
+  useEffect(() => {
+    setLatLng({ latitude: formData.latitude, longitude: formData.longitude })
+    console.log(formData)
+  }, [formData])
 
   const handleMultiCreateChange = (field, value) => {
     console.log(value)
@@ -186,9 +182,10 @@ const PinFormEdit = () => {
 
   return (
     <Container className='form'>
-      {latLng && <MiniMap latLng={latLng} />}
+      <h2>Edit Gem</h2>
       <Form onSubmit={handleSubmit} className='mt-4'>
-        <h2>Edit pin</h2>
+      {latLng && <MiniMap latLng={latLng} setFormData={setFormData} formData={formData} />}
+      <Form.Text>Drag pin to adjust Gem Location</Form.Text>
         <hr />
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='title'>Update name of place?<span className='text-danger'>*</span></Form.Label>

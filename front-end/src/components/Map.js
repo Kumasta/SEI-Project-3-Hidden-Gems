@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
-import ReactMapGL, { Popup, NavigationControl, FullscreenControl, GeolocateControl } from 'react-map-gl'
+import React, { useState, useEffect } from 'react'
+import ReactMapGL, { Popup, NavigationControl, FullscreenControl, GeolocateControl, Marker } from 'react-map-gl'
 import { Link } from 'react-router-dom/'
 import Button from 'react-bootstrap/Button'
 import axios from 'axios'
@@ -15,6 +15,7 @@ function Map({ newPin, setNewPin }) {
   const [filterOn, setFilterOn] = useState(false)
   const [filterList, setFilterList] = useState([])
   const [pinData, setPindata] = useState([])
+  const [addressPin, setAddressPin] = useState(null)
   const [viewPort, setViewPort] = useState({
     latitude: 51.515,
     longitude: -0.078,
@@ -82,16 +83,17 @@ function Map({ newPin, setNewPin }) {
                   <div id='new-popup'>
                     <h6>Want to make a new pin?</h6>
                     <div>
-                    {/* <Link className='btn-dark btn' variant='primary' to={'/Login'}>Login</Link> */}
-                    <Link className='btn-dark btn' variant='primary' to={'/Register'}>Register</Link>
+                      {/* <Link className='btn-dark btn' variant='primary' to={'/Login'}>Login</Link> */}
+                      <Link className='btn-dark btn' variant='primary' to={'/Register'}>Register</Link>
                     </div>
                   </div>
                 }
 
               </Popup>
             }
-            <MapFilter pinData={pinData} filterList={filterList} setFilterList={setFilterList} setFilterOn={setFilterOn} />
-            {/* <GeocoderComp viewPort={viewPort}/> */}
+            <MapFilter pinData={pinData} filterList={filterList} setFilterList={setFilterList} setFilterOn={setFilterOn} setViewPort={setViewPort} viewPort={viewPort} setAddressPin={setAddressPin}/>
+            {addressPin &&
+            <Marker latitude={addressPin.latitude} longitude={addressPin.longitude}></Marker>}
           </ReactMapGL>
         </>
         :

@@ -19,9 +19,8 @@ export const typeList = () => {
     'Night Out',
     'Quiet Spot',
     'Shopping',
-    'Other',
     'Event',
     'Festival',
-    'Other'
+    'Tourist Atraction'
     ]
 }

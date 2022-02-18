@@ -15,6 +15,31 @@ import { typeList } from '../../enviroment/typeList'
 const PinForm = ({ newPin }) => {
   const allTypes = typeList()
   const [allPins, setAllPins] = useState([])
+  const [tags, setsTags] = useState(null)
+  const [latLng, setLatLng] = useState()
+  const [allTags, setAllTags] = useState([])
+  const [allTagsStructured, setAllTagsStructured] = useState([])
+
+  const uploadAPI = 'https://api.cloudinary.com/v1_1/dv2dfzekf/image/upload'
+  const uploadPreset = 'ip80rysk'
+
+  const [formData, setFormData] = useState({
+    title: '',
+    typeOfPlace: '',
+    description: '',
+    imageUrl: '',
+    status: true,
+    tags: '',
+    latitude: null,
+    longitude: null,
+  })
+
+  const [formErrors, setFormErrors] = useState({
+    title: '',
+    typeOfPlace: '',
+    description: '',
+    imageUrl: '',
+  })
 
   useEffect(() => {
     const getData = async () => {
@@ -27,9 +52,6 @@ const PinForm = ({ newPin }) => {
     }
     getData()
   }, [])
-
-  const [allTags, setAllTags] = useState([])
-  const [allTagsStructured, setAllTagsStructured] = useState([])
 
   useEffect(() => {
     let allTag = []
@@ -55,7 +77,6 @@ const PinForm = ({ newPin }) => {
     if (!storedLocation) return
     console.log(storedLocation)
     setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
-    setLatLng(storedLocation)
     console.log(latLng)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newPin])
@@ -74,31 +95,9 @@ const PinForm = ({ newPin }) => {
     console.log(selectOptions)
   }, [allTags])
 
-
-
-  const uploadAPI = 'https://api.cloudinary.com/v1_1/dv2dfzekf/image/upload'
-  const uploadPreset = 'ip80rysk'
-
-  const [tags, setsTags] = useState(null)
-
-  const [latLng, setLatLng] = useState()
-  const [formData, setFormData] = useState({
-    title: '',
-    typeOfPlace: '',
-    description: '',
-    imageUrl: '',
-    status: true,
-    tags: '',
-    latitude: null,
-    longitude: null,
-  })
-
-  const [formErrors, setFormErrors] = useState({
-    title: '',
-    typeOfPlace: '',
-    description: '',
-    imageUrl: '',
-  })
+  useEffect(() => {
+    setLatLng({ latitude: formData.latitude, longitude: formData.longitude })
+  }, [formData])
 
   const navigate = useNavigate()
 
@@ -175,9 +174,10 @@ const PinForm = ({ newPin }) => {
 
   return (
     <Container className='form'>
-      {latLng && <MiniMap latLng={latLng}/>}
+      <h2>Create a new Gem</h2>
       <Form onSubmit={handleSubmit} className='mt-4'>
-        <h2>Create a new pin</h2>
+      {latLng && <MiniMap latLng={latLng} setFormData={setFormData} formData={formData} />}
+      <Form.Text>Drag pin to adjust Gem Location</Form.Text>
         <hr />
         <Form.Group className='mb-2'>
           <Form.Label htmlFor='title'>Name of place<span className='text-danger'>*</span></Form.Label>
