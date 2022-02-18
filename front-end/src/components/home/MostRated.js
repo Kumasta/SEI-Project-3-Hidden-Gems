@@ -15,7 +15,7 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
 
     if (pinData.length) {
       const filteredRatings = pinData.filter(pin => pin.avgRating >= 4)
-      console.log('filteredRating',filteredRatings)
+      console.log('filtered Ratings',filteredRatings)
       let arrayLength = 3
       if (filteredRatings.length < 3) {
         arrayLength = filteredRatings.length

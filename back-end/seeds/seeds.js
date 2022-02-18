@@ -19,14 +19,31 @@ const seedDB = async () => {
     console.log(`🌱 Users added: ${users.length}`)
 
     // Add owner to seed documents
-    const pinsWithOwers = pinData.map(pin => {
+
+    const pinsSplitInTwo = pinData.length / 2
+
+    const pinsWithOwnerOne = pinData.slice(0, pinsSplitInTwo)
+    const pinsWithOwnerTwo = pinData.slice(pinsSplitInTwo)
+
+    // console.log('owner one',pinsWithOwnerOne)
+    // console.log('owner two',pinsWithOwnerTwo)
+
+    const pinsWithOwner = pinsWithOwnerOne.map(pin => {
       return { ...pin, owner: users[0]._id }
     })
-    // console.log(pinsWithOwers)
+
+    const pinsWithOwner2 = pinsWithOwnerTwo.map(pin => {
+      return { ...pin, owner: users[1]._id }
+    })
+
 
     //Seed all the collections we have with our data
-    const pinsAdded = await Pin.create(pinsWithOwers)
+    const pinsAdded = await Pin.create(pinsWithOwner)
     console.log(`🌱 Seeded database with ${pinsAdded.length} pins`)
+
+    const pinsAdded2 = await Pin.create( pinsWithOwner2)
+    console.log(`🌱 Seeded database with ${pinsAdded2.length} pins`)
+    
     //Close the database connection
     await mongoose.connection.close()
     console.log('🔚 Seed Finished')
