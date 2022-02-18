@@ -6,16 +6,11 @@ import Card from 'react-bootstrap/Card'
 import Form from 'react-bootstrap/Form'
 import { typeList } from '../../enviroment/typeList'
 
-<<<<<<< HEAD
 import Rating from '../utilities/Rating'
 
 const SearchFilter = ({ pinData, setRatingUpdated }) => {
 
-=======
-const SearchFilter = ({ pinData }) => {
   const allTypes = typeList()
->>>>>>> development
-
 
   const [filteredPins, setFilteredPins] = useState([])
   const [filters, setFilters] = useState({ typeOfPlace: 'All', searchInput: '' })
@@ -59,7 +54,7 @@ const SearchFilter = ({ pinData }) => {
       <div className='search-result-container container-sm'>
         {(filteredPins.length ? filteredPins : pinData).map((pin, i) => {
             return (
-              <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
+              <Card className='card-container ' key={i} style={{ width: '18rem', height: '18rem' }}>
                 <Link className='pins-link' to={`/pins/${pin._id}`}>
                   <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
                   <Card.Body>
@@ -75,7 +70,6 @@ const SearchFilter = ({ pinData }) => {
           }
         </div>
         </section>
-
   )
 }
 

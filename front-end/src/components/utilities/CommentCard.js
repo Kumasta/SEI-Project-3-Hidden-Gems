@@ -13,7 +13,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
   const [ commentEdit, setCommentEdit ] = useState(true)
   const [ likeId, setLikeId ] = useState(false)
   
-
+//COMMENTS
   const deleteComment = async () => {
     try {
       await axios.delete(`/api/pins/${pin._id}/reviews/${review.id}`, {
@@ -59,6 +59,7 @@ const CommentCard = ({ review, pin, setRatingUpdated }) => {
     return setCommentEdit(true)
   }
 
+  //LIKES
   const payload = getPayload()
 
   const likeOwner = review.likes.findIndex(owner => {

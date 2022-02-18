@@ -16,7 +16,7 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
       parseFloat(a.averageRating))
     console.log('sorted-ratings', sortedRatings)
 
-    const topRated = sortedRatings.slice(0, 4)
+    const topRated = sortedRatings.slice(0, 3)
     console.log('topRated', topRated)
     setTopRated(topRated)
   }, [pinData])

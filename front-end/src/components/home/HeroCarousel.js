@@ -7,7 +7,7 @@ import Carousel from 'react-bootstrap/Carousel'
 const HeroCarousel = ({ randomHeroImages }) => {
 
   return (
-    <section className='hero-container container-sm'>
+    <section className='hero-container container' id='hero-container'>
       <Carousel className='carousel-container'>
         {randomHeroImages.map((pin, i) => {
           return (
@@ -27,7 +27,7 @@ const HeroCarousel = ({ randomHeroImages }) => {
         })
         }
       </Carousel>
-    </section>
+      </section>
   )
 }
 

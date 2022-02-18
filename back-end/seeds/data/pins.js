@@ -2,7 +2,7 @@ export default [
   {
     title: 'Kaws Exhibition', //String
     typeOfPlace: 'Art Exhibition', //String
-    description: 'In his first major solo exhibition in London,KAWS (Brian Donnelly b.1974) presents new and recent works in physical and augmented reality. The exhibition is presented in collaboration with Acute Art and curated by Acute Art\'s Artistic Director, Daniel Birnbaum. A parallel digital version of the show launches simultaneously in Fortnite, a video game developed by Epic Games.', //String
+    description: 'Brian Donnelly, known as KAWS, rose to stardom by creating character figures called Companion, a cross between Mickey Mouse and the Michelin Man. He presents them in different forms, sizes and colours, from sculpture to paintings, or toys. In his first major solo show in London, KAWS is adding a multilayered virtual twist to his work. The exhibition, presented in collaboration with Acute Art – a company that produces and sells works in virtual and augmented reality – exists in three realities: physical at the Serpentine, digital on your mobile by using the Acute Art app on-site, and on the gaming platform Fortnite where a virtual recreation of the show can be watched by players from all over the world.', //String
     imageUrl: 'https://d37zoqglehb9o7.cloudfront.net/uploads/2022/01/%C2%A9Jonty-Wilde_KAWS_NEWFICTION-20220080-1335x1001.jpg', //String
     status: true, //Boolean
     tags: ['art'], //Array of strings
@@ -22,8 +22,8 @@ export default [
   {
     title: 'Dans Le Noir', //String
     typeOfPlace: 'Restaurant', //String
-    description: 'Dans le Noir ? located in the heart of London invites you to dine in complete darkness, accompanied and served by unexpected guides. Enjoying dinner or lunch in pitch darkness is an original experience that allows us to re-evaluate our perception of taste by reawakening senses overwhelmed by the omnipresence of sight, to reinvigorate our relationship with the world and others and to experience a surprising encounter with something different.', //String
-    imageUrl: 'https://hips.hearstapps.com/harpersbazaaruk.cdnds.net/16/12/1458661695-dans-le-noir.jpg', //String
+    description: 'Dans le Noir ? Located in the heart of London invites you to dine in complete darkness, accompanied and served by unexpected guides. Enjoying dinner or lunch in pitch darkness is an original experience that allows us to re-evaluate our perception of taste by reawakening senses overwhelmed by the omnipresence of sight, to reinvigorate our relationship with the world and others and to experience a surprising encounter with something different.', //String
+    imageUrl: 'https://islingtonnow.co.uk/wp-content/uploads/2016/03/dans-le-noir.jpg', //String
     status: true, //Boolean
     tags: ['Restaurant'], //Array of strings
     latitude: 51.5227734, //Number
@@ -55,7 +55,7 @@ export default [
     description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham. It is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
     status: true, //Boolean
-    tags: ['Phone booth'], //Array of strings
+    tags: ['Phone booth, random'], //Array of strings
     latitude: 51.4676965, //Number
     longitude: -0.0234944, //Number
   },
@@ -289,7 +289,7 @@ export default [
   {
     title: 'Eggslut', //String
     typeOfPlace: 'Restaurant', //String
-    description: 'Eggslut is a chef driven, gourmet food concept founded in 2011. It/s inspired by a true love for eggs. The menu is a balance of comfort and innovation, celebrating food that appeals to both novice and extreme foodie through classic comfort fare with a twist, all encompassing our key ingredient, eggs. Our goal is to share our food with everyone. No longer just a breakfast staple, we make eggs appetizing all day, everyday', //String
+    description: 'Eggslut is a chef driven, gourmet food concept founded in 2011. It\'s inspired by a true love for eggs. The menu is a balance of comfort and innovation, celebrating food that appeals to both novice and extreme foodie through classic comfort fare with a twist, all encompassing the key ingredient, eggs. Our goal is to share our food with everyone. No longer just a breakfast staple, we make eggs appetizing all day, everyday', //String
     imageUrl: 'http://ensdemos.com/eggslut.com/images/banner.jpg', //String
     status: true, //Boolean
     tags: ['Street food'], //Array of strings
@@ -319,11 +319,21 @@ export default [
   {
     title: 'Navrtar', //String
     typeOfPlace: 'Gaming Centre', //String
-    description: 'Looking for a new innovative team building experience… A little heart-racing action with an objective? Why not try Navrtar\'s tantalising VR group experience? Recruit your strongest squad of 5 and survive the oncoming hordes of zombies in the apocalypse or scour crash sites, search and secure intel needed to prevent an alien takeover. See how your team ranks on our monthly leader board. ', //String
+    description: 'Looking for a new innovative team building experience… A little heart-racing action with an objective? Why not try Navrtar\'s tantalising VR group experience? Recruit your strongest squad of 5 and survive the oncoming hordes of zombies in the apocalypse or scour crash sites, search and secure intel needed to prevent an alien takeover. See how your team ranks on our monthly leader board.', //String
     imageUrl: 'https://www.navrtar.com/uploads/images/62/large/5_Demo_Play.jpg?1562013924', //String
     status: true, //Boolean
     tags: ['Bar', 'Gaming', 'Social'], //Array of strings
     latitude: 51.5137015, //Number
     longitude: -0.3066658, //Number
+  },
+  {
+    title: 'Bongo\'s Bingo', //String
+    typeOfPlace: 'Night Out', //String
+    description: 'Bongo’s Bingo is the definitive bingo experience. It\'s a crazy mix of traditional bingo, dance-offs, rave intervals, audience participation and countless magical moments, currently taking place in almost 50 locations around the world. Bongo\'s Bingo is a wild shared social extravaganza and a night of pure nostalgic escapism, with the chance to win iconic prizes from giant pink unicorns and Henry Hoovers to mobility scooters and karaoke machines at each and every show. It\'s immersive, inclusive and incredible. Everyone from 18 to 92 plays and parties together. There are no barriers and no limits. Quite simply, there\'s nothing else like it. Check out our event\'s happening accross England.', //String
+    imageUrl: 'https://i0.wp.com/parlemag.com/wp-content/uploads/2020/12/Bongo-Bingo-Bongos-Bingo.jpg?fit=700%2C404&ssl=1', //String
+    status: true, //Boolean
+    tags: ['Bar', 'Social', 'Party'], //Array of strings
+    latitude: 52.4803254, //Number
+    longitude: -1.8943114, //Number
   }
 ]

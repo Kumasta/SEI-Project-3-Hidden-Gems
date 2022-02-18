@@ -29,7 +29,7 @@ const SiteNav = () => {
   }
 
   return (
-    <Navbar expand='sm' bg='light' className='w-100'>
+    <Navbar expand='sm' className='w-100'>
       <Container>
         <Navbar.Brand href='/'><img src={diamond} alt='Brand' />Hidden Gems</Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />

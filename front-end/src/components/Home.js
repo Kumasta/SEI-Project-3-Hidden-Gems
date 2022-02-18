@@ -9,8 +9,9 @@ import MostRated from './home/MostRated'
 import SearchFilter from './home/SearchFilter'
 import Footer from './utilities/Footer'
 
-const Home = ({ pinData, setPindata }) => {
+const Home = () => {
 
+  const [pinData, setPindata] = useState(null)
   const [hasError, setHasError] = useState({ error: false, message: '' })
   const [randomHeroImages, setRandomHeroImages] = useState([])
 
