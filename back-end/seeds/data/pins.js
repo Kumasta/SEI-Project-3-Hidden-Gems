@@ -278,7 +278,7 @@ export default [
   },
   {
     title: 'Ballie Ballerson', //String
-    typeOfPlace: 'Bar', //String
+    typeOfPlace: 'Night Out', //String
     description: 'Welcome to the EPIC original ball pit cocktail bar! The incredible Ballie Ballerson is like no other bar you’ve ever been to. A world-famous venue featuring over ONE MILLION balls over two ball pits, it will magic you right back to the fun of the playground like a ball pit time machine. Whether you’re being a baller in the VIP section, drinking Dibbie Dabbersons on the dancefloor, or making a name for yourself in the ball pits, it’s an experience that will keep you smiling for hours and have your Insta feed begging for more. Right here is where memories get made…', //String
     imageUrl: 'https://shoreditch.ballieballerson.com/wp-content/uploads/sites/4/2021/03/BC_7863-compressed-scaled.jpg', //String
     status: true, //Boolean
