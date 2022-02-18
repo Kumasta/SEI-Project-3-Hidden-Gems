@@ -48,18 +48,6 @@ export default [
     },
   },
   {
-    username: 'Benedict Cumberbatch',
-    email: 'benedictus@mail.com',
-    password: 'benedictus',
-    passwordConfirmation: 'benedictus',
-    superUser: false,
-    profile: {
-      name: 'Benedict Cumberbatch',
-      bio: 'I have been a dragon, a genius detective and a wizard. What have you done with your life?',
-      profilePicURL: 'https://assets.vogue.com/photos/5ab5674150ba394ce3a683f5/1:1/w_354%2Cc_limit/00-promo-benedict-cumberbatch.jpg',
-    },
-  },
-  {
     username: 'Benedict-Cumberbatch',
     email: 'benedictus@mail.com',
     password: 'benedictus',
@@ -72,7 +60,7 @@ export default [
     },
   },
   {
-    username: 'Egglover',
+    username: 'Egglover', 
     email: 'Egglover@mail.com',
     password: 'Egglover',
     passwordConfirmation: 'Egglover',

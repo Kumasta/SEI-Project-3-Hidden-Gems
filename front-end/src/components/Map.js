@@ -76,12 +76,12 @@ function Map({ newPin, setNewPin }) {
                       pathname: '/pinform',
                       state: { newPin: true }
                     }}>
-                      <Button className='btn-dark btn' variant='primary'>Create new pin?</Button>
+                      <Button className='btn-dark btn' variant='primary'>Create new gem?</Button>
                     </Link>
                   </div>
                   :
                   <div id='new-popup'>
-                    <h6>Want to make a new pin?</h6>
+                    <h6>Want to make a new gem?</h6>
                     <div>
                       {/* <Link className='btn-dark btn' variant='primary' to={'/Login'}>Login</Link> */}
                       <Link className='btn-dark btn' variant='primary' to={'/Register'}>Register</Link>

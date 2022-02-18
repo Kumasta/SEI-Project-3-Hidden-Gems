@@ -75,16 +75,16 @@ const PinForm = ({ newPin }) => {
       return
     }
     if (!storedLocation) return
-    console.log(storedLocation)
+    // console.log(storedLocation)
     setFormData({ ...formData, latitude: storedLocation.latitude, longitude: storedLocation.longitude })
-    console.log(latLng)
+    // console.log(latLng)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newPin])
 
 
   useEffect(() => {
     const selectOptions = []
-    console.log(allTags)
+    // console.log(allTags)
     allTags.map(tag => {
       const obj = {}
       obj.label = tag
@@ -92,7 +92,7 @@ const PinForm = ({ newPin }) => {
       return selectOptions.push(obj)
     })
     setAllTagsStructured(selectOptions)
-    console.log(selectOptions)
+    // console.log(selectOptions)
   }, [allTags])
 
   useEffect(() => {

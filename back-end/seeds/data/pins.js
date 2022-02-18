@@ -15,7 +15,7 @@ export default [
     description: 'Discover the world\'s tallest and longest tunnel slide. Travel up to 15 mph down the UK\'s tallest public artwork through light and dark sections as London\'s dramatic skyscape passes by. Enjoy breathtaking views of London from the observation platform.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2021/07/i875/descender_0011.jpg', //String
     status: true, //Boolean
-    tags: ['Activity', 'Daredevil', 'Social'], //Array of strings
+    tags: ['activity', 'daredevil', 'social'], //Array of strings
     latitude: 51.5382759, //Number
     longitude: -0.01298326647465152, //Number
   },
@@ -25,7 +25,7 @@ export default [
     description: 'Dans le Noir ? Located in the heart of London invites you to dine in complete darkness, accompanied and served by unexpected guides. Enjoying dinner or lunch in pitch darkness is an original experience that allows us to re-evaluate our perception of taste by reawakening senses overwhelmed by the omnipresence of sight, to reinvigorate our relationship with the world and others and to experience a surprising encounter with something different.', //String
     imageUrl: 'https://islingtonnow.co.uk/wp-content/uploads/2016/03/dans-le-noir.jpg', //String
     status: true, //Boolean
-    tags: ['Restaurant'], //Array of strings
+    tags: ['restaurant'], //Array of strings
     latitude: 51.5227734, //Number
     longitude: -0.10626521794643069, //Number
   },
@@ -51,11 +51,11 @@ export default [
   },
   {
     title: 'Phone Booth Book Exchange', //String
-    typeOfPlace: 'Phone Booth', //String
+    typeOfPlace: 'Place of Interest', //String
     description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham. It is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
     status: true, //Boolean
-    tags: ['Phone booth, random'], //Array of strings
+    tags: ['phone booth, random'], //Array of strings
     latitude: 51.4676965, //Number
     longitude: -0.0234944, //Number
   },
@@ -66,7 +66,7 @@ export default [
     The Ancient Market is home to 28 permanent stalls and trades 7 days a week, 10am - 5pm. It boasts a range of traditional market stall holders including a florist, fishmonger and greengrocers, an artisan bakery and a vibrant street food scene serving up authentic cuisines from across the globe.`, //String
     imageUrl: 'https://media.timeout.com/images/105553220/image.jpg', //String
     status: true, //Boolean
-    tags: ['Outdoor market', '7 days a week'], //Array of strings
+    tags: ['outdoor market', '7 days a week'], //Array of strings
     latitude: 51.409673274352876, //Number
     longitude: -0.30628681182861334, //Number
   },
@@ -241,7 +241,7 @@ export default [
     longitude: -1.903, //Number
   },
   {
-    title: 'LEADHILLS AND WANLOCKHEAD RAILWAY', //String
+    title: 'Leadhills and Wanlockhead Railway', //String
     typeOfPlace: 'Other', //String
     description: `This narrow gauge railway operates between Scotland's highest villages, Leadhills and Wanlockhead.
 
@@ -272,27 +272,27 @@ export default [
     description: 'St. Peter\'s Seminary is a former Roman Catholic seminary near Cardross, Argyll and Bute, Scotland. Designed by the firm of Gillespie, Kidd & Coia, it has been described by the international architecture conservation organisation DOCOMOMO as a modern "building of world significance". It is one of only 42 post-war buildings in Scotland to be listed at Category A, the highest level of protection for a building of "special architectural or historic interest". It has been abandoned since 1987, and is currently in a ruinous state. In July 2020, the site was gifted to the Kilmahew Education Trust Ltd who plan to reinstate the educational elements of the Seminary Complex after a process of conservation and restoration. The wider Kilmahew Estate is to be brought back to its former glory with new landscaping and features but is currently closed to the public due to safety concerns.', //String
     imageUrl: 'https://static.dezeen.com/uploads/2019/01/st-peters-seminary-ruin-mad4brutalim-wikimedia-commons_dezeen_1704_hero_a.jpg', //String
     status: false, //Boolean
-    tags: ['grade A listed', 'abandoned'], //Array of strings
+    tags: ['grade A listed', 'Abandoned'], //Array of strings
     latitude: 55.970155, //Number
     longitude: -4.640754, //Number
   },
   {
     title: 'Ballie Ballerson', //String
-    typeOfPlace: 'Bar', //String
+    typeOfPlace: 'Night Out', //String
     description: 'Welcome to the EPIC original ball pit cocktail bar! The incredible Ballie Ballerson is like no other bar you’ve ever been to. A world-famous venue featuring over ONE MILLION balls over two ball pits, it will magic you right back to the fun of the playground like a ball pit time machine. Whether you’re being a baller in the VIP section, drinking Dibbie Dabbersons on the dancefloor, or making a name for yourself in the ball pits, it’s an experience that will keep you smiling for hours and have your Insta feed begging for more. Right here is where memories get made…', //String
     imageUrl: 'https://shoreditch.ballieballerson.com/wp-content/uploads/sites/4/2021/03/BC_7863-compressed-scaled.jpg', //String
     status: true, //Boolean
-    tags: ['Social', 'Cocktails' , 'Bar'], //Array of strings
+    tags: ['Social', 'Cocktails', 'Bar'], //Array of strings
     latitude: 51.5537338, //Number
     longitude: -0.0749773, //Number
-  }, 
+  },
   {
     title: 'Eggslut', //String
     typeOfPlace: 'Restaurant', //String
     description: 'Eggslut is a chef driven, gourmet food concept founded in 2011. It\'s inspired by a true love for eggs. The menu is a balance of comfort and innovation, celebrating food that appeals to both novice and extreme foodie through classic comfort fare with a twist, all encompassing the key ingredient, eggs. Our goal is to share our food with everyone. No longer just a breakfast staple, we make eggs appetizing all day, everyday', //String
     imageUrl: 'http://ensdemos.com/eggslut.com/images/banner.jpg', //String
     status: true, //Boolean
-    tags: ['Street food'], //Array of strings
+    tags: ['foodie', 'street food'], //Array of strings
     latitude: 51.5185131, //Number
     longitude: -0.1325313572852756, //Number
   },
@@ -302,7 +302,7 @@ export default [
     description: 'TOCA Social is the world\'s first interactive football and dining experience, combining immersive gaming and world class food and drink. Book a private box or two, for 60 or 90 minutes to play all our games. Each box accommodates 12 players. Or just walk-in to enjoy our fantastic food and drinks, as well as free-to-use foosball tables, arcades, selfie booths, and more.', //String
     imageUrl: 'https://img2.storyblok.com/1650x848/smart/filters:quality(100):format(webp)/f/110790/2000x1333/f9f56711f2/casual_kicking_rear_01_lr.jpg', //String
     status: true, //Boolean
-    tags: ['Bar', 'Social', 'Activity', 'Brunch'], //Array of strings
+    tags: ['bar', 'gaming', 'social'], //Array of strings
     latitude: 51.502936649999995, //Number
     longitude: 0.0032029278126681844, //Number
   },
@@ -312,17 +312,17 @@ export default [
     description: 'London in the Sky returns this year with all of your favourite, sky-high experiences! Join us at The O2 from 28th April - 30th June for first-class food & drink, served 100ft in the sky with the best vibes going and truly unique views of the capital', //String
     imageUrl: 'https://seeninthecity.co.uk/wp-content/uploads/2020/01/Dine-in-the-Sky-2.jpg', //String
     status: true, //Boolean
-    tags: ['Brunch', 'Daredevil', 'Social'], //Array of strings
+    tags: ['brunch', 'daredevil'], //Array of strings
     latitude: 51.50088895238906, //Number
     longitude: 0.004913806915283204, //Number
   },
   {
     title: 'Navrtar', //String
-    typeOfPlace: 'Gaming Centre', //String
+    typeOfPlace: 'Recreation', //String
     description: 'Looking for a new innovative team building experience… A little heart-racing action with an objective? Why not try Navrtar\'s tantalising VR group experience? Recruit your strongest squad of 5 and survive the oncoming hordes of zombies in the apocalypse or scour crash sites, search and secure intel needed to prevent an alien takeover. See how your team ranks on our monthly leader board.', //String
     imageUrl: 'https://www.navrtar.com/uploads/images/62/large/5_Demo_Play.jpg?1562013924', //String
     status: true, //Boolean
-    tags: ['Bar', 'Gaming', 'Social'], //Array of strings
+    tags: ['bar', 'gaming', 'social'], //Array of strings
     latitude: 51.5137015, //Number
     longitude: -0.3066658, //Number
   },
@@ -332,7 +332,7 @@ export default [
     description: 'Bongo’s Bingo is the definitive bingo experience. It\'s a crazy mix of traditional bingo, dance-offs, rave intervals, audience participation and countless magical moments, currently taking place in almost 50 locations around the world. Bongo\'s Bingo is a wild shared social extravaganza and a night of pure nostalgic escapism, with the chance to win iconic prizes from giant pink unicorns and Henry Hoovers to mobility scooters and karaoke machines at each and every show. It\'s immersive, inclusive and incredible. Everyone from 18 to 92 plays and parties together. There are no barriers and no limits. Quite simply, there\'s nothing else like it. Check out our event\'s happening accross England.', //String
     imageUrl: 'https://i0.wp.com/parlemag.com/wp-content/uploads/2020/12/Bongo-Bingo-Bongos-Bingo.jpg?fit=700%2C404&ssl=1', //String
     status: true, //Boolean
-    tags: ['Bar', 'Social', 'Party'], //Array of strings
+    tags: ['bar', 'cocktails', 'party'], //Array of strings
     latitude: 52.4803254, //Number
     longitude: -1.8943114, //Number
   },
@@ -381,5 +381,102 @@ export default [
     tags: ['hotel', 'fort'],
     latitude: 50.770444, 
     longitude: -1.099083, 
+  },
+  {
+    title: 'Old Sarum', //String
+    typeOfPlace: 'Place of Interest', //String
+    description: `
+    Old Sarum, in Wiltshire, South West England, is the now ruined and deserted site of the earliest settlement of Salisbury. Situated on a hill about 2 miles (3 km) north of modern Salisbury near the A345 road, the settlement appears in some of the earliest records in the country. It is an English Heritage property and is open to the public.\n
+    
+    The great stone circles of Stonehenge and Avebury were erected nearby and indications of prehistoric settlement have been discovered from as early as 3000 BC. An Iron Age hillfort was erected around 400 BC, controlling the intersection of two trade paths and the Hampshire Avon. The site continued to be occupied during the Roman period, when the paths were made into roads. The Saxons took the British fort in the 6th century and later used it as a stronghold against marauding Vikings. The Normans constructed a motte and bailey castle, a stone curtain wall, and a great cathedral. A royal palace was built within Old Sarum Castle for King Henry I and was subsequently used by Plantagenet monarchs. This heyday of the settlement lasted for around 300 years until disputes between the Sheriff of Wiltshire and the Bishop of Salisbury finally led to the removal of the church into the nearby plain. As New Salisbury grew up around the construction site for the new cathedral in the early 13th century, the buildings of Old Sarum were dismantled for stone and the old town dwindled. Its long-neglected castle was abandoned by Edward II in 1322 and sold by Henry VIII in 1514. Edward Rutherfurd's 1987 novel Sarum traces the history of the town.\n
+    
+    Although the settlement was effectively uninhabited, its landowners continued to have parliamentary representation into the 19th century, making it one of the most notorious of the rotten boroughs that existed before the Reform Act of 1832. Old Sarum served as a pocket borough of the Pitt family.\n
+    
+    Old Sarum is also the name of a modern settlement north-east of the monument, where there is a grass strip airfield and a small business park, and large 21st-century housing developments.\n`, //String
+    imageUrl: 'https://www.baldhiker.com/wp-content/uploads/2021/11/Old-sarum-Salisbury.jpg', //String
+    status: true, //Boolean
+    tags: ['historic', 'ruins', 'windy'], //Array of strings
+    latitude: 51.093201, //Number
+    longitude: -1.803498, //Number
+  },
+  {
+    title: 'Kingsgate Bay', //String
+    typeOfPlace: 'Beach', //String
+    description: 'Thanet\'s sandy beaches pull in plenty of visitors on warm, sunny days, but most head for Margate\'s cafe-rich stretch or Broadstairs\' amenities-aplenty Joss Bay and Botany Bay. Kingsgate Bay (between the two) is a little less accessible - there is no car park and no toilets - and consequently much quieter. A short walk at low tide from Botany Bay through a chalk seacliff arch is all it takes to shake off the crowds. There\'s nothing much to do on arrival except settle with a picnic, go for a swim in the shallow, sheltered sea, or peer into a rockpool. Which, of course, is plenty.', //String
+    imageUrl: 'https://i.guim.co.uk/img/media/e5bf8090d31ea652b4022b760419fc7bdb2bf3dc/0_91_1300_780/master/1300.jpg?width=1020&quality=45&auto=format&fit=max&dpr=2&s=6d14e5673e1fc041dcea89a2d64cf424', //String
+    status: true, //Boolean
+    tags: ['day out', 'reading spot'], //Array of strings
+    latitude: 51.384152, //Number
+    longitude: 1.441799, //Number
+  },
+  {
+    title: 'Steephill Cove', //String
+    typeOfPlace: 'Beach', //String
+    description: `Although the beach fills up with sandcastle-building families at peak periods, its lack of vehicular access means that Steephill Cove remains off the more obvious tourist trails. Approach it by parking in Ventnor's Botanic Gardens, then wander past towering echium and tropical planting to the coastal path. A steep descent pitches you out onto the sandy beach where it's all about beach huts, deckchair hire and pretty holiday cottages converted from a former lighthouse, a boat house and fishermen's cottages. Some fishing boats still sail to catch lobster and crab served up in pasties from shoreside cafes.\n
+    Where to stay In a barn conversion at Bank End Farm near Ventnor, seven nights from £555 per week (sleeps 2) to £2,137 (sleeps 8), limited availability. Try cottages at Steephill Cove, various prices and room sizes, but booking up quickly.`, //String
+    imageUrl: 'https://i.guim.co.uk/img/media/ab7533f02f7fb84b75109078d5911a8db664e7df/192_47_7922_4756/master/7922.jpg?width=860&quality=45&auto=format&fit=max&dpr=2&s=1db1c0c82bbfbee2e0d50f771897de3d', //String
+    status: true, //Boolean
+    tags: ['day out', 'reading spot', 'Isle of Wight', 'island trip'], //Array of strings
+    latitude: 50.588887, //Number
+    longitude: -1.223740, //Number
+  },
+  {
+    title: 'Valley of the Rocks', //String
+    typeOfPlace: 'Walk', //String
+    description: `The Valley of the Rocks (also known as 'Valley of Rocks') is a dramatic section of coastline on the northern edge of Exmoor. Exmoor never fails to disappoint when it comes to varied and interesting landscape, with this spot certainly being no exception. Arriving in the deep valley floor, steep craggy cliffs on either side of you climb up to point skyward. Climb to the cliff tops and breathe in the fresh salty sea air, with spectacular views of the seascape. Whether you are there under crystal clear blue skies or stormy atmospheric clouds, this is a great place to feel refreshed and rejuvenated.
+    (5.8km/3.6miles | 2 hours)`, //String
+    imageUrl: 'https://www.thebestofexmoor.co.uk/blog/wp-content/uploads/2018/08/valley-of-the-rocks-sunset.jpg', //String
+    status: true, //Boolean
+    tags: ['day out', 'stunning'], //Array of strings
+    latitude: 51.231733, //Number
+    longitude: -3.855919, //Number
+  },
+  {
+    title: 'Rhinefield Forest', //String
+    typeOfPlace: 'Walk', //String
+    description: `A pine-scented route that sweeps through the heart of the New Forest National Park, Rhinefield Ornamental Drive is home to some of the tallest trees in England.
+
+    Alongside the oak, ash and beech, non-native trees are an outstanding feature of the park. Lining the Drive are fifty-metre-tall redwoods and mighty Douglas firs that were planted by the Victorians in the 1850s.
+    
+    Stroll beneath their fragrant branches, feel their thick bark and reach your arms around their massive girths. As you wander, look for roe deer, wild boar and New Forest ponies with spring foals. In summer, enjoy blooming azaleas, pink rhododendrons and the songs of firecrests, hawfinches and other resident birds.
+
+    This gentle walk guides you past some of Britain's most impressive trees. Easy to follow, with interactive boards along parts of the route, it makes for a fantastic family outing with young tree-lovers. If the weather's wet, wear wellies for the Blackwater ford crossing. (5.1km/3.2 miles | 1.5 hours)`, //String
+    imageUrl: 'https://cdn2.wanderlust.co.uk/media/1025/cropped-shutterstock_1242027388.jpg?anchor=center&mode=crop&width=1920&height=0&format=auto&quality=90&rnd=132012886990000000', //String
+    status: true, //Boolean
+    tags: ['day out', 'forest', 'family trip'], //Array of strings
+    latitude: 50.827672, //Number
+    longitude: -1.619690, //Number
+  },
+  {
+    title: 'Tintern Abbey', //String
+    typeOfPlace: 'Landmark with a twist', //String
+    description: 'The roofless ruins of this 13th century Cistercian Abbey on the Welsh bank of the River Wye perfectly captured the Romantic spirit of poets and painters when it became a famous landmark for the second time in the 18th century. Wordsworth wrote a poem "Composed a Few Miles Above Tintern Abbey" that beautifully evoked the "wild secluded scene" and Turner visited to sketch for later paintings. Today, one of the best viewpoints of the abbey is from the Devils Pulpit Circular Walk.', //String
+    imageUrl: 'https://visitwalesimages.thedms.co.uk/eandapics/MW/vlarge/1013045_6_1.jpg', //String
+    status: true, //Boolean
+    tags: ['day out', 'reading spot'], //Array of strings
+    latitude: 52.237228,//Number
+    longitude: -6.837664,//Number
+  },
+  {
+    title: 'South Stack Lighthouse', //String
+    typeOfPlace: 'Landmark', //String
+    description: 'The historic South Stack Lighthouse is located on a small island reached via a descent of 400 steps down the steep mainland cliffs. \n Visitors may tour the former lighthouse engine room before climbing to the top of the lighthouse. South Stack is a wonderful place to watch thousands of breeding seabirds including guillemots, razorbills and puffins. \n Tours of South Stack Lighthouse are organised by South Stack Ynys Lawd Ltd. under licence from the Corporation of Trinity House.', //String
+    imageUrl: 'https://loveincorporated.blob.core.windows.net/contentimages/gallery/fa65be1d-fb93-44fe-b906-3b342a2b272d-Landmarks_SouthStackLighthouse.jpg', //String
+    status: true, //Boolean
+    tags: ['lighthouse', 'stunning', 'coastline', 'island trip'], //Array of strings
+    latitude: 53.306934, //Number
+    longitude: -4.698835, //Number
+  },
+  {
+    title: 'Alnwick Poison Garden', //String
+    typeOfPlace: 'Other', //String
+    description: 'The Alnwick Garden plays host to the small but deadly Poison Garden—filled exclusively with around 100 toxic, intoxicating, and narcotic plants. The boundaries of the Poison Garden are kept behind black iron gates, only open on guided tours. \n Visitors are strictly prohibited from smelling, touching, or tasting any plants, although some people still occasionally faint from inhaling toxic fumes while walking in the garden.', //String
+    imageUrl: 'https://images2.minutemediacdn.com/image/upload/c_crop,h_898,w_1600,x_0,y_124/f_auto,q_auto,w_1100/v1625863021/shape/mentalfloss/648214-wiki.jpg', //String
+    status: true, //Boolean
+    tags: ['garden', 'deadly'], //Array of strings
+    latitude: 55.413570, //Number
+    longitude: -1.699368, //Number
   }
 ]
+
+
