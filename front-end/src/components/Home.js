@@ -9,15 +9,22 @@ import MostRated from './home/MostRated'
 import SearchFilter from './home/SearchFilter'
 import Footer from './utilities/Footer'
 
-const Home = ({ pinData, setPindata }) => {
+const Home = () => {
 
+  const [pinData, setPindata] = useState(null)
   const [hasError, setHasError] = useState({ error: false, message: '' })
+  const [randomHeroImages, setRandomHeroImages] = useState([])
 
   useEffect(() => {
     const getPinsData = async () => {
       try {
         const { data } = await axios.get('/api/pins')
-        console.log('Get data request', data)
+        let randomCarouselImgs = []
+        while (randomCarouselImgs.length < 5) {
+          randomCarouselImgs.push(data[Math.floor(Math.random() * data.length)])
+          randomCarouselImgs = [...new Set(randomCarouselImgs)]
+        }
+        setRandomHeroImages(randomCarouselImgs)
         setPindata(data)
       } catch (error) {
         setHasError({ error: true, message: error.message })
@@ -28,28 +35,42 @@ const Home = ({ pinData, setPindata }) => {
 
   return (
     <>
-    {pinData ?   
-      <>
-        <section className='hero-container container-sm'>
-          <HeroCarousel pinData={pinData} />
-        </section>
-        <main>
-          <section className='most-rated-container container-sm'>
-            <MostRated pinData={pinData} />
-          </section>
-          <section className='search-section'>
-            <SearchFilter pinData={pinData} />
-          </section>
-        </main>
-        <Footer />
-      </>
-      :
-      <h2 className='text-center'>
-        {hasError.error ? 'Page loading...' 
-        : <Spinner />
-        }
-      </h2>
+      {pinData ?
+          <HeroCarousel randomHeroImages={randomHeroImages} />
+        :
+        <>
+          <h2 className='text-center'>
+            {hasError.error ? 'Something went wrong!' 
+            : 
+            <Spinner />}
+          </h2>
+        </>
       }
+      <main>
+        {pinData ?
+            <MostRated pinData={pinData} />
+          :
+          <>
+          <h2 className='text-center'>
+            {hasError.error ? 'Something went wrong!' 
+            : 
+            <Spinner />}
+          </h2>
+        </>
+        }
+        {pinData ?
+            <SearchFilter pinData={pinData} />
+          :
+          <>
+          <h2 className='text-center'>
+            {hasError.error ? 'Something went wrong!' 
+            : 
+            <Spinner />}
+          </h2>
+        </>
+        }
+      </main>
+      <Footer />
     </>
   )
 }

@@ -16,7 +16,7 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
       parseFloat(a.averageRating))
     console.log('sorted-ratings', sortedRatings)
 
-    const topRated = sortedRatings.slice(0, 4)
+    const topRated = sortedRatings.slice(0, 3)
     console.log('topRated', topRated)
     setTopRated(topRated)
   }, [pinData])
@@ -24,31 +24,31 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
 
   return (
 
-    <>
-        <div>
-          <h2>Most Rated</h2>
-        </div>
-        <div className='cards-container'>
-          {topRated &&
-            topRated.map((pin, i) => {
-              return (
-                <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem'}}>
-                  <Link className='pins-link' to={`/pins/${pin._id}`}>
-                    <div className='card-img-container'>
+    <section className='most-rated-container container-sm'>
+      <div>
+        <h2>Most Rated</h2>
+      </div>
+      <div className='cards-container'>
+        {topRated &&
+          topRated.map((pin, i) => {
+            return (
+              <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
+                <Link className='pins-link' to={`/pins/${pin._id}`}>
+                  <div className='card-img-container'>
                     <Card.Img className='card-img' variant='top' src={pin.imageUrl} />
-                    </div>
-                    <Card.Body>
-                      <Card.Title>{pin.title}</Card.Title>
-                      <div className='diamond-container'>
+                  </div>
+                  <Card.Body>
+                    <Card.Title>{pin.title}</Card.Title>
+                    <div className='diamond-container'>
                       <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
-                      </div>
-                    </Card.Body>
-                  </Link>
-                </Card>
-              )
-            })}
-        </div>
-    </>
+                    </div>
+                  </Card.Body>
+                </Link>
+              </Card>
+            )
+          })}
+      </div>
+    </section>
   )
 }
 

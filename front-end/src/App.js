@@ -20,14 +20,14 @@ import ProfileEdit from './components/utilities/ProfileEdit'
 const App = () => {
 
   const [newPin, setNewPin] = useState()
-  const [pinData, setPindata] = useState([])
+
   
   return (
     <>
       <BrowserRouter>
         <SiteNav />
         <Routes>
-          <Route path='/' element={<Home pinData={pinData} setPindata={setPindata}/>} />
+          <Route path='/' element={<Home/>} />
           <Route path='/Map' element={<Map newPin={newPin} setNewPin={setNewPin}/>} />
           <Route path='/About' element={<About />} />
           <Route path='/pins/:id' element={<ShowCase />} />
