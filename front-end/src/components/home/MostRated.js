@@ -8,17 +8,26 @@ import Rating from '../utilities/Rating'
 const MostRated = ({ pinData, setRatingUpdated }) => {
 
 
-  const [topRated, setTopRated] = useState([])
+  const [mostRated, setMostRated] = useState(null)
 
-  // Sorting the pinData for the avgRating in descending order
+
   useEffect(() => {
-    const sortedRatings = pinData.sort((a, b) => parseFloat(b.averageRating) -
-      parseFloat(a.averageRating))
-    console.log('sorted-ratings', sortedRatings)
 
-    const topRated = sortedRatings.slice(0, 3)
-    console.log('topRated', topRated)
-    setTopRated(topRated)
+    if (pinData.length) {
+      const filteredRatings = pinData.filter(pin => pin.avgRating >= 4)
+      console.log('filteredRating',filteredRatings)
+      let arrayLength = 3
+      if (filteredRatings.length < 3) {
+        arrayLength = filteredRatings.length
+      }
+      let topRated = []
+        while (topRated.length < arrayLength) {
+          topRated.push(filteredRatings[Math.floor(Math.random() * filteredRatings.length)])
+          topRated = [...new Set(topRated)]
+        }
+        console.log('top-rated', topRated)
+        setMostRated(topRated)
+  }
   }, [pinData])
 
 
@@ -29,8 +38,8 @@ const MostRated = ({ pinData, setRatingUpdated }) => {
         <h2>Most Rated</h2>
       </div>
       <div className='cards-container'>
-        {topRated &&
-          topRated.map((pin, i) => {
+        {mostRated &&
+          mostRated.map((pin, i) => {
             return (
               <Card className='card-container' key={i} style={{ width: '18rem', height: '18rem' }}>
                 <Link className='pins-link' to={`/pins/${pin._id}`}>

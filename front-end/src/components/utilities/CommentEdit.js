@@ -26,8 +26,8 @@ const CommentEdit  = ({ review, editComment, formErrors, commentsData, setCommen
           {formErrors && <Form.Text>{formErrors}</Form.Text>}
         </Form.Group>
         <Form.Group className='text-center mt-4'>
-          <Button onClick={editComment} disabled={isTextareaDisabled} className='btn btn-dark'>Submit</ Button>
-          <Button onClick={handleEditButtonClick} className='btn btn-dark'>Cancel</ Button>
+          <Button onClick={editComment} disabled={isTextareaDisabled} className='btn btn-dark comment'>Submit</ Button>
+          <Button onClick={handleEditButtonClick} className='btn btn-dark comment'>Cancel</ Button>
         </Form.Group>
       </Form>
   )

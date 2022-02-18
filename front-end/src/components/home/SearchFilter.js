@@ -15,9 +15,6 @@ const SearchFilter = ({ pinData, setRatingUpdated }) => {
   const [filteredPins, setFilteredPins] = useState([])
   const [filters, setFilters] = useState({ typeOfPlace: 'All', searchInput: '' })
 
-
-  // const typesOfPlaces = [...new Set(pinData.map(pin => pin.typeOfPlace))]
-
   const handleFilterChange = (e) => {
     const filterObject = { ...filters, [e.target.name]: e.target.value }
     setFilters(filterObject)
@@ -42,7 +39,7 @@ const SearchFilter = ({ pinData, setRatingUpdated }) => {
       <div className='searchbar-container container-sm'>
         <Form>
           <Form.Group className='form-group-container'>
-            <Form.Select onChange={handleFilterChange} name='typeOfPlace' defaultValue={pinData.typeOfPlace} >
+            <Form.Select onChange={handleFilterChange} name={'typeOfPlace'} defaultValue={pinData.typeOfPlace} >
             <option value="" defaultValue disabled> -- Select a type of place -- </option>
               <option value='All'>All</option>
               {allTypes && allTypes.sort().map((typeOfPlace, i) => <option key={i} value={typeOfPlace}>{typeOfPlace}</option>)}
