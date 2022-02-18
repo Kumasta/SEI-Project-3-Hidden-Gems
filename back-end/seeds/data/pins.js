@@ -15,7 +15,7 @@ export default [
     description: 'Discover the world\'s tallest and longest tunnel slide. Travel up to 15 mph down the UK\'s tallest public artwork through light and dark sections as London\'s dramatic skyscape passes by. Enjoy breathtaking views of London from the observation platform.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2021/07/i875/descender_0011.jpg', //String
     status: true, //Boolean
-    tags: ['Activity', 'Daredevil', 'Social'], //Array of strings
+    tags: ['activity', 'daredevil', 'social'], //Array of strings
     latitude: 51.5382759, //Number
     longitude: -0.01298326647465152, //Number
   },
@@ -25,7 +25,7 @@ export default [
     description: 'Dans le Noir ? Located in the heart of London invites you to dine in complete darkness, accompanied and served by unexpected guides. Enjoying dinner or lunch in pitch darkness is an original experience that allows us to re-evaluate our perception of taste by reawakening senses overwhelmed by the omnipresence of sight, to reinvigorate our relationship with the world and others and to experience a surprising encounter with something different.', //String
     imageUrl: 'https://islingtonnow.co.uk/wp-content/uploads/2016/03/dans-le-noir.jpg', //String
     status: true, //Boolean
-    tags: ['Restaurant'], //Array of strings
+    tags: ['restaurant'], //Array of strings
     latitude: 51.5227734, //Number
     longitude: -0.10626521794643069, //Number
   },
@@ -51,11 +51,11 @@ export default [
   },
   {
     title: 'Phone Booth Book Exchange', //String
-    typeOfPlace: 'Phone Booth', //String
+    typeOfPlace: 'Place of Interest', //String
     description: 'The Dacre telephone box is from 1927 and can be found at Kingswood Place in Lewisham. It is now used as a mini library, where books can be donated, borrowed or exchanged.', //String
     imageUrl: 'https://assets.londonist.com/uploads/2016/05/i875/p1120463.jpg', //String
     status: true, //Boolean
-    tags: ['Phone booth, random'], //Array of strings
+    tags: ['phone booth, random'], //Array of strings
     latitude: 51.4676965, //Number
     longitude: -0.0234944, //Number
   },
@@ -66,7 +66,7 @@ export default [
     The Ancient Market is home to 28 permanent stalls and trades 7 days a week, 10am - 5pm. It boasts a range of traditional market stall holders including a florist, fishmonger and greengrocers, an artisan bakery and a vibrant street food scene serving up authentic cuisines from across the globe.`, //String
     imageUrl: 'https://media.timeout.com/images/105553220/image.jpg', //String
     status: true, //Boolean
-    tags: ['Outdoor market', '7 days a week'], //Array of strings
+    tags: ['outdoor market', '7 days a week'], //Array of strings
     latitude: 51.409673274352876, //Number
     longitude: -0.30628681182861334, //Number
   },
@@ -241,7 +241,7 @@ export default [
     longitude: -1.903, //Number
   },
   {
-    title: 'LEADHILLS AND WANLOCKHEAD RAILWAY', //String
+    title: 'Leadhills and Wanlockhead Railway', //String
     typeOfPlace: 'Other', //String
     description: `This narrow gauge railway operates between Scotland's highest villages, Leadhills and Wanlockhead.
 
@@ -272,7 +272,7 @@ export default [
     description: 'St. Peter\'s Seminary is a former Roman Catholic seminary near Cardross, Argyll and Bute, Scotland. Designed by the firm of Gillespie, Kidd & Coia, it has been described by the international architecture conservation organisation DOCOMOMO as a modern "building of world significance". It is one of only 42 post-war buildings in Scotland to be listed at Category A, the highest level of protection for a building of "special architectural or historic interest". It has been abandoned since 1987, and is currently in a ruinous state. In July 2020, the site was gifted to the Kilmahew Education Trust Ltd who plan to reinstate the educational elements of the Seminary Complex after a process of conservation and restoration. The wider Kilmahew Estate is to be brought back to its former glory with new landscaping and features but is currently closed to the public due to safety concerns.', //String
     imageUrl: 'https://static.dezeen.com/uploads/2019/01/st-peters-seminary-ruin-mad4brutalim-wikimedia-commons_dezeen_1704_hero_a.jpg', //String
     status: false, //Boolean
-    tags: ['grade A listed', 'abandoned'], //Array of strings
+    tags: ['grade A listed', 'Abandoned'], //Array of strings
     latitude: 55.970155, //Number
     longitude: -4.640754, //Number
   },
@@ -292,7 +292,7 @@ export default [
     description: 'Eggslut is a chef driven, gourmet food concept founded in 2011. It\'s inspired by a true love for eggs. The menu is a balance of comfort and innovation, celebrating food that appeals to both novice and extreme foodie through classic comfort fare with a twist, all encompassing the key ingredient, eggs. Our goal is to share our food with everyone. No longer just a breakfast staple, we make eggs appetizing all day, everyday', //String
     imageUrl: 'http://ensdemos.com/eggslut.com/images/banner.jpg', //String
     status: true, //Boolean
-    tags: ['Street food'], //Array of strings
+    tags: ['foodie', 'street food'], //Array of strings
     latitude: 51.5185131, //Number
     longitude: -0.1325313572852756, //Number
   },
@@ -302,7 +302,7 @@ export default [
     description: 'TOCA Social is the world\'s first interactive football and dining experience, combining immersive gaming and world class food and drink. Book a private box or two, for 60 or 90 minutes to play all our games. Each box accommodates 12 players. Or just walk-in to enjoy our fantastic food and drinks, as well as free-to-use foosball tables, arcades, selfie booths, and more.', //String
     imageUrl: 'https://img2.storyblok.com/1650x848/smart/filters:quality(100):format(webp)/f/110790/2000x1333/f9f56711f2/casual_kicking_rear_01_lr.jpg', //String
     status: true, //Boolean
-    tags: ['Bar', 'Social', 'Activity', 'Brunch'], //Array of strings
+    tags: ['bar', 'gaming', 'social'], //Array of strings
     latitude: 51.502936649999995, //Number
     longitude: 0.0032029278126681844, //Number
   },
@@ -312,17 +312,17 @@ export default [
     description: 'London in the Sky returns this year with all of your favourite, sky-high experiences! Join us at The O2 from 28th April - 30th June for first-class food & drink, served 100ft in the sky with the best vibes going and truly unique views of the capital', //String
     imageUrl: 'https://seeninthecity.co.uk/wp-content/uploads/2020/01/Dine-in-the-Sky-2.jpg', //String
     status: true, //Boolean
-    tags: ['Brunch', 'Daredevil', 'Social'], //Array of strings
+    tags: ['brunch', 'daredevil'], //Array of strings
     latitude: 51.50088895238906, //Number
     longitude: 0.004913806915283204, //Number
   },
   {
     title: 'Navrtar', //String
-    typeOfPlace: 'Gaming Centre', //String
+    typeOfPlace: 'Recreation', //String
     description: 'Looking for a new innovative team building experience… A little heart-racing action with an objective? Why not try Navrtar\'s tantalising VR group experience? Recruit your strongest squad of 5 and survive the oncoming hordes of zombies in the apocalypse or scour crash sites, search and secure intel needed to prevent an alien takeover. See how your team ranks on our monthly leader board.', //String
     imageUrl: 'https://www.navrtar.com/uploads/images/62/large/5_Demo_Play.jpg?1562013924', //String
     status: true, //Boolean
-    tags: ['Bar', 'Gaming', 'Social'], //Array of strings
+    tags: ['bar', 'gaming', 'social'], //Array of strings
     latitude: 51.5137015, //Number
     longitude: -0.3066658, //Number
   },
@@ -332,7 +332,7 @@ export default [
     description: 'Bongo’s Bingo is the definitive bingo experience. It\'s a crazy mix of traditional bingo, dance-offs, rave intervals, audience participation and countless magical moments, currently taking place in almost 50 locations around the world. Bongo\'s Bingo is a wild shared social extravaganza and a night of pure nostalgic escapism, with the chance to win iconic prizes from giant pink unicorns and Henry Hoovers to mobility scooters and karaoke machines at each and every show. It\'s immersive, inclusive and incredible. Everyone from 18 to 92 plays and parties together. There are no barriers and no limits. Quite simply, there\'s nothing else like it. Check out our event\'s happening accross England.', //String
     imageUrl: 'https://i0.wp.com/parlemag.com/wp-content/uploads/2020/12/Bongo-Bingo-Bongos-Bingo.jpg?fit=700%2C404&ssl=1', //String
     status: true, //Boolean
-    tags: ['Bar', 'Social', 'Party'], //Array of strings
+    tags: ['bar', 'cocktails', 'party'], //Array of strings
     latitude: 52.4803254, //Number
     longitude: -1.8943114, //Number
   },
