@@ -58,7 +58,7 @@ const SearchFilter = ({ pinData, setRatingUpdated }) => {
                   <Card.Body>
                     <Card.Title >{pin.title}</Card.Title>
                     <div className='diamond-container'>
-                      <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
+                      <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} />
                     </div>
                   </Card.Body>
                 </Link>

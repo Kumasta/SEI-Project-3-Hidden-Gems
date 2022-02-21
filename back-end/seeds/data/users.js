@@ -1,6 +1,6 @@
 export default [
   {
-    username: 'kumar',
+    username: 'Mayur',
     email: 'm@g.com',
     password: 'pass',
     passwordConfirmation: 'pass',
@@ -12,23 +12,23 @@ export default [
     },
   },
   {
-    username: 'bumar',
+    username: 'Broris',
     email: 'b@g.com',
     password: 'pass',
     passwordConfirmation: 'pass',
     superUser: true,
     profile: {
-      name: '',
-      bio: '',
-      profilePicURL: '',
+      name: 'Boris',
+      bio: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt enim architecto, illo consequatur aut sunt impedit quae neque quod adipisci odio tempora atque repudiandae magnam exercitationem recusandae voluptatem placeat quibusdam.',
+      profilePicURL: 'https://i.guim.co.uk/img/media/c1781e1d0a37d3f48849ddc8f155b4e930b1f7b8/0_167_4853_2910/master/4853.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=550f8b031bd39bbb6397a1fcba1e67b3',
     },
   },
   {
-    username: 'tumar',
+    username: 'Tom',
     email: 't@g.com',
     password: 'pass',
     passwordConfirmation: 'pass',
-    superUser: false,
+    superUser: true,
     profile: {
       name: '',
       bio: '',

@@ -12,6 +12,7 @@ import blankProfile from '../images/966-9665493_my-profile-icon-blank-profile-im
 import { getPayload } from '../enviroment/auth'
 import Button from 'react-bootstrap/esm/Button'
 import { getLocalToken } from '../enviroment/auth'
+import Rating from './utilities/Rating'
 
 const Profile = () => {
   const { userId } = useParams()
@@ -106,16 +107,19 @@ const Profile = () => {
                     <Card className='card-container h' key={pin.id} style={{ width: '18rem', height: '18rem' }}>
                       <Link className='pins-link' to={`/pins/${pin._id}`}>
                         <Card.Img className='card-img' variant="top" src={pin.imageUrl} />
-                          <Card.Title>{pin.title}</Card.Title>
-                          <Card.Text>{pin.avgRating}</Card.Text>
-                          </Link>
-                          <Card.Body>
-                          {userIsOwner() && 
+                        <Card.Title>{pin.title}</Card.Title>
+                        <div className='diamond-container'>
+                          <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} />
+                        </div>
+                      </Link>
+                      <Card.Body>
+                        
+                        {userIsOwner() &&
                           <div className='d-flex justify-content-md-around card-buttons'>
                             <Link className='btn-dark btn' to={`/pins/${pin.id}/edit`}>Edit</Link>
                             <Button value={pin.id} onClick={handDelete} className='btn-dark btn'>Delete?</Button>
                           </div>}
-                        </Card.Body>
+                      </Card.Body>
                     </Card>
                   )
                 })

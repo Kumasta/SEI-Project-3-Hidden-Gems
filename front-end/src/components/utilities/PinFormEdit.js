@@ -149,7 +149,8 @@ const PinFormEdit = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log(getLocalToken())
+    console.log(id)
+    console.log(getLocalToken())
     try {
       const { data } = await axios.put(`/api/pins/${id}`,
         formData,
@@ -173,6 +174,7 @@ const PinFormEdit = () => {
       navigate(`/pins/${data.id}`)
     } catch (error) {
       const errorObj = {}
+      console.log(error)
       Object.keys(error.response.data.errors).forEach((key) => {
         errorObj[key] = error.response.data.errors[key].message
       })

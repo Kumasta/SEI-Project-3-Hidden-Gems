@@ -12,7 +12,7 @@ const Markers = ({ viewPort, setViewPort, filterList, handleCloseNewPopup }) => 
     <>
       {filterList?.map(pin => {
         return (
-          <Marker latitude={pin.latitude + 0.000001} longitude={pin.longitude} key={pin.id} className='pulse' anchor='bottom-left'>
+          <Marker latitude={pin.latitude + 0.000001} longitude={pin.longitude} key={pin.id} className='pulse'>
             <button id='map-pin' onClick={e => {
               e.preventDefault()
               setPopup(pin)

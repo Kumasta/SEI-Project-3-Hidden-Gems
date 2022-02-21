@@ -56,7 +56,12 @@ const ShowCase = () => {
               <img className='main-image' src={pin.imageUrl} alt={pin.title} />
             </Row>
             <Row>
+              <Col>
               <h2 className='title'>{pin.title}</h2>
+              </Col>
+              <Col>
+              {userIsOwnerOfComment() && <Link className='btn-dark btn edit-btn' to={`/pins/${pin.id}/edit`}>Edit Gem</Link>}
+              </Col>
               <h6 className='type'>{pin.typeOfPlace}</h6>
               <h6 className='rating'>Average rating: {pin.avgRating}</h6>
               <Rating avgRating={pin.avgRating} id={pin._id} pin={pin} setRatingUpdated={setRatingUpdated} />
@@ -89,7 +94,6 @@ const ShowCase = () => {
             <Row>
               {latLng.latitude && <MiniMap latLng={latLng}/>}
             </Row>
-            {userIsOwnerOfComment() && <Link className='btn-dark btn' to={`/pins/${pin.id}/edit`}>Edit</Link>}
           </Col>
           </Container>
           <Footer />
