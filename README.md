@@ -170,4 +170,6 @@ Highest Rated display
 Search Bar
 <img width="1133" alt="image" src="https://user-images.githubusercontent.com/94964514/155029584-293e9d19-d29b-4a30-b575-a31d24c0803e.png">
 
+![image](https://user-images.githubusercontent.com/94964514/156383787-fb64bc2f-9ee2-4b69-bac3-504ea1f63dad.png)
+
 
