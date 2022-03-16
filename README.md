@@ -207,15 +207,18 @@ Using bootstrap with defined a lot of margin and padding amounts, the majority o
 
 
 ### Seeding
-For our demonstration we created all the records as seeds in the back-end files. 
+For our demonstration we created all the records as seeds in the back-end files. We had about 30~ seeds for our final presentation. 
 <img width="675" alt="image" src="https://user-images.githubusercontent.com/94964514/158598795-3dec4e2c-e730-431b-83ea-a35a15920fe9.png">
 
-### Challenges
-- First time working with a map and React-Mapbox-gl was a challenge to get the components to 
+## Challenges
+- First time working with a map and React-Mapbox-gl was a challenge to get the components to function as I wanted, I needed to read documentation to better understand where my issues where. 
+- First time creating a search system with more than 2 variables, in the case of this project it was to search by a category and a tag along with text. In the end this was simplified to category and tag until we go back and make improvements. 
+- Getting the page to re-render or make a get request when the user updates a record. We spent some time working out a system to get the Get request to fire again when it was updated so that the user can see the effect it had on the page in real time. We worked out a system of useState to be affected on Put request and in turn re-run the get request for the updated information to show. 
+- First time creating a backend from the ground up, we worked closely together, had some trouble with populating our models with nested schema information but it came out very well in the end.  
+- Occasional merge conflicts but resolved relatively quickly.
+- As a group picking a theme/main purpose of the site took some time before we were all behind it. 
 
-### Known Bugs
-
-### Future Improvements / Changes
+## Future Improvements / Changes
 
 - Dislike a comment:          
   At the moment users can like a comment but we built into our  like model a boolean value which would allow us to tally up the total amount of likes, the boolean value we would be able to tally up true values vs false values. This would require changes to the request handling in the front end component. 
@@ -229,7 +232,7 @@ For our demonstration we created all the records as seeds in the back-end files.
 - Add transition zoom animation to map:       
   On the map page when clicking on a gem or searching for a location, when activated the map should smoothly transition to that location and zoom. Or even smooth zoom out and then move across the map to then zoom back in.
   
-### Main Takeaways
+## Main Takeaways
 - Working collaboratively as a group, using Github and planning out the each section of the site. 
 - Being more confident in reading package documentation to implement features not as familiar to ourselves. 
 - React framework fluency and implementation, now become one of my favourite systems to work with. 
