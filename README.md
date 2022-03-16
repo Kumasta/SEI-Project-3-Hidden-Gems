@@ -17,7 +17,12 @@ Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
   - [Document-Model-Breakdown](#document-model-breakdown)
   - [API-End-Points](#api-end-points)
  - [Front-end components](#front-end-components)
-  - [Document-Model-Breakdown](#document-model-breakdown)
+  - [Nav-Bar](#nav-bar)
+  - [Home Page](#home-page)
+  - [Map Page](#map-page)
+  - [Chowcase](#showcase)
+  - [Gem Form] (#gem-form)
+  - [Profile Page](#profile-page)
 
 ## Brief
 Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end webstie and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
@@ -172,7 +177,7 @@ In mobile view, the nav bar collaspes into a dropdown activted by clicking on th
 #### Showcase
 <img width="993" alt="Screenshot 2022-03-16 at 11 59 21" src="https://user-images.githubusercontent.com/94964514/158585252-8e7dfdd6-32ce-4d6c-9bc8-e6271389a57f.png">
 
-#### Giveaway Form
+#### Gem Form
 <img width="628" alt="image" src="https://user-images.githubusercontent.com/94964514/158585748-641a4ef4-abf4-493c-bf6a-aa12ba028dc8.png">
 
 #### Profile Page
