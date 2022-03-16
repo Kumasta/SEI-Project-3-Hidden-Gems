@@ -197,4 +197,39 @@ User's profile page can be accessed from the Nav bar. Their own or other user pr
 <img width="1283" alt="image" src="https://user-images.githubusercontent.com/94964514/158586131-d2c4014a-19f9-4387-940d-c54d7b09f236.png">
 
 
-### Next part
+### Styling
+
+We had thought about gradients and colour pallets in our planning stage. From our brainstorm we took away the idea of theming around gems and diamonds. The colour scheme went from simple accent colours around each page to primary black and white with a blue Gem for the dark map design so it would contrast with the page.
+
+<img width="277" alt="image" src="https://user-images.githubusercontent.com/94964514/158597787-1eb9d391-6eb5-49e2-a1a7-4ffcffdf7912.png">
+
+Using bootstrap with defined a lot of margin and padding amounts, the majority of the remaining styling was done using SASS. 
+
+
+### Seeding
+For our demonstration we created all the records as seeds in the back-end files. 
+<img width="675" alt="image" src="https://user-images.githubusercontent.com/94964514/158598795-3dec4e2c-e730-431b-83ea-a35a15920fe9.png">
+
+### Challenges
+- First time working with a map and React-Mapbox-gl was a challenge to get the components to 
+
+### Known Bugs
+
+### Future Improvements / Changes
+
+- Dislike a comment:          
+  At the moment users can like a comment but we built into our  like model a boolean value which would allow us to tally up the total amount of likes, the boolean value we would be able to tally up true values vs false values. This would require changes to the request handling in the front end component. 
+
+- Re-structure of files/components in the front end file:       
+  As this was the first project in a group of 3, the organisation of the components was messy and hard to follow for another person to look at and understand. 
+  
+- Sort Gems by other metrics:          
+  In the search component add buttons to search by location, date added, rating, number of comments. 
+  
+- Add transition zoom animation to map:       
+  On the map page when clicking on a gem or searching for a location, when activated the map should smoothly transition to that location and zoom. Or even smooth zoom out and then move across the map to then zoom back in.
+  
+### Main Takeaways
+- Working collaboratively as a group, using Github and planning out the each section of the site. 
+- Being more confident in reading package documentation to implement features not as familiar to ourselves. 
+- React framework fluency and implementation, now become one of my favourite systems to work with. 
