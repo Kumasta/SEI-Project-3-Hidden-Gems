@@ -14,15 +14,15 @@ Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
   - [Front-end](#front-end)
 - [Install](#install)
 - [Approach](#approach)
-  - [Document-Model-Breakdown](#document-model-breakdown)
-  - [API-End-Points](#api-end-points)
- - [Front-end components](#front-end-components)
-  - [Nav-Bar](#nav-bar)
-  - [Home Page](#home-page)
-  - [Map Page](#map-page)
-  - [Chowcase](#showcase)
-  - [Gem Form] (#gem-form)
-  - [Profile Page](#profile-page)
+    - [Document-Model-Breakdown](#document-model-breakdown)
+    - [API-End-Points](#api-end-points)
+    - [Front-end components](#front-end-components)
+      - [Nav-Bar](#nav-bar)
+      - [Home Page](#home-page)
+      - [Map Page](#map-page)
+      - [Chowcase](#showcase)
+      - [Gem Form](#gem-form)
+      - [Profile Page](#profile-page)
 
 ## Brief
 Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end webstie and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
@@ -167,14 +167,21 @@ In mobile view, the nav bar collaspes into a dropdown activted by clicking on th
 <img width="559" alt="image" src="https://user-images.githubusercontent.com/94964514/155027599-cd8e0937-8dc5-4e4b-a722-c945308dd1f5.png">
 
 #### Home page
+Home page contains a carousel that on load displays 5 random records from our database. On click, it will navigate the user to the showcase of that record. Below is a card display of 3 of the highest rated gems on the site. This is specified as having an average rating of 4 or more. On each card like this you will be able to see the gem rating display which rounds up or down to the nearest 0.5 and displays a half diamond in score dynamically. Finally on the homepage is the search function of the site. Clicking on search in the Nav bar will navigate the user to the home page and scroll to the section. Here users can search by text and by category with the text input and drop down.  
 <img width="809" alt="image" src="https://user-images.githubusercontent.com/94964514/158586869-13c5090f-10d6-4d71-ace6-7683c819ef13.png">
 
 #### Map page
+The map page is one of  my sections that I worked on primarily. The map is limited to view of the British Isles by defining the max bounds longitude and latitude coordinates. Users on desktop and with touch on mobile can zoom in and out, change the pitch and positions of the map at will. The filter button will provide a drop down box that allows users to filter gems by category and tag associated with it. Since there can be any number of tags in the database and not all are associated with each category, tag search is locked until you choose a category. Once a category is chosen a list of tags is generated from these filtered documents and all tags are collected and sorted into a new drop down list. This way you are guaranteed to see results when you combine filters by category and tag. 
+  
 ![image](https://user-images.githubusercontent.com/94964514/156383787-fb64bc2f-9ee2-4b69-bac3-504ea1f63dad.png)
+
+
+Clicking/tapping on a gem icon will display a popup card with a picture and basic information about that gem. Clicking anywhere else on the map will either prompt you to create a new Gem at that location or if you are not logged in, to register or log into your account. This will take you to the Gem form to create a new Gem record. 
 
 <img width="876" alt="Screenshot 2022-03-16 at 11 53 59" src="https://user-images.githubusercontent.com/94964514/158584408-54960c88-fd6c-445b-86e4-7693a1a85cbe.png">
 
 #### Showcase
+
 <img width="993" alt="Screenshot 2022-03-16 at 11 59 21" src="https://user-images.githubusercontent.com/94964514/158585252-8e7dfdd6-32ce-4d6c-9bc8-e6271389a57f.png">
 
 #### Gem Form
