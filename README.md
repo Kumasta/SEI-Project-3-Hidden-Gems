@@ -182,12 +182,18 @@ Clicking/tapping on a gem icon will display a popup card with a picture and basi
 
 #### Showcase
 
+The showcase shows the most information about the Gem record. Here users will be able to learn all the details the creator has added about the Place. At the bottom is a mini version of the map that just shows the location of the place. If users are logged in, they will be able to have further interactions with the page such as giving a rating to the Gem. Hovering over the gem rating icon will cause it to pulse and on click/tap the rating is sent through a put request and added. The average rating is updated, that score is updated in real time and the number of diamonds changes is the score dictates it to. Logged in users will also be able to type and leave comments. If they are the comment owner, they can either edit or delete it. And They will be able to like other comments too. If they click like on a comment they have liked before, the like will be removed and the count will display one less like total. 
+
 <img width="993" alt="Screenshot 2022-03-16 at 11 59 21" src="https://user-images.githubusercontent.com/94964514/158585252-8e7dfdd6-32ce-4d6c-9bc8-e6271389a57f.png">
 
 #### Gem Form
+When users create a new Gem they will be taken to form below. Here they can add all the relevant details as they need to. Upload a photo from their library and it will then be hosted on cloudinary, and displayed at the bottom of the form. At the top is another mini map but here users can move the pin to adjust the location of the Gem. Categories are chosen from a set list but tags can either be selected from previously made ones or created by the user themselves and that will then be found in the list in the future. 
+
 <img width="628" alt="image" src="https://user-images.githubusercontent.com/94964514/158585748-641a4ef4-abf4-493c-bf6a-aa12ba028dc8.png">
 
 #### Profile Page
+User's profile page can be accessed from the Nav bar. Their own or other user profile pages can also be accessed by clicking their user name in the showcase or comment post. Users will be able to add a profile photo and bio as well as see some basic stats of their account such as how many gems they have made, the average rating of all those that have rating, and when their account was created. If the user has created Gems it will be displayed below on the page where users will have the ability to edit the Gem or delete it. 
+
 <img width="1283" alt="image" src="https://user-images.githubusercontent.com/94964514/158586131-d2c4014a-19f9-4387-940d-c54d7b09f236.png">
 
 
