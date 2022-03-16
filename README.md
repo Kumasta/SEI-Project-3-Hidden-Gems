@@ -23,6 +23,11 @@ Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
       - [Chowcase](#showcase)
       - [Gem Form](#gem-form)
       - [Profile Page](#profile-page)
+      - [Styling](#styling)
+      - [Seeding](#seeding)
+- [Challenges](#challenges)
+- [Future Improvments](#future-improvements--changes)
+- [Main Takeaways](#main-takeaways)
 
 ## Brief
 Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end webstie and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
