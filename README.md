@@ -16,6 +16,8 @@ Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
 - [Approach](#approach)
   - [Document-Model-Breakdown](#document-model-breakdown)
   - [API-End-Points](#api-end-points)
+ - [Front-end components](#front-end-components)
+  - [Document-Model-Breakdown](#document-model-breakdown)
 
 ## Brief
 Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end webstie and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
@@ -160,16 +162,21 @@ In mobile view, the nav bar collaspes into a dropdown activted by clicking on th
 <img width="559" alt="image" src="https://user-images.githubusercontent.com/94964514/155027599-cd8e0937-8dc5-4e4b-a722-c945308dd1f5.png">
 
 #### Home page
+<img width="809" alt="image" src="https://user-images.githubusercontent.com/94964514/158586869-13c5090f-10d6-4d71-ace6-7683c819ef13.png">
 
-Hero Carousel   
-<img width="813" alt="image" src="https://user-images.githubusercontent.com/94964514/155029179-47dd9457-542c-4ba7-ba1f-5ec842954f90.png">
-
-Highest Rated display
-<img width="1416" alt="image" src="https://user-images.githubusercontent.com/94964514/155029369-c3668d87-71d5-45e2-bb20-7ea0e8824c26.png">
-
-Search Bar
-<img width="1133" alt="image" src="https://user-images.githubusercontent.com/94964514/155029584-293e9d19-d29b-4a30-b575-a31d24c0803e.png">
-
+#### Map page
 ![image](https://user-images.githubusercontent.com/94964514/156383787-fb64bc2f-9ee2-4b69-bac3-504ea1f63dad.png)
 
+<img width="876" alt="Screenshot 2022-03-16 at 11 53 59" src="https://user-images.githubusercontent.com/94964514/158584408-54960c88-fd6c-445b-86e4-7693a1a85cbe.png">
 
+#### Showcase
+<img width="993" alt="Screenshot 2022-03-16 at 11 59 21" src="https://user-images.githubusercontent.com/94964514/158585252-8e7dfdd6-32ce-4d6c-9bc8-e6271389a57f.png">
+
+#### Giveaway Form
+<img width="628" alt="image" src="https://user-images.githubusercontent.com/94964514/158585748-641a4ef4-abf4-493c-bf6a-aa12ba028dc8.png">
+
+#### Profile Page
+<img width="1283" alt="image" src="https://user-images.githubusercontent.com/94964514/158586131-d2c4014a-19f9-4387-940d-c54d7b09f236.png">
+
+
+### Next part
