@@ -28,7 +28,7 @@ const reviewSchema = new Schema({
 
 const pinSchema = new Schema({
   title: { type: String, required: true },
-  typeOfPlace: { type: String, required: true }, //One value but will have serveral tags below
+  typeOfPlace: { type: String, required: true },
   description: { type: String, required: true, minlength: 50 },
   imageUrl: { type: String, required: true },
   status: { type: Boolean },

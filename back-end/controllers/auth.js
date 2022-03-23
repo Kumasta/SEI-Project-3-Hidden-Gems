@@ -1,6 +1,6 @@
 import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
-import { secret } from '../config/environment.js'
+import { SECRET } from '../config/environment.js'
 
 
 //Registration 
@@ -32,7 +32,7 @@ export const loginUser = async (req, res) => {
     //jwt.sign creats a token:
     // first arugment is going to be our payload - this always needs a sub which identifies the user making the request - this needs to be unique so we'll use the _id
     // 
-    const token = jwt.sign({ sub: userToLogin._id }, secret, { expiresIn: '7 days' })
+    const token = jwt.sign({ sub: userToLogin._id }, process.env.SECRET, { expiresIn: '7 days' })
     console.log(token)
     return res.status(200).json({ message: `Welcome back, ${userToLogin.username}`, token: token })
   } catch (err) {

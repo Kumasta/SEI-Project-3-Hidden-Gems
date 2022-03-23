@@ -1,14 +1,14 @@
 import mongoose from 'mongoose'
 import pinData from './data/pins.js'
 import userData from './data/users.js'
-import { dbURI } from '../config/environment.js'
+import { DB_URI } from '../config/environment.js'
 import Pin from '../models/pin.js'
 import User from '../models/user.js'
 
 const seedDB = async () => {
   try {
     //Connect to the database
-    await mongoose.connect(dbURI)
+    await mongoose.connect(DB_URI)
     console.log('✅ Database Connected')
     //Drop all data from the database
     await mongoose.connection.db.dropDatabase()
