@@ -241,3 +241,5 @@ For our demonstration we created all the records as seeds in the back-end files.
 - Working collaboratively as a group, using Github and planning out the each section of the site. 
 - Being more confident in reading package documentation to implement features not as familiar to ourselves. 
 - React framework fluency and implementation, now become one of my favourite systems to work with. 
+
+<p align="right">(<a href="#general-assembly-project-3-full-stack-project">back to top</a>)</p>
