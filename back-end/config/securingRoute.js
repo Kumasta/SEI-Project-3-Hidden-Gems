@@ -1,6 +1,6 @@
 import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
-import { SECRET } from './environment.js'
+// import { SECRET } from './environment.js'
 
 // This function will be middleware
 // Becasue this is middleware (defined in our router methods) we will have access to the req, res & next

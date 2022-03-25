@@ -1,7 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose'
 import router from './config/routes.js'
-import { PORT, DB_URI } from './config/environment.js'
+// import { PORT, DB_URI } from './config/environment.js'
 import 'dotenv/config' // only needs to be added if it doesn't already exist
 import path, { dirname } from 'path'
 import { fileURLToPath } from 'url'

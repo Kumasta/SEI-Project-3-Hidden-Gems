@@ -1,6 +1,6 @@
 import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
-import { SECRET } from '../config/environment.js'
+// import { SECRET } from '../config/environment.js'
 
 
 //Registration 
