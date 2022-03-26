@@ -1,7 +1,7 @@
 ### General Assembly Project-3: Full-stack Project. 
 #  --Hidden Gems--
 
-Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
+Contributers: [Mayur Kumar](https://github.com/Kumasta), [Tom Murphy](https://github.com/TMurp) & [Marilyn Poku](https://github.com/marilynpoku)
 
 ### Project Link : https://sei-hidden-gems.herokuapp.com/
 
