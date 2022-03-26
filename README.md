@@ -3,7 +3,7 @@
 
 Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
 
-### Project Link : TBA
+### Project Link : https://sei-hidden-gems.herokuapp.com/
 
 ## Table of Contents
 
@@ -28,6 +28,7 @@ Contributers: Mayur Kumar, Tom Murphy & Marilyn Poku
 - [Challenges](#challenges)
 - [Future Improvments](#future-improvements--changes)
 - [Main Takeaways](#main-takeaways)
+- [Contact](#contact)
 
 ## Brief
 Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end webstie and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
@@ -241,5 +242,15 @@ For our demonstration we created all the records as seeds in the back-end files.
 - Working collaboratively as a group, using Github and planning out the each section of the site. 
 - Being more confident in reading package documentation to implement features not as familiar to ourselves. 
 - React framework fluency and implementation, now become one of my favourite systems to work with. 
+
+## Contact
+
+Social - https://www.linkedin.com/in/mayur-kumar-dev/
+
+email - mayurkumardev@googlemail.com
+
+Project Link: https://sei-hidden-gems.herokuapp.com/
+
+Git Hub: https://github.com/Kumasta
 
 <p align="right">(<a href="#general-assembly-project-3-full-stack-project">back to top</a>)</p>
