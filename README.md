@@ -1,7 +1,7 @@
 ### General Assembly Project-3: Full-stack Project. 
 #  --Hidden Gems--
 
-Contributers: [Mayur Kumar](https://github.com/Kumasta), [Tom Murphy](https://github.com/TMurp) & [Marilyn Poku](https://github.com/marilynpoku)
+Contributors: [Mayur Kumar](https://github.com/Kumasta), [Tom Murphy](https://github.com/TMurp) & [Marilyn Poku](https://github.com/marilynpoku)
 
 ### Project Link : https://sei-hidden-gems.herokuapp.com/
 
@@ -20,18 +20,18 @@ Contributers: [Mayur Kumar](https://github.com/Kumasta), [Tom Murphy](https://gi
       - [Nav-Bar](#nav-bar)
       - [Home Page](#home-page)
       - [Map Page](#map-page)
-      - [Chowcase](#showcase)
+      - [Showcase](#showcase)
       - [Gem Form](#gem-form)
       - [Profile Page](#profile-page)
       - [Styling](#styling)
       - [Seeding](#seeding)
 - [Challenges](#challenges)
-- [Future Improvments](#future-improvements--changes)
+- [Future Improvements](#future-improvements--changes)
 - [Main Takeaways](#main-takeaways)
 - [Contact](#contact)
 
 ## Brief
-Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end webstie and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
+Working for the first time as a group of 3, myself (Mayur), Tom and Marilyn over a period of 8 working days created a full stack front-end website and back-end database for our 3rd project during the **Software Engineering Immersive** (SEI)  bootcamp at **General Assembly**. 
 
 Our task was to create a **back-end** database with Mongoose, MongoDB, Node and Express JS with API endpoints to seed data and give users ability to register/login, create new and edit documents while navigating a **front-end** website built with **React JS**. The website also needed to be **mobile friendly** as well as usable on a desktop. 
 
@@ -91,7 +91,7 @@ Front End terminal
 
 ## Approach
 
-We began the project creating a wireframe draft of the website and its different components. Using a colour code system we divided our completion targets by MVP and stretch goals if we meet them. MVP goals would include a home page with carousel and search functionality for our main documents. An interactive map using mapbox-gl to discover locations and a link to a showcase of  them. As well as being able to link to make new entries and the ability to post comments on each showcase. To be able to register and login as a user to interact with the site.  
+We began the project creating a wireframe draft of the website and its different components. Using a colour code system we divided our completion targets by MVP and stretch goals if we meet them. MVP goals would include a home page with a carousel and search functionality for our main documents. An interactive map using mapbox-gl to discover locations and a link to a showcase of  them. As well as being able to link to make new entries and the ability to post comments on each showcase. To be able to register and login as a user to interact with the site.  
 ![Project-3-wire-frame](https://user-images.githubusercontent.com/94964514/155013109-a7a4ba48-7eba-4ab6-95c4-4a0bc553f325.png)
 
 We then created a trello Kanban workspace and roughly planned out the theme, design, user stories, components and file structure. We each would then take a component and start building the front-end after the back-end was done together at once.
@@ -155,7 +155,7 @@ The "pin" schema contained a lot more keys as well as more embedded schemas. An 
 ![image](https://user-images.githubusercontent.com/94964514/155024386-6dac1ce5-6922-4580-b11a-183239e4f702.png)
 
 #### Mapbox Geocode API
-Enables serach for address on the map. Container props for limited search for Uk & Ireland and fuzzy match.         
+Enables search for address on the map. Container props for limited search for Uk & Ireland and fuzzy match.         
 `GET https://api.mapbox.com/geocoding/v5/mapbox.places/**{___search_text____}**.json?country=gb,ie&fuzzyMatch=true&access_token=**{_mapbox_token_}**`
 
 ### Front-end components
@@ -217,7 +217,7 @@ For our demonstration we created all the records as seeds in the back-end files.
 <img width="675" alt="image" src="https://user-images.githubusercontent.com/94964514/158598795-3dec4e2c-e730-431b-83ea-a35a15920fe9.png">
 
 ## Challenges
-- First time working with a map and React-Mapbox-gl was a challenge to get the components to function as I wanted, I needed to read documentation to better understand where my issues where. 
+- First time working with a map and React-Mapbox-gl was a challenge to get the components to function as I wanted, I needed to read documentation to better understand where my issues were. 
 - First time creating a search system with more than 2 variables, in the case of this project it was to search by a category and a tag along with text. In the end this was simplified to category and tag until we go back and make improvements. 
 - Getting the page to re-render or make a get request when the user updates a record. We spent some time working out a system to get the Get request to fire again when it was updated so that the user can see the effect it had on the page in real time. We worked out a system of useState to be affected on Put request and in turn re-run the get request for the updated information to show. 
 - First time creating a backend from the ground up, we worked closely together, had some trouble with populating our models with nested schema information but it came out very well in the end.  
@@ -239,7 +239,7 @@ For our demonstration we created all the records as seeds in the back-end files.
   On the map page when clicking on a gem or searching for a location, when activated the map should smoothly transition to that location and zoom. Or even smooth zoom out and then move across the map to then zoom back in.
   
 ## Main Takeaways
-- Working collaboratively as a group, using Github and planning out the each section of the site. 
+- Working collaboratively as a group, using Github and planning out each section of the site. 
 - Being more confident in reading package documentation to implement features not as familiar to ourselves. 
 - React framework fluency and implementation, now become one of my favourite systems to work with. 
 
